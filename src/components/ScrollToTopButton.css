@@ -1,33 +1,58 @@
-/* ScrollToTopButton.css */
-
 .scroll-to-top-button {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  padding: 10px 15px;
+  width: 45px;
+  height: 45px;
   background-color: #4CAF50; /* Agriculture green */
   color: white;
   border: none;
-  border-radius: 50%;
+  border-radius: 8px; /* Slightly rounded corners for a modern, professional look */
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease;
-  z-index: 9999; /* ✅ Add this line */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 9999;
 }
 
-  .scroll-to-top-button:hover {
-    background-color: #8B4513; /* Earthy brown on hover */
-  }
-  
-  .scroll-to-top-button:focus {
-    outline: none;
-  }
-  
-  .scroll-to-top-button span {
+.scroll-to-top-button:hover {
+  background-color: #8B4513; /* Earthy brown on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.scroll-to-top-button:focus {
+  outline: none;
+}
+
+.scroll-to-top-button span {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .scroll-to-top-button {
+    width: 40px;
+    height: 40px;
     font-size: 18px;
   }
-  
+
+  .scroll-to-top-button span {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .scroll-to-top-button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .scroll-to-top-button span {
+    font-size: 14px;
+  }
+}
