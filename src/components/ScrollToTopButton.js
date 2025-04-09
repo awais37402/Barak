@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import './ScrollToTopButton.css';  // Import CSS for the button
+import './ScrollToTopButton.css';
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
-    if (window.pageYOffset > 300) { // Show button after scrolling 300px
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
+    setIsVisible(window.pageYOffset > 300);
   };
 
-  const reverseScroll = () => {
-    // Use a scroll effect that creates the illusion of reverse scroll
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // Smooth scroll effect for the reverse scroll
+      behavior: 'smooth'
     });
   };
 
@@ -26,14 +21,25 @@ const ScrollToTopButton = () => {
   }, []);
 
   return (
-    isVisible && (
-      <button
-        onClick={reverseScroll}  // Trigger reverse scroll
-        className="scroll-to-top-button"
+    <button
+      onClick={scrollToTop}
+      className={`scroll-to-top-button ${isVisible ? 'visible' : ''}`}
+      aria-label="Scroll to top"
+    >
+      <svg 
+        className="scroll-arrow" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <span>↑</span>
-      </button>
-    )
+        <path 
+          d="M12 19V5M5 12l7-7 7 7" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+        />
+      </svg>
+    </button>
   );
 };
 

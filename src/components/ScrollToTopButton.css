@@ -1,58 +1,87 @@
+/* Main Button Styles */
 .scroll-to-top-button {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 45px;
-  height: 45px;
-  background-color: #4CAF50; /* Agriculture green */
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
   color: white;
   border: none;
-  border-radius: 8px; /* Slightly rounded corners for a modern, professional look */
+  border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-size: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.3, 0.7, 0.4, 1.5);
   z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
+/* Visible State */
+.scroll-to-top-button.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover Effects */
 .scroll-to-top-button:hover {
-  background-color: #8B4513; /* Earthy brown on hover */
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
 }
 
-.scroll-to-top-button:focus {
-  outline: none;
+/* Click Effect */
+.scroll-to-top-button:active {
+  transform: scale(0.95);
 }
 
-.scroll-to-top-button span {
-  font-size: 18px;
+/* SVG Arrow Styling */
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
 }
 
-@media screen and (max-width: 768px) {
+.scroll-to-top-button:hover .scroll-arrow {
+  transform: translateY(-3px);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.scroll-to-top-button.visible {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .scroll-to-top-button {
+    width: 45px;
+    height: 45px;
+    bottom: 25px;
+    right: 25px;
+  }
+  .scroll-arrow {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
   .scroll-to-top-button {
     width: 40px;
     height: 40px;
-    font-size: 18px;
-  }
-
-  .scroll-to-top-button span {
-    font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .scroll-to-top-button {
-    width: 35px;
-    height: 35px;
-    font-size: 16px;
     bottom: 20px;
     right: 20px;
   }
-
-  .scroll-to-top-button span {
-    font-size: 14px;
+  .scroll-arrow {
+    width: 16px;
+    height: 16px;
   }
 }
