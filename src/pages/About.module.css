@@ -1,0 +1,663 @@
+/* About.module.css */
+
+/* Base Styles */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.aboutPage {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Section Titles */
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.sectionTitle span {
+  color: var(--primary-green);
+  position: relative;
+}
+
+.sectionTitle span::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-green), var(--light-green));
+}
+
+/* About Hero Section */
+.aboutHero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--white);
+  text-align: center;
+  padding: 100px 0;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.aboutHero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.aboutHero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.aboutHero p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Our Story Section */
+.ourStory {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.storyContent {
+  margin-bottom: 40px;
+}
+
+.storyContent p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: var(--black);
+  line-height: 1.8;
+}
+
+.storyStats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.statItem {
+  text-align: center;
+  flex: 1 1 150px;
+  background: var(--light-green);
+  padding: 25px 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.statItem:hover {
+  transform: translateY(-5px);
+}
+
+.statItem h3 {
+  font-size: 2.5rem;
+  color: var(--primary-green);
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.storyImage img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  object-fit: cover;
+  height: 400px;
+}
+
+/* ✅ Responsive Fix for Mobile Devices */
+@media (max-width: 768px) {
+  .storyStats {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .statItem {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .statItem h3 {
+    font-size: 2rem;
+  }
+
+  .statItem p {
+    font-size: 1rem;
+  }
+
+  .storyImage img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .statItem h3 {
+    font-size: 1.8rem;
+  }
+
+  .statItem p {
+    font-size: 0.95rem;
+  }
+
+  .storyContent p {
+    font-size: 1rem;
+  }
+}
+
+
+/* Partners Section */
+.partners {
+  padding: 80px 0;
+  background-color: var(--cream);
+}
+
+.partnerCards {
+  display: flex;
+  gap: 30px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.partnerCard {
+  flex: 1 1 300px;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.partnerCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.partnerLogo {
+  color: var(--primary-green);
+  margin-bottom: 20px;
+}
+
+.partnerCard h3 {
+  color: var(--primary-green);
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.partnerCard p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.partnerCard p strong {
+  color: var(--secondary-green);
+}
+
+.partnerFeatures {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.partnerFeatures li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  line-height: 1.6;
+}
+
+.partnerFeatures i {
+  color: var(--primary-green);
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+/* Technology Section */
+.technology {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--secondary-green);
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.techCard {
+  background: var(--cream);
+  padding: 30px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.techCard:hover {
+  background: var(--light-green);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.techIcon {
+  font-size: 2rem;
+  color: var(--primary-green);
+  margin-bottom: 20px;
+}
+
+.techCard h3 {
+  color: var(--primary-green);
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.techCard ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.techCard ul li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+  line-height: 1.6;
+}
+
+.techCard ul li::before {
+  content: "•";
+  color: var(--primary-green);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -5px;
+}
+
+/* Offer Section */
+.offer {
+  padding: 80px 0;
+  background-color: var(--cream);
+}
+
+.offerHighlight {
+  background: var(--primary-green);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 30px auto;
+  max-width: 800px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.offerHighlight h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.offerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.offerCard {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.offerCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.offerIcon {
+  font-size: 2.5rem;
+  color: var(--primary-green);
+  margin-bottom: 20px;
+}
+
+.offerCard h3 {
+  color: var(--primary-green);
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.offerCard p {
+  line-height: 1.6;
+}
+
+/* Impact Section */
+.impact {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.impactTabs {
+  margin-top: 50px;
+  background: var(--cream);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tabButtons {
+  display: flex;
+  background: var(--secondary-green);
+  flex-wrap: wrap;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.tabButton:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.tabButton.active {
+  background: var(--primary-green);
+}
+
+.tabContent {
+  padding: 30px;
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.tabContent.active {
+  display: block;
+}
+
+.tabContent ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tabContent ul li {
+  margin-bottom: 15px;
+  padding-left: 40px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.tabContent ul li i {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 1.5rem;
+  color: var(--primary-green);
+}
+
+/* CTA Section */
+.cta {
+  padding: 80px 0;
+  background: linear-gradient(rgba(58, 125, 68, 0.9), rgba(58, 125, 68, 0.9)), 
+              url('https://images.unsplash.com/photo-1535254973040-607b474cb50d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  text-align: center;
+}
+
+.ctaContent h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.ctaContent p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.primaryBtn {
+  display: inline-block;
+  background: var(--white);
+  color: var(--primary-green);
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+.primaryBtn:hover {
+  background: transparent;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.techCard, .partnerCard, .offerCard {
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+
+.techCard:nth-child(1) { animation-delay: 0.1s; }
+.techCard:nth-child(2) { animation-delay: 0.2s; }
+.techCard:nth-child(3) { animation-delay: 0.3s; }
+.partnerCard:nth-child(1) { animation-delay: 0.1s; }
+.partnerCard:nth-child(2) { animation-delay: 0.2s; }
+.offerCard:nth-child(1) { animation-delay: 0.1s; }
+.offerCard:nth-child(2) { animation-delay: 0.2s; }
+.offerCard:nth-child(3) { animation-delay: 0.3s; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .aboutHero {
+    padding: 80px 0;
+    background-attachment: scroll;
+  }
+
+  .storyStats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .statItem {
+    flex: 0 1 calc(50% - 30px);
+    width: 100%;
+    max-width: 220px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .storyImage img {
+    height: 250px;
+  }
+
+  .tabButtons {
+    flex-direction: column;
+  }
+
+  .tabButton {
+    min-width: 100%;
+  }
+
+  .techGrid,
+  .offerGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutHero {
+    padding: 60px 0;
+  }
+
+  .storyStats {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .statItem {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .statItem h3 {
+    font-size: 1.8rem;
+  }
+
+  .statItem p {
+    font-size: 1rem;
+  }
+
+  .storyContent p {
+    font-size: 1rem;
+  }
+
+  .partnerCard,
+  .techCard,
+  .offerCard {
+    padding: 20px;
+  }
+
+  .tabContent {
+    padding: 20px;
+  }
+
+  .tabContent ul li {
+    padding-left: 30px;
+  }
+
+  .tabContent ul li i {
+    font-size: 1.2rem;
+    top: 4px;
+  }
+}
+
+/* Slide-in Animation System */
+.slideInContainer {
+  overflow: hidden;
+}
+
+.slideInItem {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slideInContainer.animate .slideInItem {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animations for children */
+.slideInContainer.animate .slideInItem:nth-child(1) { transition-delay: 0.1s; }
+.slideInContainer.animate .slideInItem:nth-child(2) { transition-delay: 0.2s; }
+.slideInContainer.animate .slideInItem:nth-child(3) { transition-delay: 0.3s; }
+.slideInContainer.animate .slideInItem:nth-child(4) { transition-delay: 0.4s; }
+.slideInContainer.animate .slideInItem:nth-child(5) { transition-delay: 0.5s; }
+.slideInContainer.animate .slideInItem:nth-child(6) { transition-delay: 0.6s; }
+
+/* Specific delays for grids */
+.slideInContainer.animate .techCard:nth-child(1) { transition-delay: 0.1s; }
+.slideInContainer.animate .techCard:nth-child(2) { transition-delay: 0.2s; }
+.slideInContainer.animate .techCard:nth-child(3) { transition-delay: 0.3s; }
+
+.slideInContainer.animate .partnerCard:nth-child(1) { transition-delay: 0.1s; }
+.slideInContainer.animate .partnerCard:nth-child(2) { transition-delay: 0.2s; }
+
+.slideInContainer.animate .offerCard:nth-child(1) { transition-delay: 0.1s; }
+.slideInContainer.animate .offerCard:nth-child(2) { transition-delay: 0.2s; }
+.slideInContainer.animate .offerCard:nth-child(3) { transition-delay: 0.3s; }
+
+/* Hero section specific animation */
+.aboutHero .slideInItem {
+  transform: translateY(50px);
+}
+
+/* Story stats specific animation - Updated */
+.storyStats .slideInItem {
+  transform: translateY(30px);
+}
+
+.storyStats .slideInItem:nth-child(1) { transition-delay: 0.1s; }
+.storyStats .slideInItem:nth-child(2) { transition-delay: 0.2s; }
+.storyStats .slideInItem:nth-child(3) { transition-delay: 0.3s; }
+
+/* Story image specific animation */
+.storyImage.slideInItem {
+  transform: translateX(100px);
+}
+
+/* Tab content specific animation */
+.tabContent.slideInItem {
+  transform: translateY(30px);
+}

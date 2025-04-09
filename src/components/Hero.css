@@ -1,0 +1,206 @@
+/* Make sure the hero section starts right below the header */
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  max-height: 600px;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 70px; /* Adjust this value to match the height of your header */
+}
+
+/* Full background image visibility */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Darken the background image */
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* Slide content with a white background */
+.slide-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px; /* Adjust the size */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  animation: fadeInUp 1s ease-out;
+  color: black; /* Text in black for visibility */
+}
+
+/* Title and text styling */
+.slide h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: black;
+  text-shadow: none; /* Remove text shadow for better visibility */
+}
+
+.slide h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  color: black;
+}
+
+.slide p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: black;
+}
+
+.slide-button {
+  padding: 10px 25px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.slide-button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation buttons */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-nav:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .slide h2 {
+    font-size: 2rem;
+  }
+
+  .slide h3 {
+    font-size: 1.4rem;
+  }
+
+  .slide p {
+    font-size: 1rem;
+  }
+
+  .slide-content {
+    max-width: 500px; /* Make content area smaller */
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .slider-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide h2 {
+    font-size: 1.6rem;
+  }
+
+  .slide h3 {
+    font-size: 1.2rem;
+  }
+
+  .slide p {
+    font-size: 0.9rem;
+  }
+
+  .slide-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .slide-content {
+    max-width: 90%; /* Further reduce the width for mobile screens */
+    padding: 10px; /* Reduce padding */
+  }
+}

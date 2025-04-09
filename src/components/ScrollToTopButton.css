@@ -1,0 +1,33 @@
+/* ScrollToTopButton.css */
+
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px 15px;
+  background-color: #4CAF50; /* Agriculture green */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  z-index: 9999; /* ✅ Add this line */
+}
+
+  .scroll-to-top-button:hover {
+    background-color: #8B4513; /* Earthy brown on hover */
+  }
+  
+  .scroll-to-top-button:focus {
+    outline: none;
+  }
+  
+  .scroll-to-top-button span {
+    font-size: 18px;
+  }
+  

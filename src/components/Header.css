@@ -1,0 +1,256 @@
+:root {
+  --primary-green: #2e7d32;
+  --secondary-green: #4c8c4e;
+  --light-green: #e8f5e9;
+  --dark-green: #1b5e20;
+  --white: #ffffff;
+  --black: #212121;
+  --gray: #757575;
+  --transition: all 0.3s ease;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --border-radius: 24px;
+}
+
+/* Base Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+/* Left Navigation */
+.left-nav {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+}
+
+.nav-link:hover,
+.nav-item.active .nav-link {
+  color: var(--primary-green);
+}
+
+.link-text {
+  position: relative;
+}
+
+/* Center Logo */
+.center-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+.logo-img {
+  height: 2rem;
+  width: auto;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark-green);
+  white-space: nowrap;
+}
+
+/* Right Contact Button */
+.right-contact {
+  display: flex;
+}
+
+.contact-button {
+  background-color: var(--primary-green);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+  background-color: var(--dark-green);
+  transform: translateY(-2px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--dark-green);
+  margin: 5px 0;
+  transition: var(--transition);
+  transform-origin: center;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background-color: var(--primary-green);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background-color: var(--primary-green);
+}
+
+/* Mobile Menu */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+  padding-top: 5rem;
+}
+
+.mobile-nav.active {
+  transform: translateY(0);
+}
+
+.mobile-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.mobile-nav-item {
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--black);
+  font-size: 1.25rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.mobile-nav-link:hover {
+  color: var(--primary-green);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .header-container {
+    padding: 1rem;
+  }
+  
+  .nav-list {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .left-nav,
+  .right-contact {
+    display: none;
+  }
+  
+  .center-logo {
+    position: static;
+    transform: none;
+    margin-right: auto;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
+  .header.menu-open {
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .logo-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    display: inline;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark-green);
+  }
+}

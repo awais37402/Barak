@@ -1,0 +1,463 @@
+/* Contact.module.css */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+/* Color Scheme - Agricultural Theme */
+:root {
+  --primary-green: #4a8c2b;
+  --secondary-green: #6aa84f;
+  --light-green: #93c47d;
+  --cream: #f9f7e8;
+  --dark-brown: #5e3a00;
+  --accent-orange: #e69138;
+  --white: #ffffff;
+  --black: #2d2d2d;
+}
+
+/* Base Styles */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+/* Contact Hero Section */
+.contactHero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  text-align: center;
+  padding: 80px 0;
+  margin-bottom: 40px;
+}
+
+.contactHero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.contactHero h1 span {
+  color: var(--light-green);
+}
+
+.contactHero p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Contact Section */
+.contactSection {
+  padding: 60px 0;
+  background-color: var(--white);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.contactForm {
+  background: var(--cream);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+.contactForm h2 {
+  color: var(--primary-green);
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  position: relative;
+}
+
+.contactForm h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--light-green);
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--dark-brown);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: var(--white);
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: var(--primary-green);
+  outline: 2px solid rgba(74, 140, 43, 0.3);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.primaryBtn {
+  display: inline-block;
+  background: var(--primary-green);
+  color: var(--white);
+  padding: 14px 25px;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.primaryBtn:hover {
+  background: var(--secondary-green);
+}
+
+.contactInfo h2 {
+  color: var(--primary-green);
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  position: relative;
+}
+
+.contactInfo h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--light-green);
+}
+
+.contactInfo p {
+  margin-bottom: 25px;
+  color: var(--black);
+  line-height: 1.6;
+}
+
+.infoCard {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  background: var(--cream);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.infoCard .icon {
+  background: var(--primary-green);
+  color: var(--white);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.infoCard .content h3 {
+  color: var(--primary-green);
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.infoCard .content p {
+  margin: 0;
+  color: var(--black);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Map Section */
+.mapSection {
+  padding: 60px 0;
+  background-color: var(--cream);
+}
+
+.mapSection .sectionTitle {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.mapSection .sectionTitle span {
+  color: var(--primary-green);
+}
+
+.mapContainer {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.mapContainer iframe {
+  display: block;
+  width: 100%;
+  border: none;
+  height: 400px;
+}
+
+/* FAQ Section */
+.faqSection {
+  padding: 60px 0;
+  background-color: var(--white);
+}
+
+.faqSection .sectionTitle {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.faqSection .sectionTitle span {
+  color: var(--primary-green);
+}
+
+.faqContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqCategory {
+  color: var(--primary-green);
+  margin: 30px 0 15px;
+  font-size: 1.3rem;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--light-green);
+}
+
+.faqItem {
+  margin-bottom: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.faqQuestion {
+  width: 100%;
+  padding: 16px 20px;
+  text-align: left;
+  background: var(--cream);
+  border: none;
+  color: var(--dark-brown);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faqQuestion i {
+  transition: transform 0.3s ease;
+}
+
+.faqQuestion.active i {
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  background: var(--white);
+  transition: max-height 0.3s ease;
+}
+
+.faqAnswer.active {
+  padding: 16px 20px;
+  max-height: 500px;
+}
+
+.faqAnswer p {
+  margin: 0;
+  color: var(--black);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* CTA Section */
+.cta {
+  padding: 60px 0;
+  background: linear-gradient(rgba(74, 140, 43, 0.9), rgba(74, 140, 43, 0.9)), 
+              url('https://images.unsplash.com/photo-1535254973040-607b474cb50d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+}
+
+.ctaContent h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.ctaContent p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .contactHero {
+    padding: 100px 0;
+  }
+  
+  .contactHero h1 {
+    font-size: 3rem;
+  }
+  
+  .contactHero p {
+    font-size: 1.3rem;
+  }
+  
+  .contactGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .contactForm {
+    padding: 40px;
+  }
+  
+  .infoCard {
+    flex-direction: row;
+  }
+  
+  .infoCard .icon {
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+  
+  .faqSection, .mapSection, .cta {
+    padding: 80px 0;
+  }
+  
+  .mapContainer iframe {
+    height: 450px;
+  }
+}
+
+@media (min-width: 992px) {
+  .contactHero h1 {
+    font-size: 3.5rem;
+  }
+  
+  .contactHero p {
+    font-size: 1.4rem;
+  }
+  
+  .contactGrid {
+    gap: 50px;
+  }
+}
+
+
+/* Animation Styles */
+.animateIn {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: var(--delay, 0);
+}
+
+.animateIn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Specific element animations */
+.contactHero h1.animateIn {
+  transform: translateY(-30px);
+}
+
+.contactHero p.animateIn {
+  transform: translateY(30px);
+}
+
+/* Staggered animations for form elements */
+.contactForm .animateIn {
+  transform: translateX(-20px);
+}
+
+.contactForm .animateIn.visible {
+  transform: translateX(0);
+}
+
+.contactInfo .animateIn {
+  transform: translateX(20px);
+}
+
+.contactInfo .animateIn.visible {
+  transform: translateX(0);
+}
+
+/* Map section animation */
+.mapContainer.animateIn {
+  transform: scale(0.95);
+  opacity: 0;
+}
+
+.mapContainer.animateIn.visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* FAQ item animations */
+.faqItem.animateIn {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.faqItem.animateIn.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* CTA animation */
+.cta .animateIn {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.cta .animateIn.visible {
+  transform: scale(1);
+  opacity: 1;
+}
