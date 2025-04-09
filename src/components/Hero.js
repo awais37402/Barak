@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import { useNavigate } from 'react-router-dom';
-import WaterTreatment from '../pages/WaterTreatment';
 
 // Import your images
 import slider1 from '../assets/slider1.png';
@@ -15,7 +14,6 @@ const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isInteracting, setIsInteracting] = useState(false);
-  const [showWaterTreatment, setShowWaterTreatment] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,12 +29,12 @@ const Hero = () => {
   const slides = isMobile
     ? [
         { bgImage: slider11, action: () => navigate('/CaseStudies') },
-        { bgImage: slider22, action: () => setShowWaterTreatment(true) },
+        { bgImage: slider22, action: () => window.open('https://www.example.com/water-treatment', '_blank') }, // Updated action
         { bgImage: slider33, action: () => window.open('https://www.magnetic.ae/', '_blank') }
       ]
     : [
         { bgImage: slider1, action: () => navigate('/CaseStudies') },
-        { bgImage: slider2, action: () => setShowWaterTreatment(true) },
+        { bgImage: slider2, action: () => window.open('https://www.example.com/water-treatment', '_blank') }, // Updated action
         { bgImage: slider3, action: () => window.open('https://www.magnetic.ae/', '_blank') }
       ];
 
@@ -72,47 +70,41 @@ const Hero = () => {
   }, [currentSlide]);
 
   return (
-    <>
-      <div className="slider-container">
-        {slides.map((slide, index) => (
-          <div
+    <div className="slider-container">
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`slide ${index === currentSlide ? 'active' : ''}`}
+          style={{ backgroundImage: `url(${slide.bgImage})` }}
+          onClick={handleSlideClick}
+        />
+      ))}
+
+      <button 
+        className="slider-nav prev" 
+        onClick={prevSlide}
+        onMouseDown={() => setIsInteracting(true)}
+        aria-label="Previous slide"
+      />
+      <button 
+        className="slider-nav next" 
+        onClick={nextSlide}
+        onMouseDown={() => setIsInteracting(true)}
+        aria-label="Next slide"
+      />
+
+      <div className="slider-dots">
+        {slides.map((_, index) => (
+          <button
             key={index}
-            className={`slide ${index === currentSlide ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${slide.bgImage})` }}
-            onClick={handleSlideClick}
+            className={`dot ${index === currentSlide ? 'active' : ''}`}
+            onClick={() => goToSlide(index)}
+            onMouseDown={() => setIsInteracting(true)}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-
-        <button 
-          className="slider-nav prev" 
-          onClick={prevSlide}
-          onMouseDown={() => setIsInteracting(true)}
-          aria-label="Previous slide"
-        />
-        <button 
-          className="slider-nav next" 
-          onClick={nextSlide}
-          onMouseDown={() => setIsInteracting(true)}
-          aria-label="Next slide"
-        />
-
-        <div className="slider-dots">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              className={`dot ${index === currentSlide ? 'active' : ''}`}
-              onClick={() => goToSlide(index)}
-              onMouseDown={() => setIsInteracting(true)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
       </div>
-
-      {showWaterTreatment && (
-        <WaterTreatment onClose={() => setShowWaterTreatment(false)} />
-      )}
-    </>
+    </div>
   );
 };
 
