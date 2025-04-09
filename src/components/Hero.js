@@ -8,7 +8,7 @@ import slider3 from '../assets/slider3.png';
 // Import your mobile slider images
 import slider11 from '../assets/slider11.png';
 import slider22 from '../assets/slider22.png';
-import slider33 from '../assets/slider33.png';
+import slider33 from '../assets/slider33.png';  // Import slider33 for mobile screens
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -17,34 +17,26 @@ const Hero = () => {
   // Check if the screen is mobile-sized
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 768); // Set threshold for mobile screens
     };
 
     window.addEventListener('resize', handleResize);
-    handleResize();
+    handleResize(); // Run on initial load
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Function to scroll to a section
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   // Choose the appropriate slides based on the screen size
   const slides = isMobile
     ? [
-        { bgImage: slider11, onClick: () => scrollToSection('casestudies') },
-        { bgImage: slider22, onClick: () => scrollToSection('watertreatment') },
-        { bgImage: slider33, onClick: () => window.open('https://www.magnetic.ae/', '_blank') },
+        { bgImage: slider11 },  // Mobile image 1
+        { bgImage: slider22 },  // Mobile image 2
+        { bgImage: slider33 },  // Mobile image 3
       ]
     : [
-        { bgImage: slider1, onClick: () => scrollToSection('casestudies') },
-        { bgImage: slider2, onClick: () => scrollToSection('watertreatment') },
-        { bgImage: slider3, onClick: () => window.open('https://www.magnetic.ae/', '_blank') },
+        { bgImage: slider1 },
+        { bgImage: slider2 },
+        { bgImage: slider3 },
       ];
 
   const nextSlide = () => {
@@ -74,7 +66,6 @@ const Hero = () => {
           key={index}
           className={`slide ${index === currentSlide ? 'active' : ''}`}
           style={{ backgroundImage: `url(${slide.bgImage})` }}
-          onClick={slide.onClick}
         ></div>
       ))}
 
