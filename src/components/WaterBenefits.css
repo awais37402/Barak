@@ -149,30 +149,6 @@
   line-height: 1.6;
 }
 
-.card a {
-  color: #2e8b57;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.95rem;
-  display: inline-flex;
-  align-items: center;
-  transition: color 0.3s ease;
-}
-
-.card a:hover {
-  color: #1e6b47;
-}
-
-.card a::after {
-  content: "→";
-  margin-left: 5px;
-  transition: transform 0.3s ease;
-}
-
-.card a:hover::after {
-  transform: translateX(3px);
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .water-section {
