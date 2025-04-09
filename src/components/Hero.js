@@ -29,12 +29,12 @@ const Hero = () => {
   const slides = isMobile
     ? [
         { bgImage: slider11, action: () => navigate('/CaseStudies') },
-        { bgImage: slider22, action: () => window.open('water-treatment', '_blank') }, // Updated action
+        { bgImage: slider22, action: () => navigate('/water-treatment') },
         { bgImage: slider33, action: () => window.open('https://www.magnetic.ae/', '_blank') }
       ]
     : [
         { bgImage: slider1, action: () => navigate('/CaseStudies') },
-        { bgImage: slider2, action: () => window.open('water-treatment', '_blank') }, // Updated action
+        { bgImage: slider2, action: () => navigate('/water-treatment') },
         { bgImage: slider3, action: () => window.open('https://www.magnetic.ae/', '_blank') }
       ];
 
@@ -47,12 +47,6 @@ const Hero = () => {
   const prevSlide = () => {
     setIsInteracting(true);
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-    setTimeout(() => setIsInteracting(false), 100);
-  };
-
-  const goToSlide = (index) => {
-    setIsInteracting(true);
-    setCurrentSlide(index);
     setTimeout(() => setIsInteracting(false), 100);
   };
 
@@ -77,6 +71,7 @@ const Hero = () => {
           className={`slide ${index === currentSlide ? 'active' : ''}`}
           style={{ backgroundImage: `url(${slide.bgImage})` }}
           onClick={handleSlideClick}
+          aria-hidden={index !== currentSlide}
         />
       ))}
 
@@ -84,26 +79,16 @@ const Hero = () => {
         className="slider-nav prev" 
         onClick={prevSlide}
         onMouseDown={() => setIsInteracting(true)}
+        onTouchStart={() => setIsInteracting(true)}
         aria-label="Previous slide"
       />
       <button 
         className="slider-nav next" 
         onClick={nextSlide}
         onMouseDown={() => setIsInteracting(true)}
+        onTouchStart={() => setIsInteracting(true)}
         aria-label="Next slide"
       />
-
-      <div className="slider-dots">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            className={`dot ${index === currentSlide ? 'active' : ''}`}
-            onClick={() => goToSlide(index)}
-            onMouseDown={() => setIsInteracting(true)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
     </div>
   );
 };
