@@ -29,12 +29,12 @@ const Hero = () => {
   const slides = isMobile
     ? [
         { bgImage: slider11, action: () => navigate('/CaseStudies') },
-        { bgImage: slider22, action: () => window.open('https://www.example.com/water-treatment', '_blank') }, // Updated action
+        { bgImage: slider22, action: () => window.open('water-treatment', '_blank') }, // Updated action
         { bgImage: slider33, action: () => window.open('https://www.magnetic.ae/', '_blank') }
       ]
     : [
         { bgImage: slider1, action: () => navigate('/CaseStudies') },
-        { bgImage: slider2, action: () => window.open('https://www.example.com/water-treatment', '_blank') }, // Updated action
+        { bgImage: slider2, action: () => window.open('water-treatment', '_blank') }, // Updated action
         { bgImage: slider3, action: () => window.open('https://www.magnetic.ae/', '_blank') }
       ];
 
