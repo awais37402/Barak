@@ -1,39 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import '../assets/loogo.jpeg';
+import './Hero.css';
 
-// Import your images (replace with your actual image paths)
-import slide1Bg from '../assets/Barak.jpeg';
-import slide2Bg from '../assets/product.jpg';
-import slide3Bg from '../assets/magnetic.jpg';
-import './Hero.css'
+// Import your desktop slider images
+import slider1 from '../assets/slider1.png';
+import slider2 from '../assets/slider2.png';
+import slider3 from '../assets/slider3.png';
+// Import your mobile slider images
+import slider11 from '../assets/slider11.png';
+import slider22 from '../assets/slider22.png';
+import slider33 from '../assets/slider33.png';  // Import slider33 for mobile screens
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const slides = [
-    {
-      title: 'Barak AgriTech',
-      subtitle: 'Magnate Innovation',
-      description: 'Transforming Industries with Technology. We provide cutting-edge solutions that drive the future of agriculture.',
-      buttonText: 'Explore Our Solutions',
-      bgImage: slide1Bg
-    },
-    {
-      title: 'Water Treatment Devices',
-      subtitle: 'Advanced Hydroponic Solutions',
-      description: 'Revolutionary magnetic field technology for enhanced seed performance and optimized water treatment for sustainable agriculture.',
-      buttonText: 'Discover Technology',
-      bgImage: slide2Bg
-    },
-    {
-      title: 'Magnetic Yield Alliance',
-      subtitle: 'Next-Gen Agricultural Partnership',
-      description: 'Harnessing the power of magnetic fields to boost crop yields and improve plant health through innovative scientific approaches.',
-      buttonText: 'Learn More',
-      bgImage: slide3Bg,
-      buttonLink: 'https://www.magnetic.ae/'
-    }
-  ];
+  // Check if the screen is mobile-sized
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Set threshold for mobile screens
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Run on initial load
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Choose the appropriate slides based on the screen size
+  const slides = isMobile
+    ? [
+        { bgImage: slider11 },  // Mobile image 1
+        { bgImage: slider22 },  // Mobile image 2
+        { bgImage: slider33 },  // Mobile image 3
+      ]
+    : [
+        { bgImage: slider1 },
+        { bgImage: slider2 },
+        { bgImage: slider3 },
+      ];
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
@@ -62,20 +66,7 @@ const Hero = () => {
           key={index}
           className={`slide ${index === currentSlide ? 'active' : ''}`}
           style={{ backgroundImage: `url(${slide.bgImage})` }}
-        >
-          <div className="slide-content">
-            <h2>{slide.title}</h2>
-            <h3>{slide.subtitle}</h3>
-            <p>{slide.description}</p>
-            {slide.buttonLink ? (
-              <button className="slide-button" onClick={() => window.location.href = slide.buttonLink}>
-                {slide.buttonText}
-              </button>
-            ) : (
-              <button className="slide-button">{slide.buttonText}</button>
-            )}
-          </div>
-        </div>
+        ></div>
       ))}
 
       <button className="slider-nav prev" onClick={prevSlide}>
@@ -99,3 +90,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
