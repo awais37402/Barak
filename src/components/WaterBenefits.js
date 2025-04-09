@@ -9,28 +9,24 @@ const benefits = [
     title: "Planting Stage",
     description:
       "Our seed treatment technology ensures optimal germination rates (90–100%) and stronger initial growth, reducing seed costs by 30–50%.",
-    linkText: "View Case Study",
   },
   {
     icon: "💧",
     title: "Irrigation",
     description:
       "Water treatment enables use of brackish water (up to 8000ppm) while preventing salt buildup in irrigation systems.",
-    linkText: "See Results",
   },
   {
     icon: "📈",
     title: "Growth Period",
     description:
       "Enhances nutrient uptake (P, K, N, Fe) leading to 15–50% increased yields and stronger disease resistance.",
-    linkText: "Learn How",
   },
   {
     icon: "🌿",
     title: "Soil Health",
     description:
       "Improves soil aeration and structure over time, reducing fertilizer requirements by up to 50% while maintaining productivity.",
-    linkText: "Read More",
   },
 ]
 
@@ -102,7 +98,6 @@ const WaterBenefits = () => {
             <div className="icon">{item.icon}</div>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
-            <a href="#">{item.linkText}</a>
           </div>
         ))}
       </div>
