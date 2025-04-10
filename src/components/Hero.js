@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Hero.css';
-import BarakAgriLogo from '../assets/logo1.png';
-import ProductImage from '../assets/product.jpg';
-import MagneticImage from '../assets/magnetic.jpg';
+import BarakAgriLogo from '../assets/logo-removebg-preview.png';
+import WaterImage from '../assets/water.jpg';
+import MagneticImage from '../assets/bg2.png';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
   const navigate = useNavigate();
 
   const slides = [
@@ -19,7 +21,8 @@ const Hero = () => {
         'Transforming Industries with Technology. We provide cutting-edge solutions that drive the future of agriculture.',
       buttonText: 'Explore Our Solutions',
       logo: BarakAgriLogo,
-      link: '/casestudies'
+      link: '/casestudies',
+      background: '', // No background image
     },
     {
       title: 'Water Treatment Devices',
@@ -27,8 +30,9 @@ const Hero = () => {
       description:
         'Revolutionary magnetic field technology for enhanced seed performance and optimized water treatment for sustainable agriculture.',
       buttonText: 'Discover Technology',
-      logo: ProductImage,
-      link: '/watertreatment'
+      logo: '',
+      link: '/watertreatment',
+      background: WaterImage,
     },
     {
       title: 'Magnetic Yield Alliance',
@@ -36,17 +40,35 @@ const Hero = () => {
       description:
         'Harnessing the power of magnetic fields to boost crop yields and improve plant health through innovative scientific approaches.',
       buttonText: 'Learn More',
-      logo: MagneticImage,
-      link: 'https://www.magnetic.ae/'
+      logo: '',
+      link: 'https://www.magnetic.ae/',
+      background: MagneticImage,
     },
   ];
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
     const slideInterval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+      goToNextSlide();
     }, 5000);
     return () => clearInterval(slideInterval);
-  }, []);
+  }, [currentSlide]);
+
+  const goToPrevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  const goToNextSlide = () => {
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
 
   const handleDotClick = (index) => {
     setCurrentSlide(index);
@@ -64,42 +86,63 @@ const Hero = () => {
     if (!touchStart || !touchEnd) return;
     const diff = touchStart - touchEnd;
     if (diff > 50) {
-      // Swiped left
-      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+      goToNextSlide();
     } else if (diff < -50) {
-      // Swiped right
-      setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+      goToPrevSlide();
     }
     setTouchStart(null);
     setTouchEnd(null);
   };
 
-  const { title, subtitle, description, buttonText, logo, link } = slides[currentSlide];
+  const { title, subtitle, description, buttonText, logo, link, background } = slides[currentSlide];
 
   return (
     <section
       className="hero-section"
+      data-slide={currentSlide}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="hero-slider">
+      <div
+        className="hero-slider"
+        style={{
+          backgroundImage: background
+            ? `url(${background})`
+            : currentSlide === 0
+            ? 'linear-gradient(135deg, #f0f0f0, #dfe9f3)'
+            : 'none',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {isDesktop && (
+          <>
+            <button className="slider-arrow left-arrow" onClick={goToPrevSlide}>
+              <FaChevronLeft />
+            </button>
+            <button className="slider-arrow right-arrow" onClick={goToNextSlide}>
+              <FaChevronRight />
+            </button>
+          </>
+        )}
         <div className="slide">
           <div className="slide-content">
-            <div className="slide-logo">
-              <img src={logo} alt="Slide Visual" className="hero-logo" />
-            </div>
+            {logo && (
+              <div className="slide-logo">
+                <img src={logo} alt="Slide Visual" className="hero-logo" />
+              </div>
+            )}
             <div className="slide-text">
               <h1 className="hero-title">{title}</h1>
-              <h2 className="hero-subtitle">{subtitle}</h2>
+              {subtitle && <h2 className="hero-subtitle">{subtitle}</h2>}
               <p className="hero-description">{description}</p>
               {currentSlide === 2 ? (
                 <a
+                  className="explore-button"
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="explore-button"
-                  style={{ textDecoration: 'none' }}
                 >
                   {buttonText}
                 </a>
@@ -112,14 +155,13 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
       <div className="slider-dots">
         {slides.map((_, index) => (
-          <span
+          <div
             key={index}
-            className={`dot ${index === currentSlide ? 'active' : ''}`}
+            className={`dot ${currentSlide === index ? 'active' : ''}`}
             onClick={() => handleDotClick(index)}
-          ></span>
+          />
         ))}
       </div>
     </section>
