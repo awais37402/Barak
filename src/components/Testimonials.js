@@ -37,21 +37,21 @@ const Testimonials = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setCurrentIndex(prev => (prev === 0 ? testimonials.length - 1 : prev - 1));
-    setTimeout(() => setIsAnimating(false), 500);
+    setTimeout(() => setIsAnimating(false), 800);
   };
 
   const handleNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setCurrentIndex(prev => (prev === testimonials.length - 1 ? 0 : prev + 1));
-    setTimeout(() => setIsAnimating(false), 500);
+    setTimeout(() => setIsAnimating(false), 800);
   };
 
   const goToTestimonial = (index) => {
     if (isAnimating || index === currentIndex) return;
     setIsAnimating(true);
     setCurrentIndex(index);
-    setTimeout(() => setIsAnimating(false), 500);
+    setTimeout(() => setIsAnimating(false), 800);
   };
 
   const { name, role, image, quote } = testimonials[currentIndex];
@@ -80,7 +80,6 @@ const Testimonials = () => {
                 className="client-img"
                 loading="lazy"
               />
-              <div className="image-border"></div>
             </div>
             <div className="client-details">
               <h4 className="client-name">{name}</h4>
