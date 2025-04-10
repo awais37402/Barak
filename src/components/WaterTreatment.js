@@ -4,7 +4,7 @@ import { faSeedling } from '@fortawesome/free-solid-svg-icons';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './WaterTreatment.css';
-import seedImage from '../assets/product.jpg';
+import seedImage from '../assets/water.jpg';
 
 const WaterTreatment = () => {
     const controls = useAnimation();
