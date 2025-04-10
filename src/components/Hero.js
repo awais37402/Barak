@@ -22,11 +22,11 @@ const Hero = () => {
       logo: require('../assets/product.jpg'), // Path to second slide's logo image
     },
     {
-      title: 'Farmers\' Revolution',
-      subtitle: 'Smart Farming for the Future',
-      description: 'Empowering farmers with digital solutions that increase productivity and sustainability.',
-      buttonText: 'Get Started',
-      logo: require('../assets/product.jpg'), // Path to third slide's logo image
+      title: 'Magnetic Yield Alliance',
+      subtitle: 'Next-Gen Agricultural Partnership',
+      description: 'Harnessing the power of magnetic fields to boost crop yields and improve plant health through innovative scientific approaches.',
+      buttonText: 'Learn More',
+      logo: require('../assets/magnetic.jpg'), // Path to third slide's logo image
     },
   ];
 
