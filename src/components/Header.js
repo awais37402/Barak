@@ -17,12 +17,11 @@ const Header = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
     document.body.style.overflow = 'auto';
@@ -42,59 +41,50 @@ const Header = () => {
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="header-container">
-        {/* Left Navigation */}
-        <nav className="left-nav">
-          <ul className="nav-list">
-            {leftNavLinks.map((link) => (
-              <li 
-                key={link.to} 
-                className={`nav-item ${location.pathname === link.to ? 'active' : ''}`}
-              >
-                {link.isExternal ? (
-                  <a
-                    href={link.to}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="nav-link"
-                  >
-                    <span className="link-text">{link.label}</span>
-                  </a>
-                ) : (
-                  <Link to={link.to} className="nav-link">
-                    <span className="link-text">{link.label}</span>
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Center Logo */}
-        <div className="center-logo">
+        
+        {/* Left: Logo + Name */}
+        <div className="left-logo">
           <Link to="/" className="logo-link" aria-label="Burak AgriTech Home">
             <img src={logo} alt="Burak AgriTech Logo" className="logo-img" />
             <span className="logo-text">Burak AgriTech</span>
           </Link>
         </div>
 
-        {/* Right Contact Button */}
-        <div className="right-contact">
+        {/* Right: Nav + Contact + Hamburger */}
+        <div className="right-side">
+          <nav className="desktop-nav">
+            <ul className="nav-list">
+              {leftNavLinks.map((link) => (
+                <li key={link.to} className={`nav-item ${location.pathname === link.to ? 'active' : ''}`}>
+                  {link.isExternal ? (
+                    <a href={link.to} target="_blank" rel="noopener noreferrer" className="nav-link">
+                      <span className="link-text">{link.label}</span>
+                    </a>
+                  ) : (
+                    <Link to={link.to} className="nav-link">
+                      <span className="link-text">{link.label}</span>
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
           <Link to="/contact" className="contact-button">
             Contact
           </Link>
-        </div>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
-        >
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-        </button>
+          <button 
+            className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+          >
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
