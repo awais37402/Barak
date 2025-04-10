@@ -36,11 +36,11 @@ const Header = () => {
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="header-container">
-        <div className="center-wrapper">
+        <div className="header-content">
           {/* Logo and Name */}
-          <div className="left-logo">
-            <Link to="/" className="logo-link" aria-label="Burak AgriTech Home">
-              <img src={logo} alt="Burak AgriTech Logo" className="logo-img" />
+          <div className="logo-container">
+            <Link to="/" className="logo-link" aria-label="Barak AgriTech Home">
+              <img src={logo} alt="Barak AgriTech Logo" className="logo-img" />
               <span className="logo-text">Barak AgriTech</span>
             </Link>
           </div>
@@ -52,45 +52,54 @@ const Header = () => {
                 <li key={link.to} className={`nav-item ${location.pathname === link.to ? 'active' : ''}`}>
                   <Link to={link.to} className="nav-link">
                     <span className="link-text">{link.label}</span>
+                    <span className="link-underline"></span>
                   </Link>
                 </li>
               ))}
               <li className="nav-item">
-                <Link to="/contact" className="contact-button">Contact</Link>
+                <Link to="/contact" className="contact-button">
+                  <span>Contact</span>
+                  <svg width="13px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </Link>
               </li>
             </ul>
           </nav>
-        </div>
 
-        {/* Hamburger for Mobile */}
-        <button 
-          className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
-        >
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-        </button>
+          {/* Unique Hamburger for Mobile */}
+          <button 
+            className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+          >
+            <div className="hamburger-box">
+              <div className="hamburger-inner"></div>
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       <nav className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
-        <ul className="mobile-nav-list">
-          {navLinks.map((link) => (
-            <li key={link.to} className="mobile-nav-item">
-              <Link to={link.to} className="mobile-nav-link">
-                {link.label}
+        <div className="mobile-nav-content">
+          <ul className="mobile-nav-list">
+            {navLinks.map((link) => (
+              <li key={link.to} className="mobile-nav-item">
+                <Link to={link.to} className="mobile-nav-link">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+            <li className="mobile-nav-item">
+              <Link to="/contact" className="mobile-contact-button">
+                Contact Us
               </Link>
             </li>
-          ))}
-          <li className="mobile-nav-item">
-            <Link to="/contact" className="mobile-nav-link">
-              Contact
-            </Link>
-          </li>
-        </ul>
+          </ul>
+        </div>
       </nav>
     </header>
   );
