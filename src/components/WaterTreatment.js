@@ -60,27 +60,13 @@ const WaterTreatment = () => {
                 <motion.div className="seed-header" variants={itemVariants}>
                     <motion.h2 
                         className="seed-title"
-                        variants={{
-                            hidden: { opacity: 0, y: 20 },
-                            visible: { 
-                                opacity: 1, 
-                                y: 0,
-                                transition: { duration: 0.6 }
-                            }
-                        }}
+                        variants={itemVariants}
                     >
                         Water Treatment Devices
                     </motion.h2>
                     <motion.p 
                         className="seed-subtitle"
-                        variants={{
-                            hidden: { opacity: 0, y: 10 },
-                            visible: { 
-                                opacity: 1, 
-                                y: 0,
-                                transition: { delay: 0.4, duration: 0.6 }
-                            }
-                        }}
+                        variants={itemVariants}
                     >
                         Revolutionary magnetic field technology for enhanced seed performance
                     </motion.p>
@@ -112,7 +98,7 @@ const WaterTreatment = () => {
                         </motion.p>
                         
                         <div className="seed-benefits">
-                            {[
+                            {[ 
                                 "Seed germination rates achieve 80-100%",
                                 "Accelerates fertility",
                                 "Expedite protein formation",
