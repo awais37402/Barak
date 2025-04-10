@@ -103,13 +103,15 @@ const Testimonials = () => {
             </button>
             
             <div className="indicators">
-              {testimonials.map((_, index) => (
+              {testimonials.map((testimonial, index) => (
                 <button
                   key={index}
-                  className={`indicator ${index === currentIndex ? 'active' : ''}`}
+                  className={`indicator-tag ${index === currentIndex ? 'active' : ''}`}
                   onClick={() => goToTestimonial(index)}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
+                  aria-label={`Testimonial from ${testimonial.name}`}
+                >
+                  {index + 1}
+                </button>
               ))}
             </div>
             

@@ -1,286 +1,202 @@
-/* Testimonials.css */
-:root {
-    --primary-color: #2e8540;
-    --primary-light: #e8f5e9;
-    --secondary-color: #ff9800;
-    --text-dark: #333;
-    --text-medium: #555;
-    --text-light: #777;
-    --white: #ffffff;
-    --gray-light: #f5f5f5;
-    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.testimonial-section {
+  background-color: #f5f5dc; /* Soft beige for agriculture feel */
+  padding: 80px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.testimonial-title {
+  font-size: 2.5rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #4caf50;
+}
+
+.testimonial-subtitle {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Testimonial Container */
+.testimonial-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.testimonial-box {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.fade {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Quote */
+.quote-container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.quote-icon {
+  font-size: 80px;
+  color: #e0f2f1;
+  position: absolute;
+  top: -30px;
+  left: -10px;
+  z-index: 0;
+}
+
+.quote {
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+  color: #333;
+}
+
+/* Client Info */
+.client-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.client-image-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.client-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #4caf50;
+}
+
+.client-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.client-role {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Navigation Controls */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.nav-button {
+  background-color: #4caf50;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #2e7d32;
+}
+
+.indicators {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.indicator-tag {
+  background-color: transparent;
+  border: 2px solid #4caf50;
+  color: #4caf50;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.indicator-tag:hover {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.indicator-tag.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
   }
-  
-  .testimonial-section {
-    padding: 5rem 1rem;
-    background: linear-gradient(135deg, var(--primary-light) 0%, #f8fff8 100%);
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    overflow: hidden;
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
-  
-  .testimonial-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-  }
-  
-  .section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  
-  .testimonial-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-    position: relative;
-    display: inline-block;
-  }
-  
-  .testimonial-title .highlight {
-    color: var(--primary-color);
-    position: relative;
-  }
-  
-  .testimonial-title .highlight::after {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background-color: rgba(46, 133, 64, 0.2);
-    z-index: -1;
-    border-radius: 4px;
-  }
-  
-  .testimonial-subtitle {
-    color: var(--text-medium);
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .testimonial-box {
-    background: var(--white);
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-    padding: 3rem;
-    max-width: 800px;
-    margin: 0 auto;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
+    padding: 30px 20px;
   }
-  
-  .testimonial-box::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+
+  .testimonial-title {
+    font-size: 2rem;
   }
-  
-  .testimonial-box.fade {
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  
-  .quote-container {
-    position: relative;
-    margin-bottom: 2.5rem;
-  }
-  
-  .quote-icon {
-    position: absolute;
-    top: -20px;
-    left: -15px;
-    font-size: 5rem;
-    color: rgba(46, 133, 64, 0.1);
-    font-family: serif;
-    font-weight: bold;
-    line-height: 1;
-    z-index: 0;
-  }
-  
+
   .quote {
-    font-size: 1.25rem;
-    color: var(--text-dark);
-    line-height: 1.6;
-    position: relative;
-    z-index: 1;
-    font-style: italic;
+    font-size: 1rem;
   }
-  
+
   .client-info {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .client-image-container {
-    position: relative;
-    width: 80px;
-    height: 80px;
-  }
-  
-  .client-img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    position: relative;
-    z-index: 2;
-    border: 3px solid var(--white);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-  }
-  
-  .image-border {
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    z-index: 1;
-    animation: rotate 6s linear infinite;
-  }
-  
-  @keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  .client-details {
-    text-align: left;
-  }
-  
-  .client-name {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 0.2rem;
-  }
-  
-  .client-role {
-    font-size: 0.95rem;
-    color: var(--primary-color);
-    font-weight: 500;
-  }
-  
+
   .nav-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2.5rem;
+    flex-direction: column;
+    gap: 12px;
   }
-  
-  .nav-button {
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    background-color: rgba(46, 133, 64, 0.1);
-  }
-  
-  .nav-button:hover {
-    background-color: rgba(46, 133, 64, 0.2);
-    transform: scale(1.1);
-  }
-  
-  .nav-button svg {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .indicators {
-    display: flex;
-    gap: 0.75rem;
-  }
-  
-  .indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(46, 133, 64, 0.2);
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-    padding: 0;
-  }
-  
-  .indicator.active {
-    background-color: var(--primary-color);
-    transform: scale(1.2);
-  }
-  
-  .indicator:hover:not(.active) {
-    background-color: rgba(46, 133, 64, 0.4);
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .testimonial-section {
-      padding: 3rem 1rem;
-    }
-    
-    .testimonial-title {
-      font-size: 2rem;
-    }
-    
-    .testimonial-box {
-      padding: 2rem 1.5rem;
-    }
-    
-    .quote {
-      font-size: 1.1rem;
-    }
-    
-    .client-info {
-      flex-direction: column;
-      text-align: center;
-    }
-    
-    .client-details {
-      text-align: center;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .testimonial-title {
-      font-size: 1.75rem;
-    }
-    
-    .testimonial-subtitle {
-      font-size: 1rem;
-    }
-    
-    .nav-controls {
-      flex-direction: column;
-      gap: 1rem;
-    }
-    
-    .indicators {
-      order: -1;
-      margin-bottom: 1rem;
-    }
-  }
+}
