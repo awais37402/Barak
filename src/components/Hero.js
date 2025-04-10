@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Hero.css';
 import BarakAgriLogo from '../assets/logo-removebg-preview.png';
@@ -97,6 +97,11 @@ const Hero = () => {
 
   const { title, subtitle, description, buttonText, logo, link, background, mobileBackground, className } = slides[currentSlide];
 
+  const handleButtonClick = () => {
+    // Ensure navigation occurs on both mobile and desktop
+    navigate(link); // Navigate to the respective page
+  };
+
   return (
     <section
       className={`hero-section ${className || ''}`}
@@ -137,15 +142,14 @@ const Hero = () => {
               {subtitle && <h2 className="hero-subtitle">{subtitle}</h2>}
               <p className="hero-description">{description}</p>
               {currentSlide === 0 ? (
-                <a
+                <button
                   className="explore-button"
-                  onClick={() => navigate(link)}  // Use navigate for internal routing
-                  style={{ cursor: 'pointer' }} // Optional: Adds pointer cursor for better UX
+                  onClick={handleButtonClick}  // Use handleButtonClick for mobile and desktop routing
                 >
                   {buttonText}
-                </a>
+                </button>
               ) : (
-                <button className="explore-button" onClick={() => navigate(link)}>
+                <button className="explore-button" onClick={handleButtonClick}>
                   {buttonText}
                 </button>
               )}
