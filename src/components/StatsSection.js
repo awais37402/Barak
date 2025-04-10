@@ -2,15 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import './StatsSection.css';
 
 const statsData = [
-  { number: '12,500+', label: 'Acres Managed' },
-  { number: '35%', label: 'Average Yield Increase' },
-  { number: '200+', label: 'Happy Farmers' },
-  { number: '24/7', label: 'Support Available' }
+  { number: 12500, label: 'Acres Managed' },
+  { number: 35, label: 'Average Yield Increase', isPercentage: true },
+  { number: 200, label: 'Happy Farmers' },
+  { number: 24, label: 'Support Available', suffix: '/7' }
 ];
 
 const StatsSection = () => {
   const sectionRef = useRef(null);
   const [inView, setInView] = useState(false);
+  const [counts, setCounts] = useState(statsData.map(() => 0));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,16 +28,42 @@ const StatsSection = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (inView) {
+      statsData.forEach((stat, idx) => {
+        let start = 0;
+        const end = stat.number;
+        const duration = 1000;
+        const increment = Math.ceil(end / 100);
+        const stepTime = Math.floor(duration / (end / increment));
+
+        const counter = setInterval(() => {
+          start += increment;
+          if (start >= end) {
+            start = end;
+            clearInterval(counter);
+          }
+
+          setCounts(prev => {
+            const newCounts = [...prev];
+            newCounts[idx] = start;
+            return newCounts;
+          });
+        }, stepTime);
+      });
+    }
+  }, [inView]);
+
   return (
     <section className="stats-section" ref={sectionRef}>
       <div className="stats-container">
         {statsData.map((stat, idx) => (
-          <div
-            className={`stat-card ${inView ? 'animate' : ''}`}
-            style={{ transitionDelay: `${(idx + 1) * 0.1}s` }}
-            key={idx}
-          >
-            <div className="stat-number">{stat.number}</div>
+          <div className="stat-card" key={idx}>
+            <div className="stat-number">
+              {stat.isPercentage
+                ? `${counts[idx]}%`
+                : `${counts[idx].toLocaleString()}${stat.suffix || ''}`}
+            </div>
             <div className="stat-label">{stat.label}</div>
           </div>
         ))}

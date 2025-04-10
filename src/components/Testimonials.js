@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './Testimonials.css';
-import farmer1 from '../assets/img1.jpg';
-import farmer2 from '../assets/img2.jpg';
-import farmer3 from '../assets/img3.jpg';
 
 const testimonials = [
   {
-    name: 'Saniya Mirza',
-    role: 'Vegetable Farmer, KPK',
-    image: farmer1,
-    quote: 'The platform\'s insights have revolutionized my farming techniques.',
-  },
-  {
-    name: 'Haris Khan',
+    name: 'Ahmed Ali',
     role: 'Wheat Farmer, Punjab',
-    image: farmer2,
-    quote: 'Timely updates have significantly boosted my crop yields.',
+    image: 'https://images.pexels.com/photos/29898773/pexels-photo-29898773.jpeg',
+    quote: 'Iss platform ne meri farming techniques ko bilkul change kar diya hai. Bahut faida hua hai!',
   },
   {
-    name: 'Ayeza Batool',
+    name: 'Bilal Khan',
     role: 'Rice Farmer, Sindh',
-    image: farmer3,
-    quote: 'Learning about better pesticide practices saved me money.',
+    image: 'https://images.pexels.com/photos/29898836/pexels-photo-29898836.jpeg',
+    quote: 'Timely updates ki wajah se meri crops ki yield double ho gayi hai. Bohat shukriya!',
+  },
+  {
+    name: 'Kashif Mehmood',
+    role: 'Cotton Farmer, Balochistan',
+    image: 'https://images.pexels.com/photos/29898846/pexels-photo-29898846.jpeg',
+    quote: 'Pesticide ke behtareen tareeqe jaan kar kaafi paisay bachaye. Yeh platform kamaal ka hai!',
   },
 ];
 
@@ -66,7 +63,7 @@ const Testimonials = () => {
           <h2 className="testimonial-title">
             What Our <span className="highlight">Farmers</span> Say
           </h2>
-          <p className="testimonial-subtitle">Success stories from Pakistani agriculture</p>
+          <p className="testimonial-subtitle">Pakistan ke kisano ki kahaniyan</p>
         </div>
 
         <div className={`testimonial-box ${isAnimating ? 'fade' : ''}`}>
@@ -74,12 +71,12 @@ const Testimonials = () => {
             <div className="quote-icon">"</div>
             <p className="quote">"{quote}"</p>
           </div>
-          
+
           <div className="client-info">
             <div className="client-image-container">
-              <img 
-                src={image} 
-                alt={name} 
+              <img
+                src={image}
+                alt={name}
                 className="client-img"
                 loading="lazy"
               />
@@ -92,16 +89,16 @@ const Testimonials = () => {
           </div>
 
           <div className="nav-controls">
-            <button 
+            <button
               className="nav-button prev"
               onClick={handlePrev}
               aria-label="Previous testimonial"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            
+
             <div className="indicators">
               {testimonials.map((testimonial, index) => (
                 <button
@@ -114,14 +111,14 @@ const Testimonials = () => {
                 </button>
               ))}
             </div>
-            
-            <button 
+
+            <button
               className="nav-button next"
               onClick={handleNext}
               aria-label="Next testimonial"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
