@@ -29,11 +29,6 @@ const Header = () => {
 
   const leftNavLinks = [
     { to: '/', label: 'Home' },
-    {
-      to: 'https://www.magnetic.ae',
-      label: 'Magnetic Technologies',
-      isExternal: true,
-    },
     { to: '/about', label: 'About' },
     { to: '/casestudies', label: 'Case Studies' },
   ];
@@ -46,7 +41,7 @@ const Header = () => {
         <div className="left-logo">
           <Link to="/" className="logo-link" aria-label="Burak AgriTech Home">
             <img src={logo} alt="Burak AgriTech Logo" className="logo-img" />
-            <span className="logo-text">Burak AgriTech</span>
+            <span className="logo-text">Barak AgriTech</span>
           </Link>
         </div>
 
@@ -56,15 +51,9 @@ const Header = () => {
             <ul className="nav-list">
               {leftNavLinks.map((link) => (
                 <li key={link.to} className={`nav-item ${location.pathname === link.to ? 'active' : ''}`}>
-                  {link.isExternal ? (
-                    <a href={link.to} target="_blank" rel="noopener noreferrer" className="nav-link">
-                      <span className="link-text">{link.label}</span>
-                    </a>
-                  ) : (
-                    <Link to={link.to} className="nav-link">
-                      <span className="link-text">{link.label}</span>
-                    </Link>
-                  )}
+                  <Link to={link.to} className="nav-link">
+                    <span className="link-text">{link.label}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -92,20 +81,9 @@ const Header = () => {
         <ul className="mobile-nav-list">
           {leftNavLinks.map((link) => (
             <li key={link.to} className="mobile-nav-item">
-              {link.isExternal ? (
-                <a
-                  href={link.to}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mobile-nav-link"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link to={link.to} className="mobile-nav-link">
-                  {link.label}
-                </Link>
-              )}
+              <Link to={link.to} className="mobile-nav-link">
+                {link.label}
+              </Link>
             </li>
           ))}
           <li className="mobile-nav-item">
