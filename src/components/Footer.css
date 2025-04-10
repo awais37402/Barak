@@ -6,8 +6,8 @@
 }
 
 .footer {
-  background-color: #f5f5dc; /* Light beige background */
-  color: #2E7D32; /* Dark green text */
+  background-color: #000000; /* Light beige background */
+  color: #ffffff; /* Dark green text */
   padding: 60px 20px 20px;
   font-family: 'Poppins', sans-serif;
 }
@@ -31,7 +31,7 @@
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #4CAF50;
+  color: #ffffff;
   position: relative;
 }
 
@@ -40,7 +40,7 @@
   display: block;
   width: 40px;
   height: 2px;
-  background-color: #4CAF50;
+  background-color: #ffffff;
   margin-top: 8px;
 }
 
@@ -60,24 +60,24 @@
 
 .footer-links a {
   text-decoration: none;
-  color: #2E7D32;
+  color: #ffffff;
   transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #388E3C;
+  color: #ffffff;
 }
 
 /* Contact Info */
 .footer-icon {
   margin-right: 10px;
-  color: #4CAF50;
+  color: #ffffff;
 }
 
 .footer-contact-info li {
   display: flex;
   align-items: center;
-  color: #2E7D32;
+  color: #ffffff;
 }
 
 /* Social Icons */
@@ -91,8 +91,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(95, 184, 13);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -101,7 +101,7 @@
 }
 
 .social-icons a:hover {
-  background-color: #2E7D32;
+  background-color: #ffffff;
   transform: translateY(-2px);
 }
 
@@ -124,14 +124,14 @@
 }
 
 .legal-links a {
-  color: #4CAF50;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 }
 
 .legal-links a:hover {
-  color: #2E7D32;
+  color: #ffffff;
 }
 
 /* Responsive Design */
