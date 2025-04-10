@@ -13,8 +13,6 @@ import chickpeaStudy from '../assets/10.pdf';
 
 const CaseStudies = () => {
   const [selectedStudy, setSelectedStudy] = useState(null);
-  const headerRef = useRef(null);
-  const cardRefs = useRef([]);
   const modalRef = useRef(null);
 
   const caseStudies = [
@@ -121,40 +119,12 @@ const CaseStudies = () => {
   ];
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    });
-
-    if (headerRef.current) observer.observe(headerRef.current);
-    cardRefs.current.forEach(card => card && observer.observe(card));
-
-    return () => {
-      if (headerRef.current) observer.unobserve(headerRef.current);
-      cardRefs.current.forEach(card => card && observer.unobserve(card));
-    };
-  }, []);
-
-  useEffect(() => {
     if (selectedStudy) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
   }, [selectedStudy]);
-
-  const addToRefs = (el, index) => {
-    if (el && !cardRefs.current.includes(el)) {
-      cardRefs.current.push(el);
-      el.style.transitionDelay = `${index * 0.05}s`;
-    }
-  };
 
   const closeModal = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
@@ -164,7 +134,7 @@ const CaseStudies = () => {
 
   return (
     <div className="case-studies-container">
-      <div className="header-background" ref={headerRef}>
+      <div className="header-background">
         <h2 className="case-studies-header">Research Case Studies</h2>
         <p className="case-studies-subheader">
           Explore our collection of scientific studies on magnetic water treatment in agriculture.
@@ -172,11 +142,10 @@ const CaseStudies = () => {
       </div>
       
       <div className="case-studies-grid">
-        {caseStudies.map((study, index) => (
+        {caseStudies.map((study) => (
           <div 
             key={study.id} 
             className="case-study-card"
-            ref={(el) => addToRefs(el, index)}
             onClick={() => setSelectedStudy(study)}
           >
             <div className="case-study-id">#{study.id.toString().padStart(2, '0')}</div>
