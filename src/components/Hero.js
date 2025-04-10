@@ -1,41 +1,50 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Hero.css';
-import BarakAgriLogo from '../assets/logo1.png'; // Update the path as necessary
+import BarakAgriLogo from '../assets/logo1.png';
+import ProductImage from '../assets/product.jpg';
+import MagneticImage from '../assets/magnetic.jpg';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
+  const navigate = useNavigate();
 
   const slides = [
     {
       title: 'Barak AgriTech',
       subtitle: 'Magnate Innovation',
-      description: 'Transforming Industries with Technology. We provide cutting-edge solutions that drive the future of agriculture.',
+      description:
+        'Transforming Industries with Technology. We provide cutting-edge solutions that drive the future of agriculture.',
       buttonText: 'Explore Our Solutions',
-      logo: BarakAgriLogo, // First logo
+      logo: BarakAgriLogo,
+      link: '/casestudies'
     },
     {
       title: 'Water Treatment Devices',
       subtitle: '',
-      description: 'Revolutionary magnetic field technology for enhanced seed performance and optimized water treatment for sustainable agriculture.',
+      description:
+        'Revolutionary magnetic field technology for enhanced seed performance and optimized water treatment for sustainable agriculture.',
       buttonText: 'Discover Technology',
-      logo: require('../assets/product.jpg'), // Path to second slide's logo image
+      logo: ProductImage,
+      link: '/watertreatment'
     },
     {
       title: 'Magnetic Yield Alliance',
-      subtitle: 'Next-Gen Agricultural Partnership',
-      description: 'Harnessing the power of magnetic fields to boost crop yields and improve plant health through innovative scientific approaches.',
+      subtitle: '',
+      description:
+        'Harnessing the power of magnetic fields to boost crop yields and improve plant health through innovative scientific approaches.',
       buttonText: 'Learn More',
-      logo: require('../assets/magnetic.jpg'), // Path to third slide's logo image
+      logo: MagneticImage,
+      link: 'https://www.magnetic.ae/'
     },
   ];
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 5000); // Change slide every 5 seconds
-
-    return () => clearInterval(slideInterval); // Clean up interval on component unmount
+    }, 5000);
+    return () => clearInterval(slideInterval);
   }, []);
 
   const handleDotClick = (index) => {
@@ -51,28 +60,45 @@ const Hero = () => {
     const touchEnd = e.touches[0].clientX;
     if (touchStart - touchEnd > 50) {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-      setTouchStart(null);
     } else if (touchStart - touchEnd < -50) {
       setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-      setTouchStart(null);
     }
+    setTouchStart(null);
   };
 
-  const { title, subtitle, description, buttonText, logo } = slides[currentSlide];
+  const { title, subtitle, description, buttonText, logo, link } = slides[currentSlide];
 
   return (
-    <section className="hero-section" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
+    <section
+      className="hero-section"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
       <div className="hero-slider">
         <div className="slide">
           <div className="slide-content">
             <div className="slide-logo">
-              <img src={logo} alt="Company Logo" className="hero-logo" />
+              <img src={logo} alt="Slide Visual" className="hero-logo" />
             </div>
             <div className="slide-text">
               <h1 className="hero-title">{title}</h1>
               <h2 className="hero-subtitle">{subtitle}</h2>
               <p className="hero-description">{description}</p>
-              <button className="explore-button">{buttonText}</button>
+              {currentSlide === 2 ? (
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="explore-button"
+                  style={{ textDecoration: 'none' }}
+                >
+                  {buttonText}
+                </a>
+              ) : (
+                <button className="explore-button" onClick={() => navigate(link)}>
+                  {buttonText}
+                </button>
+              )}
             </div>
           </div>
         </div>
