@@ -22,6 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0 20px;
+  margin-top: 40px;
 }
 
 /* Slider Container */
@@ -45,7 +46,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 60px;
+  padding: 0 40px;
   max-width: 1200px;
   height: 100%;
 }
@@ -96,10 +97,11 @@ body {
 .slide-logo {
   flex: 0.4;
   text-align: right;
+  margin-left: 40px;
 }
 
 .hero-logo {
-  width: 450px;
+  width: 400px;
   height: auto;
   transition: transform 0.3s ease;
 }
@@ -137,8 +139,53 @@ body {
   background-color: #e65100;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 1024px) {
+/* Laptop and Larger Screens (1024px and above) */
+@media (min-width: 1024px) {
+  .hero-section {
+    height: 100vh;
+    margin-top: 60px;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 2.2rem;
+  }
+
+  .hero-description {
+    font-size: 1.3rem;
+  }
+
+  .explore-button {
+    font-size: 1.3rem;
+    padding: 18px 35px;
+  }
+
+  .hero-logo {
+    width: 450px;
+  }
+
+  .slide-content {
+    padding: 0 80px;
+    gap: 60px;
+  }
+
+  .slide-text {
+    flex: 1;
+    margin-right: 30px;
+  }
+
+  .slide-logo {
+    flex: 0.6;
+    margin-left: 60px;
+    text-align: center;
+  }
+}
+
+/* Tablet Styles (769px to 1023px) */
+@media (max-width: 1023px) and (min-width: 769px) {
   .hero-title {
     font-size: 3.5rem;
   }
@@ -156,22 +203,51 @@ body {
   }
 
   .hero-logo {
-    width: 400px;
+    width: 350px;
   }
 
   .slide-content {
-    padding: 0 40px;
+    padding: 0 30px;
   }
 }
 
+/* Mobile Styles (768px and below) - Updated for larger images */
 @media (max-width: 768px) {
   .hero-section {
     height: auto;
-    padding: 60px 20px;
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+    margin-top: 50px;
+  }
+
+  .slide-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    text-align: center;
+    justify-content: flex-start;
+    gap: 30px;
+  }
+
+  .slide-logo {
+    order: 1;
+    margin: 0;
+    flex: none;
+    width: 100%;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .slide-text {
+    order: 2;
+    text-align: center;
+    width: 100%;
+    padding: 0 10px;
   }
 
   .hero-title {
     font-size: 2.8rem;
+    margin-top: 10px;
   }
 
   .hero-subtitle {
@@ -179,7 +255,8 @@ body {
   }
 
   .hero-description {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
   }
 
   .explore-button {
@@ -187,24 +264,20 @@ body {
     padding: 12px 25px;
   }
 
+  /* Larger image size for mobile */
   .hero-logo {
-    width: 300px;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    margin: 0 auto;
   }
 
-  .slide-content {
-    flex-direction: column;
-    align-items: center;
-    padding: 0 20px;
-    text-align: center;
-  }
-
-  .slide-logo {
-    margin-top: 20px;
-    flex: 1;
-    text-align: center;
+  .slider-dots {
+    bottom: 30px;
   }
 }
 
+/* Small Mobile Styles (480px and below) - Even larger images */
 @media (max-width: 480px) {
   .hero-title {
     font-size: 2.4rem;
@@ -219,22 +292,25 @@ body {
   }
 
   .explore-button {
-    font-size: 0.9rem;
-    padding: 10px 20px;
+    font-size: 0.95rem;
+    padding: 12px 22px;
   }
 
+  /* Extra large image size for small mobiles */
   .hero-logo {
-    width: 250px;
+    max-width: 320px;
+    width: 90%;
+    margin-bottom: 20px;
   }
 
   .slide-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 10px;
+    padding: 0;
   }
+}
 
-  .slide-logo {
-    margin-top: 20px;
+/* Extra Small Mobile Styles (360px and below) */
+@media (max-width: 360px) {
+  .hero-logo {
+    max-width: 300px;
   }
 }

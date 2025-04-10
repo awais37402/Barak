@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
-import BarakAgriLogo from '../assets/logo.png'; // Update the path as necessary
+import BarakAgriLogo from '../assets/logo1.png'; // Update the path as necessary
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
 
   const slides = [
     {
@@ -11,21 +12,21 @@ const Hero = () => {
       subtitle: 'Magnate Innovation',
       description: 'Transforming Industries with Technology. We provide cutting-edge solutions that drive the future of agriculture.',
       buttonText: 'Explore Our Solutions',
-      logo: BarakAgriLogo,
+      logo: BarakAgriLogo, // First logo
     },
     {
-      title: 'GreenTech Solutions',
-      subtitle: 'Innovative Farming Technology',
-      description: 'Harnessing sustainable practices to promote a greener future. Join us in revolutionizing agriculture.',
-      buttonText: 'Learn More',
-      logo: 'path_to_logo.png', // Add the logo for the second slider here
+      title: 'Water Treatment Devices',
+      subtitle: '',
+      description: 'Revolutionary magnetic field technology for enhanced seed performance and optimized water treatment for sustainable agriculture.',
+      buttonText: 'Discover Technology',
+      logo: require('../assets/product.jpg'), // Path to second slide's logo image
     },
     {
       title: 'Farmers\' Revolution',
       subtitle: 'Smart Farming for the Future',
       description: 'Empowering farmers with digital solutions that increase productivity and sustainability.',
       buttonText: 'Get Started',
-      logo: 'path_to_logo.png', // Add the logo for the third slider here
+      logo: require('../assets/product.jpg'), // Path to third slide's logo image
     },
   ];
 
@@ -58,7 +59,6 @@ const Hero = () => {
   };
 
   const { title, subtitle, description, buttonText, logo } = slides[currentSlide];
-  const [touchStart, setTouchStart] = useState(null);
 
   return (
     <section className="hero-section" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
