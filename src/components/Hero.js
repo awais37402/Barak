@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Hero.css';
 import BarakAgriLogo from '../assets/logo-removebg-preview.png';
@@ -10,6 +10,8 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024); // Check for desktop screen size
+  const [touchStartX, setTouchStartX] = useState(0); // To track the start position of the touch
+  const [touchEndX, setTouchEndX] = useState(0); // To track the end position of the touch
   const navigate = useNavigate();
 
   const slides = [
@@ -75,12 +77,33 @@ const Hero = () => {
     setCurrentSlide(index);
   };
 
+  const handleTouchStart = (e) => {
+    const touchStart = e.touches[0].clientX;
+    setTouchStartX(touchStart);
+  };
+
+  const handleTouchMove = (e) => {
+    const touchMove = e.touches[0].clientX;
+    setTouchEndX(touchMove);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX - touchEndX > 50) {
+      goToNextSlide(); // Swipe left
+    } else if (touchEndX - touchStartX > 50) {
+      goToPrevSlide(); // Swipe right
+    }
+  };
+
   const { title, subtitle, description, buttonText, logo, link, background, mobileBackground, className } = slides[currentSlide];
 
   return (
     <section
       className={`hero-section ${className || ''}`}
       data-slide={currentSlide}
+      onTouchStart={handleTouchStart} // Add touch events
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <div
         className="hero-slider"
