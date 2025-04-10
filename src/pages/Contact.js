@@ -139,7 +139,7 @@ const Contact = () => {
                 </div>
                 <div className={styles.content}>
                   <h3>Our Office</h3>
-                  <p>123 Farm Tech Avenue<br />Agro Valley, CA 90210</p>
+                  <p>Plot A-105, Minar Road, <br />Basti Lala Rukh, POF, Wah Cantt</p>
                 </div>
               </div>
               
@@ -149,7 +149,7 @@ const Contact = () => {
                 </div>
                 <div className={styles.content}>
                   <h3>Phone</h3>
-                  <p>+1 (555) 123-4567<br />Mon-Fri, 8am-5pm PST</p>
+                  <p>+92 307 7950777<br /></p>
                 </div>
               </div>
               
@@ -159,7 +159,7 @@ const Contact = () => {
                 </div>
                 <div className={styles.content}>
                   <h3>Email</h3>
-                  <p>info@agrovision.com<br />support@agrovision.com</p>
+                  <p>info@agrovision.com<br /></p>
                 </div>
               </div>
             </div>
