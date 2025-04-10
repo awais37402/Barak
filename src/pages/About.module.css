@@ -63,6 +63,7 @@
   margin-bottom: 20px;
   font-weight: 700;
   line-height: 1.2;
+  transition: opacity 0.4s ease;
 }
 
 .aboutHero p {
@@ -71,6 +72,7 @@
   margin: 0 auto;
   font-weight: 400;
   line-height: 1.6;
+  transition: opacity 0.4s ease 0.1s;
 }
 
 /* Our Story Section */
@@ -105,11 +107,12 @@
   padding: 25px 15px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .statItem:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .statItem h3 {
@@ -125,9 +128,10 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   object-fit: cover;
   height: 400px;
+  transition: opacity 0.5s ease;
 }
 
-/* ✅ Responsive Fix for Mobile Devices */
+/* Responsive Fix for Mobile Devices */
 @media (max-width: 768px) {
   .storyStats {
     flex-direction: column;
@@ -166,7 +170,6 @@
   }
 }
 
-
 /* Partners Section */
 .partners {
   padding: 80px 0;
@@ -187,12 +190,12 @@
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .partnerCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .partnerLogo {
@@ -270,8 +273,8 @@
 
 .techCard:hover {
   background: var(--light-green);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .techIcon {
@@ -323,6 +326,11 @@
   margin: 30px auto;
   max-width: 800px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.offerHighlight:hover {
+  transform: scale(1.02);
 }
 
 .offerHighlight h3 {
@@ -348,8 +356,8 @@
 }
 
 .offerCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .offerIcon {
@@ -484,29 +492,14 @@
 .primaryBtn:hover {
   background: transparent;
   color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 
-/* Animation */
+/* Simple fade-in animation */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-
-.techCard, .partnerCard, .offerCard {
-  animation: fadeIn 0.6s ease forwards;
-  opacity: 0;
-}
-
-.techCard:nth-child(1) { animation-delay: 0.1s; }
-.techCard:nth-child(2) { animation-delay: 0.2s; }
-.techCard:nth-child(3) { animation-delay: 0.3s; }
-.partnerCard:nth-child(1) { animation-delay: 0.1s; }
-.partnerCard:nth-child(2) { animation-delay: 0.2s; }
-.offerCard:nth-child(1) { animation-delay: 0.1s; }
-.offerCard:nth-child(2) { animation-delay: 0.2s; }
-.offerCard:nth-child(3) { animation-delay: 0.3s; }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -598,66 +591,4 @@
     font-size: 1.2rem;
     top: 4px;
   }
-}
-
-/* Slide-in Animation System */
-.slideInContainer {
-  overflow: hidden;
-}
-
-.slideInItem {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 
-    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.slideInContainer.animate .slideInItem {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Staggered animations for children */
-.slideInContainer.animate .slideInItem:nth-child(1) { transition-delay: 0.1s; }
-.slideInContainer.animate .slideInItem:nth-child(2) { transition-delay: 0.2s; }
-.slideInContainer.animate .slideInItem:nth-child(3) { transition-delay: 0.3s; }
-.slideInContainer.animate .slideInItem:nth-child(4) { transition-delay: 0.4s; }
-.slideInContainer.animate .slideInItem:nth-child(5) { transition-delay: 0.5s; }
-.slideInContainer.animate .slideInItem:nth-child(6) { transition-delay: 0.6s; }
-
-/* Specific delays for grids */
-.slideInContainer.animate .techCard:nth-child(1) { transition-delay: 0.1s; }
-.slideInContainer.animate .techCard:nth-child(2) { transition-delay: 0.2s; }
-.slideInContainer.animate .techCard:nth-child(3) { transition-delay: 0.3s; }
-
-.slideInContainer.animate .partnerCard:nth-child(1) { transition-delay: 0.1s; }
-.slideInContainer.animate .partnerCard:nth-child(2) { transition-delay: 0.2s; }
-
-.slideInContainer.animate .offerCard:nth-child(1) { transition-delay: 0.1s; }
-.slideInContainer.animate .offerCard:nth-child(2) { transition-delay: 0.2s; }
-.slideInContainer.animate .offerCard:nth-child(3) { transition-delay: 0.3s; }
-
-/* Hero section specific animation */
-.aboutHero .slideInItem {
-  transform: translateY(50px);
-}
-
-/* Story stats specific animation - Updated */
-.storyStats .slideInItem {
-  transform: translateY(30px);
-}
-
-.storyStats .slideInItem:nth-child(1) { transition-delay: 0.1s; }
-.storyStats .slideInItem:nth-child(2) { transition-delay: 0.2s; }
-.storyStats .slideInItem:nth-child(3) { transition-delay: 0.3s; }
-
-/* Story image specific animation */
-.storyImage.slideInItem {
-  transform: translateX(100px);
-}
-
-/* Tab content specific animation */
-.tabContent.slideInItem {
-  transform: translateY(30px);
 }
