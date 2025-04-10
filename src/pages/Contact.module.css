@@ -1,4 +1,4 @@
-/* Contact.module.css - Fully Responsive */
+/* Contact.module.css */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
 :root {
@@ -12,7 +12,7 @@
   --black: #2d2d2d;
 }
 
-/* Base Reset for Mobile */
+/* Base Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +27,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
   color: var(--black);
-  overflow-x: hidden;
 }
 
 /* Container */
@@ -120,7 +119,6 @@ body {
   border-radius: 0.3rem;
   font-size: 1rem;
   background-color: var(--white);
-  transition: all 0.2s ease;
 }
 
 .formGroup input:focus,
@@ -144,7 +142,6 @@ body {
   font-weight: 600;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s ease;
   border: none;
 }
 
@@ -155,8 +152,6 @@ body {
 
 .primaryBtn:hover {
   background: var(--secondary-green);
-  transform: translateY(-2px);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 /* Contact Info */
@@ -283,11 +278,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.2s ease;
-}
-
-.faqQuestion:hover {
-  background: #f0ecda;
 }
 
 .faqQuestion i {
@@ -303,12 +293,11 @@ body {
   max-height: 0;
   overflow: hidden;
   background: var(--white);
-  transition: max-height 0.3s ease;
 }
 
 .faqAnswer.active {
   padding: 1rem;
-  max-height: 30rem;
+  max-height: 1000px;
 }
 
 .faqAnswer p {
@@ -338,19 +327,6 @@ body {
   max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
-}
-
-/* Animations */
-.animateIn {
-  opacity: 0;
-  transform: translateY(1rem);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  transition-delay: var(--delay, 0);
-}
-
-.animateIn.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Responsive Adjustments */
@@ -428,20 +404,4 @@ input,
 select,
 textarea {
   min-height: 2.5rem;
-}
-
-/* Disable animations when user prefers reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  
-  .animateIn {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 }
