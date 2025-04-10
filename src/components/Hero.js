@@ -22,7 +22,7 @@ const Hero = () => {
         'Harnessing the power of magnetic fields to boost crop yields and improve plant health through innovative scientific approaches.',
       buttonText: 'Learn More',
       logo: '',
-      link: '/about',
+      link: '/about', // Navigate to About page on button click
       background: MagneticImage,
       mobileBackground: MobileBackground, // Add mobile background specifically for slider 1
     },
@@ -139,9 +139,8 @@ const Hero = () => {
               {currentSlide === 0 ? (
                 <a
                   className="explore-button"
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => navigate(link)}  // Use navigate for internal routing
+                  style={{ cursor: 'pointer' }} // Optional: Adds pointer cursor for better UX
                 >
                   {buttonText}
                 </a>
