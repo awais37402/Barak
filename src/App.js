@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import CaseStudies from './pages/CaseStudies';
 import Contact from './pages/Contact';
+import WaterTreatment from './pages/WaterTreatment'; // ✅ New page added
 
 import ScrollToTopButton from './components/ScrollToTopButton'; // ✅ This shows floating scroll-to-top button
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/casestudies" element={<CaseStudies />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/watertreatment" element={<WaterTreatment />} /> {/* ✅ New route for WaterTreatment */}
         </Routes>
 
         <ScrollToTopButton /> {/* Floating scroll-to-top button */}
