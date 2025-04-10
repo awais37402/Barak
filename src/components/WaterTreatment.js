@@ -1,101 +1,42 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSeedling } from '@fortawesome/free-solid-svg-icons';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import './WaterTreatment.css';
+import './Magneticwater.css';
 import seedImage from '../assets/water.jpg';
 
-const WaterTreatment = () => {
-    const controls = useAnimation();
-    const [ref, inView] = useInView({
-        threshold: 0.1,
-        triggerOnce: true
-    });
-
-    useEffect(() => {
-        if (inView) {
-            controls.start("visible");
-        }
-    }, [controls, inView]);
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.3
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.6 }
-        }
-    };
-
-    const benefitVariants = {
-        hidden: { opacity: 0, x: -10 },
-        visible: {
-            opacity: 1,
-            x: 0,
-            transition: { duration: 0.4 }
-        }
-    };
-
+const Magneticwater = () => {
     return (
-        <motion.section 
-            className="seed-treatment"
-            ref={ref}
-            initial="hidden"
-            animate={controls}
-            variants={containerVariants}
-        >
+        <section className="seed-treatment">
             <div className="seed-container">
-                <motion.div className="seed-header" variants={itemVariants}>
-                    <motion.h2 
-                        className="seed-title"
-                        variants={itemVariants}
-                    >
+                <div className="seed-header">
+                    <h2 className="seed-title">
                         Water Treatment Devices
-                    </motion.h2>
-                    <motion.p 
-                        className="seed-subtitle"
-                        variants={itemVariants}
-                    >
+                    </h2>
+                    <p className="seed-subtitle">
                         Revolutionary magnetic field technology for enhanced seed performance
-                    </motion.p>
-                </motion.div>
+                    </p>
+                </div>
 
-                <motion.div className="seed-content" variants={itemVariants}>
+                <div className="seed-content">
                     <div className="seed-image">
-                        <motion.div 
-                            className="seed-image-wrapper"
-                            initial={{ scale: 1.05 }}
-                            animate={inView ? { scale: 1 } : {}}
-                            transition={{ duration: 1 }}
-                        >
+                        <div className="seed-image-wrapper">
                             <img src={seedImage} alt="Seed Treatment Technology" />
-                        </motion.div>
+                        </div>
                     </div>
 
                     <div className="seed-details">
-                        <motion.p 
-                            className="seed-description"
-                            variants={itemVariants}
-                        >
+                        <p className="seed-description">
                             This technology not only reduces the expenditure on sowing materials by 30-50%, 
                             but it also facilitates earlier harvests. Researchers have conducted experiments 
                             across various regions, yielding promising results. The studies indicate that 
                             seeds treated with a magnetic field exhibit accelerated growth, enhanced 
                             activation processes that expedite protein formation, thereby promoting root 
                             development and stimulating growth also in weaker seeds.
-                        </motion.p>
+                            <br />
+                            <span className="additional-benefits">
+                                Improved seed quality, faster development, enhanced vitality
+                            </span>
+                        </p>
                         
                         <div className="seed-benefits">
                             {[ 
@@ -111,24 +52,19 @@ const WaterTreatment = () => {
                                 "Facilitates earlier crop ripening",
                                 "Increases yield per acre"
                             ].map((benefit, index) => (
-                                <motion.div 
-                                    key={index} 
-                                    className="seed-benefit-item"
-                                    variants={benefitVariants}
-                                    custom={index}
-                                >
+                                <div key={index} className="seed-benefit-item">
                                     <div className="seed-benefit-icon">
                                         <FontAwesomeIcon icon={faSeedling} />
                                     </div>
                                     <span className="seed-benefit-text">{benefit}</span>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
-        </motion.section>
+        </section>
     );
 };
 
-export default WaterTreatment;
+export default Magneticwater;
