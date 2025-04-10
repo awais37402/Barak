@@ -3,26 +3,26 @@ import { useNavigate } from 'react-router-dom';
 import './Hero.css';
 import BarakAgriLogo from '../assets/logo-removebg-preview.png';
 import WaterImage from '../assets/water.jpg';
-import MagneticImage from '../assets/bg2.png';
+import MagneticImage from '../assets/qwerty.png';
+import MobileBackground from '../assets/responsive.png'; // Add mobile background image for Slider 1
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024); // Check for desktop screen size
   const navigate = useNavigate();
 
   const slides = [
     {
-      title: 'Barak AgriTech',
-      subtitle: 'Magnate Innovation',
+      title: 'Magnetic Yield Alliance',
+      subtitle: '',
       description:
-        'Transforming Industries with Technology. We provide cutting-edge solutions that drive the future of agriculture.',
-      buttonText: 'Explore Our Solutions',
-      logo: BarakAgriLogo,
-      link: '/casestudies',
-      background: '', // No background image
+        'Harnessing the power of magnetic fields to boost crop yields and improve plant health through innovative scientific approaches.',
+      buttonText: 'Learn More',
+      logo: '',
+      link: '/about',
+      background: MagneticImage,
+      mobileBackground: MobileBackground, // Add mobile background specifically for slider 1
     },
     {
       title: 'Water Treatment Devices',
@@ -35,20 +35,21 @@ const Hero = () => {
       background: WaterImage,
     },
     {
-      title: 'Magnetic Yield Alliance',
-      subtitle: '',
+      title: 'Barak AgriTech',
+      subtitle: 'Magnate Innovation',
       description:
-        'Harnessing the power of magnetic fields to boost crop yields and improve plant health through innovative scientific approaches.',
-      buttonText: 'Learn More',
-      logo: '',
-      link: 'https://www.magnetic.ae/',
-      background: MagneticImage,
+        'Transforming Industries with Technology. We provide cutting-edge solutions that drive the future of agriculture.',
+      buttonText: 'Explore Our Solutions',
+      logo: BarakAgriLogo,
+      link: '/casestudies',
+      background: '',
+      className: 'barak-slide'
     },
   ];
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth > 1024);
+      setIsDesktop(window.innerWidth > 1024); // Update the state based on screen size
     };
 
     window.addEventListener('resize', handleResize);
@@ -74,44 +75,19 @@ const Hero = () => {
     setCurrentSlide(index);
   };
 
-  const handleTouchStart = (e) => {
-    setTouchStart(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const diff = touchStart - touchEnd;
-    if (diff > 50) {
-      goToNextSlide();
-    } else if (diff < -50) {
-      goToPrevSlide();
-    }
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
-
-  const { title, subtitle, description, buttonText, logo, link, background } = slides[currentSlide];
+  const { title, subtitle, description, buttonText, logo, link, background, mobileBackground, className } = slides[currentSlide];
 
   return (
     <section
-      className="hero-section"
+      className={`hero-section ${className || ''}`}
       data-slide={currentSlide}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
     >
       <div
         className="hero-slider"
         style={{
-          backgroundImage: background
-            ? `url(${background})`
-            : currentSlide === 0
-            ? 'linear-gradient(135deg, #f0f0f0, #dfe9f3)'
-            : 'none',
+          backgroundImage: currentSlide === 0 && !isDesktop
+            ? `url(${mobileBackground})` // For Slider 1 and mobile, use mobile background
+            : `url(${background})`, // For all other cases, use the original slide background
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -137,7 +113,7 @@ const Hero = () => {
               <h1 className="hero-title">{title}</h1>
               {subtitle && <h2 className="hero-subtitle">{subtitle}</h2>}
               <p className="hero-description">{description}</p>
-              {currentSlide === 2 ? (
+              {currentSlide === 0 ? (
                 <a
                   className="explore-button"
                   href={link}
