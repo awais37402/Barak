@@ -32,7 +32,16 @@ body {
   height: 70px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;
+}
+
+/* Center Wrapper */
+.center-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
 
 /* Left Logo */
@@ -58,13 +67,6 @@ body {
   color: #2E7D32;
 }
 
-/* Right Side */
-.right-side {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
 /* Desktop Nav */
 .desktop-nav {
   display: flex;
@@ -74,6 +76,7 @@ body {
   display: flex;
   list-style: none;
   gap: 24px;
+  align-items: center;
 }
 
 .nav-item .nav-link {
@@ -121,6 +124,8 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+  position: absolute;
+  right: 20px;
 }
 
 .hamburger-line {
@@ -190,11 +195,16 @@ body {
     display: flex;
   }
 
-  .right-side {
+  .center-wrapper {
+    flex-direction: column;
     gap: 12px;
   }
 
   .logo-text {
     font-size: 18px;
+  }
+
+  .header-container {
+    justify-content: flex-start;
   }
 }

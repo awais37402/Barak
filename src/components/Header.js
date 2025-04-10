@@ -17,7 +17,6 @@ const Header = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -27,8 +26,9 @@ const Header = () => {
     document.body.style.overflow = 'auto';
   }, [location]);
 
-  const leftNavLinks = [
+  const navLinks = [
     { to: '/', label: 'Home' },
+    { to: '/magneticyieldalliance', label: 'Magnetic Yield Alliance' },
     { to: '/about', label: 'About' },
     { to: '/casestudies', label: 'Case Studies' },
   ];
@@ -36,50 +36,49 @@ const Header = () => {
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="header-container">
-        
-        {/* Left: Logo + Name */}
-        <div className="left-logo">
-          <Link to="/" className="logo-link" aria-label="Burak AgriTech Home">
-            <img src={logo} alt="Burak AgriTech Logo" className="logo-img" />
-            <span className="logo-text">Barak AgriTech</span>
-          </Link>
-        </div>
+        <div className="center-wrapper">
+          {/* Logo and Name */}
+          <div className="left-logo">
+            <Link to="/" className="logo-link" aria-label="Burak AgriTech Home">
+              <img src={logo} alt="Burak AgriTech Logo" className="logo-img" />
+              <span className="logo-text">Barak AgriTech</span>
+            </Link>
+          </div>
 
-        {/* Right: Nav + Contact + Hamburger */}
-        <div className="right-side">
+          {/* Navigation */}
           <nav className="desktop-nav">
             <ul className="nav-list">
-              {leftNavLinks.map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.to} className={`nav-item ${location.pathname === link.to ? 'active' : ''}`}>
                   <Link to={link.to} className="nav-link">
                     <span className="link-text">{link.label}</span>
                   </Link>
                 </li>
               ))}
+              <li className="nav-item">
+                <Link to="/contact" className="contact-button">Contact</Link>
+              </li>
             </ul>
           </nav>
-
-          <Link to="/contact" className="contact-button">
-            Contact
-          </Link>
-
-          <button 
-            className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
         </div>
+
+        {/* Hamburger for Mobile */}
+        <button 
+          className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
       </div>
 
       {/* Mobile Menu */}
       <nav className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
         <ul className="mobile-nav-list">
-          {leftNavLinks.map((link) => (
+          {navLinks.map((link) => (
             <li key={link.to} className="mobile-nav-item">
               <Link to={link.to} className="mobile-nav-link">
                 {link.label}
