@@ -56,7 +56,7 @@ const About = () => {
       <section className={`${styles.ourStory} ${styles.slideInContainer}`} ref={addToRefs}>
         <div className={styles.container}>
           <div className={styles.storyContent}>
-            <h2 className={`${styles.sectionTitle} ${styles.slideInItem}`}>The <span>Alliance</span></h2>
+            <h2 className={`${styles.sectionTitle} ${styles.slideInItem}`}>Our <span>Alliance</span></h2>
             <p className={styles.slideInItem}>The Magnetic Yield Alliance brings together global magnetic technology expertise with local agricultural knowledge to transform Pakistan's farming landscape. This innovative partnership between <strong>Magnetic Technologies LLC</strong> (Dubai) and <strong>Barak AgriTech</strong> (Pakistan) delivers unprecedented value to corporate and large-scale farmers.</p>
             
             <div className={`${styles.storyStats} ${styles.slideInContainer}`}>
@@ -206,66 +206,8 @@ const About = () => {
       {/* Impact Section */}
       <section className={`${styles.impact} ${styles.slideInContainer}`} ref={addToRefs}>
         <div className={styles.container}>
-          <h2 className={`${styles.sectionTitle} ${styles.slideInItem}`}>Our <span>Impact</span></h2>
-          
-          <div className={styles.impactTabs}>
-            <div className={`${styles.tabButtons} ${styles.slideInItem}`}>
-              <button 
-                className={`${styles.tabButton} ${activeTab === 'farmers' ? styles.active : ''}`} 
-                onClick={() => handleTabClick('farmers')}
-              >
-                For Farmers
-              </button>
-              <button 
-                className={`${styles.tabButton} ${activeTab === 'pakistan' ? styles.active : ''}`} 
-                onClick={() => handleTabClick('pakistan')}
-              >
-                For Pakistan
-              </button>
-              <button 
-                className={`${styles.tabButton} ${activeTab === 'environment' ? styles.active : ''}`} 
-                onClick={() => handleTabClick('environment')}
-              >
-                Environment
-              </button>
-            </div>
-            
-            <div className={`${styles.tabContent} ${activeTab === 'farmers' ? styles.active : ''} ${styles.slideInItem}`}>
-              <ul>
-                <li><i className="fas fa-coins"></i> Higher Profits: Retain 40-50% of additional yield with no upfront cost</li>
-                <li><i className="fas fa-tint"></i> Water Savings: 30-50% reduction in irrigation needs</li>
-                <li><i className="fas fa-clock"></i> Faster Growth: 10-15 day shorter crop cycles</li>
-                <li><i className="fas fa-shield-alt"></i> Resilience: Farm with brackish water in arid regions</li>
-              </ul>
-            </div>
-            
-            <div className={`${styles.tabContent} ${activeTab === 'pakistan' ? styles.active : ''} ${styles.slideInItem}`}>
-              <ul>
-                <li><i className="fas fa-wheat"></i> Food Security: Potential 10-15% national grain increase</li>
-                <li><i className="fas fa-map"></i> Land Reclamation: Reverse salinization on 1-2 million ha</li>
-                <li><i className="fas fa-users"></i> Rural Development: Empower large-scale farming operations</li>
-              </ul>
-            </div>
-            
-            <div className={`${styles.tabContent} ${activeTab === 'environment' ? styles.active : ''} ${styles.slideInItem}`}>
-              <ul>
-                <li><i className="fas fa-leaf"></i> Chemical Reduction: 40-50% less runoff polluting water</li>
-                <li><i className="fas fa-tree"></i> Soil Health: 20-30% salinity reduction over 2-3 seasons</li>
-                <li><i className="fas fa-cloud"></i> Climate Resilience: Sustainable farming in water-scarce regions</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className={`${styles.cta} ${styles.slideInContainer}`} ref={addToRefs}>
-        <div className={styles.container}>
-          <div className={styles.ctaContent}>
-            <h2 className={styles.slideInItem}>Ready to Transform Your Farming?</h2>
-            <p className={styles.slideInItem}>Join the Magnetic Yield Alliance with zero upfront investment</p>
-          </div>
-          <a href="/contact" className={`${styles.primaryBtn} ${styles.slideInItem}`}>Contact Us Today</a>
+          <h2 className={`${styles.sectionTitle} ${styles.slideInItem}`}>Your Impact on Pakistan’s <span>Future</span></h2>
+          <p className={`${styles.sectionSubtitle} ${styles.slideInItem}`}>By joining the Magnetic Yield Alliance, you become part of a transformative initiative that will help elevate Pakistan's agricultural sector to new heights. Together, we can work towards building a more sustainable and prosperous future for the nation.</p>
         </div>
       </section>
     </div>
