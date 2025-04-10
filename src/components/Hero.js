@@ -8,6 +8,7 @@ import MagneticImage from '../assets/magnetic.jpg';
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
   const navigate = useNavigate();
 
   const slides = [
@@ -56,14 +57,21 @@ const Hero = () => {
   };
 
   const handleTouchMove = (e) => {
-    if (!touchStart) return;
-    const touchEnd = e.touches[0].clientX;
-    if (touchStart - touchEnd > 50) {
+    setTouchEnd(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const diff = touchStart - touchEnd;
+    if (diff > 50) {
+      // Swiped left
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    } else if (touchStart - touchEnd < -50) {
+    } else if (diff < -50) {
+      // Swiped right
       setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
     }
     setTouchStart(null);
+    setTouchEnd(null);
   };
 
   const { title, subtitle, description, buttonText, logo, link } = slides[currentSlide];
@@ -73,6 +81,7 @@ const Hero = () => {
       className="hero-section"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <div className="hero-slider">
         <div className="slide">
