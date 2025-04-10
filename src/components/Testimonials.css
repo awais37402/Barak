@@ -85,7 +85,7 @@
 /* Navigation Controls */
 .nav-controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 30px;
 }
@@ -96,6 +96,7 @@
   cursor: pointer;
   font-size: 1.5rem;
   color: #333;
+  margin: 0 10px;
 }
 
 .indicators {
@@ -104,15 +105,15 @@
 }
 
 .indicator-tag {
-  background-color: #ccc;
+  background-color: transparent;
   border: none;
-  padding: 5px;
-  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #ccc;
   cursor: pointer;
 }
 
 .indicator-tag.active {
-  background-color: #f39c12;
+  color: #f39c12;
 }
 
 /* Responsive Styles */
@@ -140,35 +141,5 @@
 
   .client-role {
     font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .testimonial-title {
-    font-size: 1.8rem;
-  }
-
-  .testimonial-subtitle {
-    font-size: 0.9rem;
-  }
-
-  .quote-container {
-    font-size: 1.1rem;
-  }
-
-  .client-name {
-    font-size: 1rem;
-  }
-
-  .client-role {
-    font-size: 0.8rem;
-  }
-
-  .nav-button {
-    font-size: 1.2rem;
-  }
-
-  .indicator-tag {
-    padding: 4px;
   }
 }

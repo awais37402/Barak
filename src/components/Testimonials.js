@@ -1,129 +1,86 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Testimonials.css';
 
-const testimonials = [
+const testimonialsData = [
   {
-    name: 'Ahmed Ali',
-    role: 'Wheat Farmer, Punjab',
-    image: 'https://images.pexels.com/photos/29898773/pexels-photo-29898773.jpeg',
-    quote: 'Iss platform ne meri farming techniques ko bilkul change kar diya hai. Bahut faida hua hai!',
+    quote: "Yeh platform mujhe apne kisan dosto ke liye bohot madadgar laga. Mera kaam asaan ho gaya hai.",
+    name: "Shahid Malik",
+    role: "Farmer",
+    image: "https://img.freepik.com/free-photo/closeup-young-hispanic-man-casuals-studio_662251-600.jpg",  // Placeholder for real image of a Pakistani male farmer
   },
   {
-    name: 'Bilal Khan',
-    role: 'Rice Farmer, Sindh',
-    image: 'https://images.pexels.com/photos/29898836/pexels-photo-29898836.jpeg',
-    quote: 'Timely updates ki wajah se meri crops ki yield double ho gayi hai. Bohat shukriya!',
+    quote: "Is website ki madad se hum apne kisan dosto tak zaroori maloomat asani se pohanchate hain.",
+    name: "Zahid Hussain",
+    role: "Agriculture Expert",
+    image: "https://images.pexels.com/photos/4120637/pexels-photo-4120637.jpeg",  // Placeholder for real image of a Pakistani male in agricultural setting
   },
   {
-    name: 'Kashif Mehmood',
-    role: 'Cotton Farmer, Balochistan',
-    image: 'https://images.pexels.com/photos/29898846/pexels-photo-29898846.jpeg',
-    quote: 'Pesticide ke behtareen tareeqe jaan kar kaafi paisay bachaye. Yeh platform kamaal ka hai!',
+    quote: "Yeh platform humare kisan community ke liye ek bohot bara faida hai, ab hum apni zameen ki behtari ke liye asani se plan kar sakte hain.",
+    name: "Fahad Iqbal",
+    role: "Agronomist",
+    image: "https://i.pinimg.com/736x/2e/b1/bd/2eb1bd9aff9d3d30c7f140a9073ae8fa.jpg",  // Placeholder for real image of a Pakistani male agronomist
+  },
+  {
+    quote: "Agriculture ki dunia mein itni development hui hai, is platform se hume har cheez ka update milta hai.",
+    name: "Imran Shah",
+    role: "Agricultural Entrepreneur",
+    image: "https://media.istockphoto.com/id/174760305/photo/young-cheerful-asian-indian-businessman-sitting-in-cafeteria.jpg?s=612x612&w=0&k=20&c=UiR_EGw73ij6xvYk0IZ3Yy-eWLo34DvuICIWrrTsFus=",  // Placeholder for real image of a Pakistani male in a farm field
   },
 ];
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [currentIndex]);
 
   const handlePrev = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex(prev => (prev === 0 ? testimonials.length - 1 : prev - 1));
-    setTimeout(() => setIsAnimating(false), 800);
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonialsData.length - 1 : prevIndex - 1));
   };
 
   const handleNext = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex(prev => (prev === testimonials.length - 1 ? 0 : prev + 1));
-    setTimeout(() => setIsAnimating(false), 800);
+    setCurrentIndex((prevIndex) => (prevIndex === testimonialsData.length - 1 ? 0 : prevIndex + 1));
   };
 
-  const goToTestimonial = (index) => {
-    if (isAnimating || index === currentIndex) return;
-    setIsAnimating(true);
-    setCurrentIndex(index);
-    setTimeout(() => setIsAnimating(false), 800);
-  };
-
-  const { name, role, image, quote } = testimonials[currentIndex];
+  const { quote, name, role, image } = testimonialsData[currentIndex];
 
   return (
-    <section className="testimonial-section">
+    <div className="testimonial-section">
       <div className="testimonial-container">
         <div className="section-header">
           <h2 className="testimonial-title">
-            What Our <span className="highlight">Farmers</span> Say
+            Client <span className="highlight">Testimonials</span>
           </h2>
-          <p className="testimonial-subtitle">Pakistan ke kisano ki kahaniyan</p>
+          <p className="testimonial-subtitle">Listen to our happy clients share their experiences.</p>
         </div>
 
-        <div className={`testimonial-box ${isAnimating ? 'fade' : ''}`}>
-          <div className="quote-container">
-            <div className="quote-icon">"</div>
-            <p className="quote">"{quote}"</p>
-          </div>
-
+        <div className="testimonial-box">
+          <div className="quote-container">"{quote}"</div>
           <div className="client-info">
             <div className="client-image-container">
-              <img
-                src={image}
-                alt={name}
-                className="client-img"
-                loading="lazy"
-              />
+              <img src={image} alt={name} className="client-img" />
             </div>
             <div className="client-details">
-              <h4 className="client-name">{name}</h4>
-              <p className="client-role">{role}</p>
+              <div className="client-name">{name}</div>
+              <div className="client-role">{role}</div>
             </div>
-          </div>
-
-          <div className="nav-controls">
-            <button
-              className="nav-button prev"
-              onClick={handlePrev}
-              aria-label="Previous testimonial"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-            <div className="indicators">
-              {testimonials.map((testimonial, index) => (
-                <button
-                  key={index}
-                  className={`indicator-tag ${index === currentIndex ? 'active' : ''}`}
-                  onClick={() => goToTestimonial(index)}
-                  aria-label={`Testimonial from ${testimonial.name}`}
-                >
-                  {index + 1}
-                </button>
-              ))}
-            </div>
-
-            <button
-              className="nav-button next"
-              onClick={handleNext}
-              aria-label="Next testimonial"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
           </div>
         </div>
+
+        <div className="nav-controls">
+          <button className="nav-button" onClick={handlePrev}>❮</button>
+          <div className="indicators">
+            {testimonialsData.map((_, index) => (
+              <button
+                key={index}
+                className={`indicator-tag ${currentIndex === index ? 'active' : ''}`}
+                onClick={() => setCurrentIndex(index)}
+              >
+                ●
+              </button>
+            ))}
+          </div>
+          <button className="nav-button" onClick={handleNext}>❯</button>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
