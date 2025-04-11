@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --agri-green: #4CAF50;
+  --light-green: #DFF0D8;
+  --beige: #F5F5DC;
+  --text-dark: #333;
+  --accent: #7CB342;
+}
+
+/* About Section */
+.about-section {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--beige), #f8fff5);
+  color: var(--text-dark);
+  padding: 80px 20px;
+  margin-top: 3rem; /* 👈 Pushes section below header */
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Desktop spacing adjustment */
+@media (min-width: 1024px) {
+  .about-section {
+    margin-top: 4rem;
+  }
+}
+
+/* Container for content */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Title styling */
+.about-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--agri-green);
+  text-align: center;  /* Title aligned to center */
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.about-title::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent);
+  display: block;
+  margin: 10px auto 0;  /* Centers the underline */
+  border-radius: 2px;
+}
+
+/* Paragraph/content styling */
+.about-content {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  animation: slideUp 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
+  text-align: left;  /* Align paragraphs to the left */
+}
+
+/* Paragraphs with margin for empty line space */
+.about-content p {
+  margin-bottom: 20px;  /* Adds space between paragraphs */
+}
+
+.about-content strong {
+  color: var(--accent);
+}
+
+/* Fade and slide animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 2.2rem;
+  }
+
+  .about-content {
+    font-size: 1rem;
+  }
+}
