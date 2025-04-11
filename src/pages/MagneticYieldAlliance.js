@@ -1,270 +1,169 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styles from './About.module.css';
+import React from 'react';
+import './MagneticYieldAlliance.css';
+
+// Logo imports
+import BarakLogo from '../assets/logo-removebg-preview.png';
+import MagneticLogo from '../assets/Magnetic_Yield_Alliance__4.png';
+
+// Hero section
+import HeroBackground from '../assets/farm-field-banner.jpg';
+
+// Partnership intro
+import GlobalLocalCollage from '../assets/global-local-collage.jpg';
+
+// Technology showcase icons
+import AGI400DIcon from '../assets/agi400d-icon.png';
+import ResearchIcon from '../assets/research-icon.png';
+import AdaptationIcon from '../assets/adaptation-icon.png';
+
+// Before/After collage
+import BeforeCrop from '../assets/before-crop.jpeg';
+import AfterCrop from '../assets/after-crop.jpg';
 
 const MagneticYieldAlliance = () => {
-  const [activeTab, setActiveTab] = useState('farmers');
-  const sectionRefs = useRef([]);
-
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
-
-  // Add section references to the array
-  const addToRefs = (el) => {
-    if (el && !sectionRefs.current.includes(el)) {
-      sectionRefs.current.push(el);
-    }
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.animate);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      sectionRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, []);
-
   return (
-    <div className={styles.aboutPage}>
-      {/* About Hero */}
-      <section className={`${styles.aboutHero} ${styles.slideInContainer}`} ref={addToRefs}>
-        <div className={styles.container}>
-          <h1 className={styles.slideInItem}>About <span>Magnetic Yield Alliance</span></h1>
-          <p className={styles.slideInItem}>Revolutionizing Pakistan's agriculture through magnetic technology and sustainable partnerships</p>
+    <div className="alliance-page">
+      {/* Hero Banner with Partnership Highlight */}
+      <section className="hero-banner" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${HeroBackground})` }}>
+        <div className="hero-content">
+          <div className="partner-logos">
+            <img src={BarakLogo} alt="Barak AgriTech" className="logo" />
+            <span className="partnership-symbol">+</span>
+            <img src={MagneticLogo} alt="Magnetic Technologies LLC" className="logo" />
+          </div>
+          <h1>Magnetic Yield Alliance</h1>
+          <p className="tagline">Global Magnetic Technology Expertise Meets Local Agricultural Innovation</p>
+          <button className="cta-button">Contact Us for a Demo</button>
         </div>
       </section>
 
-      {/* Partnership Story */}
-      <section className={`${styles.ourStory} ${styles.slideInContainer}`} ref={addToRefs}>
-        <div className={styles.container}>
-          <div className={styles.storyContent}>
-            <h2 className={`${styles.sectionTitle} ${styles.slideInItem}`}>Our <span>Alliance</span></h2>
-            <p className={styles.slideInItem}>The Magnetic Yield Alliance brings together global magnetic technology expertise with local agricultural knowledge to transform Pakistan's farming landscape. This innovative partnership between <strong>Magnetic Technologies LLC</strong> (Dubai) and <strong>Barak AgriTech</strong> (Pakistan) delivers unprecedented value to corporate and large-scale farmers.</p>
-            
-            <div className={`${styles.storyStats} ${styles.slideInContainer}`}>
-              <div className={`${styles.statItem} ${styles.slideInItem}`}>
-                <h3>30+</h3>
-                <p>Years of Magnetic Research</p>
-              </div>
-              <div className={`${styles.statItem} ${styles.slideInItem}`}>
-                <h3>50+</h3>
-                <p>Countries Served</p>
-              </div>
-              <div className={`${styles.statItem} ${styles.slideInItem}`}>
-                <h3>500K+</h3>
-                <p>Hectares Treated</p>
+      {/* Partnership Introduction */}
+      <section className="partnership-intro">
+        <div className="container">
+          <h2>Our Strategic Partnership</h2>
+          <div className="intro-grid">
+            <div className="intro-text">
+              <p>
+                Barak AgriTech has partnered with <strong>Magnetic Technologies LLC</strong>, Dubai's leading 
+                agricultural technology innovator since 1995, to bring proven magnetic water treatment 
+                solutions to Pakistan.
+              </p>
+              <p>
+                Together, we form the <strong>Magnetic Yield Alliance</strong>, combining 30+ years of 
+                international success with deep local farming expertise.
+              </p>
+              <div className="achievement-stats">
+                <div className="stat-item">
+                  <span className="stat-number">500,000+</span>
+                  <span className="stat-label">Hectares Irrigated Worldwide</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-number">50+</span>
+                  <span className="stat-label">Countries Using This Technology</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-number">30%</span>
+                  <span className="stat-label">Average Yield Increase</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className={`${styles.storyImage} ${styles.slideInItem}`}>
-            <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Farm irrigation system" />
-          </div>
-        </div>
-      </section>
-
-      {/* Partners Section */}
-      <section className={`${styles.partners} ${styles.slideInContainer}`} ref={addToRefs}>
-        <div className={styles.container}>
-          <h2 className={`${styles.sectionTitle} ${styles.slideInItem}`}>Our <span>Partners</span></h2>
-          
-          <div className={styles.partnerCards}>
-            <div className={`${styles.partnerCard} ${styles.slideInItem}`}>
-              <div className={styles.partnerLogo}>
-                <i className="fas fa-magnet fa-4x"></i>
-              </div>
-              <h3>Magnetic Technologies LLC</h3>
-              <p><strong>Since 1995 | Dubai, UAE</strong></p>
-              <p>Global leader in magnetic energy applications with deployments in 50+ countries. Our magnetic water treatment devices have irrigated over 500,000 hectares worldwide, supporting agriculture, poultry, fish farming, and manufacturing sectors.</p>
-              <ul className={styles.partnerFeatures}>
-                <li><i className="fas fa-check-circle"></i> 30+ years R&D in magnetic applications</li>
-                <li><i className="fas fa-check-circle"></i> Proven water treatment technology</li>
-                <li><i className="fas fa-check-circle"></i> Sustainable yield enhancement solutions</li>
-              </ul>
-            </div>
-            
-            <div className={`${styles.partnerCard} ${styles.slideInItem}`}>
-              <div className={styles.partnerLogo}>
-                <i className="fas fa-tractor fa-4x"></i>
-              </div>
-              <h3>Barak AgriTech</h3>
-              <p><strong>Pakistan's Agricultural Specialists</strong></p>
-              <p>Dedicated to modernizing Pakistani agriculture through innovative technologies and on-ground support. We've empowered over 1,000 farmers across 100,000+ acres with tailored solutions.</p>
-              <ul className={styles.partnerFeatures}>
-                <li><i className="fas fa-check-circle"></i> Local agronomic expertise</li>
-                <li><i className="fas fa-check-circle"></i> Installation & maintenance services</li>
-                <li><i className="fas fa-check-circle"></i> Agricultural consultancy</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Technology Section */}
-      <section className={`${styles.technology} ${styles.slideInContainer}`} ref={addToRefs}>
-        <div className={styles.container}>
-          <h2 className={`${styles.sectionTitle} ${styles.slideInItem}`}>Our <span>Technology</span></h2>
-          <p className={`${styles.sectionSubtitle} ${styles.slideInItem}`}>How magnetic treatment transforms agriculture</p>
-          
-          <div className={styles.techGrid}>
-            <div className={`${styles.techCard} ${styles.slideInItem}`}>
-              <div className={styles.techIcon}>
-                <i className="fas fa-atom"></i>
-              </div>
-              <h3>Magnetic Water Treatment</h3>
-              <ul>
-                <li>0.1–0.5 Tesla magnetic fields optimize water structure</li>
-                <li>Reduces irrigation volume by 30–50%</li>
-                <li>Enables use of brackish water (up to 7,000 ppm salts)</li>
-                <li>Boosts yields by 15–30% (up to 70% in trials)</li>
-              </ul>
-            </div>
-            
-            <div className={`${styles.techCard} ${styles.slideInItem}`}>
-              <div className={styles.techIcon}>
-                <i className="fas fa-seedling"></i>
-              </div>
-              <h3>Seed Treatment</h3>
-              <ul>
-                <li>50–100 mT magnetic fields activate seed enzymes</li>
-                <li>Speeds germination by 3–5 days</li>
-                <li>Reduces seed requirements by 10–15%</li>
-                <li>Increases root length by 20%</li>
-              </ul>
-            </div>
-            
-            <div className={`${styles.techCard} ${styles.slideInItem}`}>
-              <div className={styles.techIcon}>
-                <i className="fas fa-chart-line"></i>
-              </div>
-              <h3>Proven Results</h3>
-              <ul>
-                <li>15–30% yield increase for grains</li>
-                <li>20–50% boost for vegetables</li>
-                <li>15–25% more fruit with better quality</li>
-                <li>10–15 day shorter growth cycles</li>
-              </ul>
+            <div className="intro-image">
+              <img src={GlobalLocalCollage} alt="Global meets local partnership" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Offer Section */}
-      <section className={`${styles.offer} ${styles.slideInContainer}`} ref={addToRefs}>
-        <div className={styles.container}>
-          <h2 className={`${styles.sectionTitle} ${styles.slideInItem}`}>Our <span>Offer</span></h2>
-          <div className={`${styles.offerHighlight} ${styles.slideInItem}`}>
-            <h3>"You Invest Nothing, We Deliver Everything!"</h3>
-          </div>
-          
-          <div className={styles.offerGrid}>
-            <div className={`${styles.offerCard} ${styles.slideInItem}`}>
-              <div className={styles.offerIcon}>
-                <i className="fas fa-gift"></i>
+      {/* Technology Showcase */}
+      <section className="technology-showcase">
+        <div className="container">
+          <h2>Powered by Magnetic Technologies LLC</h2>
+          <div className="tech-grid">
+            <div className="tech-card">
+              <div className="tech-icon">
+                <img src={AGI400DIcon} alt="AGI400D Device" />
               </div>
-              <h3>Zero Upfront Costs</h3>
-              <p>Free magnetic devices and seed funnels installed on your pivot systems/tube wells</p>
+              <h3>AGI400D Technology</h3>
+              <p>
+                The same proven magnetic water treatment devices used successfully in 50+ countries,
+                now optimized for Pakistani soil and water conditions.
+              </p>
             </div>
-            
-            <div className={`${styles.offerCard} ${styles.slideInItem}`}>
-              <div className={styles.offerIcon}>
-                <i className="fas fa-handshake"></i>
+            <div className="tech-card">
+              <div className="tech-icon">
+                <img src={ResearchIcon} alt="Research" />
               </div>
-              <h3>Profit Sharing</h3>
-              <p>Freshwater: 40% additional yield to farmer<br />
-              Brackish: 50% net profit to farmer</p>
+              <h3>30 Years of R&D</h3>
+              <p>
+                Leveraging decades of scientific research and field testing by Magnetic Technologies LLC's
+                global team of agricultural engineers.
+              </p>
             </div>
-            
-            <div className={`${styles.offerCard} ${styles.slideInItem}`}>
-              <div className={styles.offerIcon}>
-                <i className="fas fa-tools"></i>
+            <div className="tech-card">
+              <div className="tech-icon">
+                <img src={AdaptationIcon} alt="Local Adaptation" />
               </div>
-              <h3>Comprehensive Support</h3>
-              <p>Installation, maintenance, and agricultural consultancy included</p>
+              <h3>Localized Solutions</h3>
+              <p>
+                Barak AgriTech's on-ground expertise ensures the technology is perfectly adapted to
+                Pakistan's unique farming challenges.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Impact Section */}
-      <section className={`${styles.impact} ${styles.slideInContainer}`} ref={addToRefs}>
-        <div className={styles.container}>
-          <h2 className={`${styles.sectionTitle} ${styles.slideInItem}`}>Our <span>Impact</span></h2>
-          
-          <div className={styles.impactTabs}>
-            <div className={`${styles.tabButtons} ${styles.slideInItem}`}>
-              <button 
-                className={`${styles.tabButton} ${activeTab === 'farmers' ? styles.active : ''}`} 
-                onClick={() => handleTabClick('farmers')}
-              >
-                For Farmers
-              </button>
-              <button 
-                className={`${styles.tabButton} ${activeTab === 'pakistan' ? styles.active : ''}`} 
-                onClick={() => handleTabClick('pakistan')}
-              >
-                For Pakistan
-              </button>
-              <button 
-                className={`${styles.tabButton} ${activeTab === 'environment' ? styles.active : ''}`} 
-                onClick={() => handleTabClick('environment')}
-              >
-                Environment
-              </button>
-            </div>
-            
-            <div className={`${styles.tabContent} ${activeTab === 'farmers' ? styles.active : ''} ${styles.slideInItem}`}>
-              <ul>
-                <li><i className="fas fa-coins"></i> Higher Profits: Retain 40-50% of additional yield with no upfront cost</li>
-                <li><i className="fas fa-tint"></i> Water Savings: 30-50% reduction in irrigation needs</li>
-                <li><i className="fas fa-clock"></i> Faster Growth: 10-15 day shorter crop cycles</li>
-                <li><i className="fas fa-shield-alt"></i> Resilience: Farm with brackish water in arid regions</li>
-              </ul>
-            </div>
-            
-            <div className={`${styles.tabContent} ${activeTab === 'pakistan' ? styles.active : ''} ${styles.slideInItem}`}>
-              <ul>
-                <li><i className="fas fa-wheat"></i> Food Security: Potential 10-15% national grain increase</li>
-                <li><i className="fas fa-map"></i> Land Reclamation: Reverse salinization on 1-2 million ha</li>
-                <li><i className="fas fa-users"></i> Rural Development: Empower large-scale farming operations</li>
-              </ul>
-            </div>
-            
-            <div className={`${styles.tabContent} ${activeTab === 'environment' ? styles.active : ''} ${styles.slideInItem}`}>
-              <ul>
-                <li><i className="fas fa-leaf"></i> Chemical Reduction: 40-50% less runoff polluting water</li>
-                <li><i className="fas fa-tree"></i> Soil Health: 20-30% salinity reduction over 2-3 seasons</li>
-                <li><i className="fas fa-cloud"></i> Climate Resilience: Sustainable farming in water-scarce regions</li>
-              </ul>
-            </div>
+      {/* Before/After Collage Section */}
+      <section className="results-collage">
+        <h2>Transforming Agriculture Together</h2>
+        <div className="collage-container">
+          <div className="before-section" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${BeforeCrop})` }}>
+            <h3>Before</h3>
+            <p>Struggling with brackish water, low yields, and high input costs</p>
           </div>
+          <div className="vs-circle">VS</div>
+          <div className="after-section" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${AfterCrop})` }}>
+            <h3>After</h3>
+            <p>Increased yields, reduced water usage, healthier crops</p>
+          </div>
+        </div>
+        <div className="partnership-badge">
+          <img src={MagneticLogo} alt="Magnetic Technologies LLC" />
+          <span>+</span>
+          <img src={BarakLogo} alt="Barak AgriTech" />
+        </div>
+      </section>
+
+      {/* Testimonial Section */}
+      <section className="testimonial">
+        <div className="container">
+          <blockquote>
+            "Our partnership with Barak AgriTech represents an exciting opportunity to bring our proven
+            magnetic agricultural solutions to Pakistan's farming community. Their local expertise makes
+            them the ideal partner for this expansion."
+            <footer>
+              <cite>- Magnetic Technologies LLC Leadership</cite>
+            </footer>
+          </blockquote>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className={`${styles.cta} ${styles.slideInContainer}`} ref={addToRefs}>
-        <div className={styles.container}>
-          <div className={styles.ctaContent}>
-            <h2 className={styles.slideInItem}>Ready to Transform Your Farming?</h2>
-            <p className={styles.slideInItem}>Join the Magnetic Yield Alliance with zero upfront investment</p>
+      <section className="cta-section">
+        <div className="container">
+          <h2>Ready to Join the Magnetic Yield Revolution?</h2>
+          <p>
+            Be part of the movement transforming Pakistani agriculture through our partnership with
+            Magnetic Technologies LLC.
+          </p>
+          <div className="cta-buttons">
+            <button className="primary-cta">Get Your Consultation</button>
+            <button className="secondary-cta">Download Case Studies</button>
           </div>
-          <a href="/contact" className={`${styles.primaryBtn} ${styles.slideInItem}`}>Contact Us Today</a>
+          <div className="partner-assurance">
+            <img src={MagneticLogo} alt="Magnetic Technologies LLC" />
+            <span>Technology Backed by 30+ Years of Global Success</span>
+          </div>
         </div>
       </section>
     </div>
