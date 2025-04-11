@@ -5,9 +5,12 @@ import './Magneticwater.css';
 import seedImage from '../assets/water.jpg';
 
 const Magneticwater = () => {
+    useEffect(() => {
+        AOS.init({ duration: 3000 });
+      }, []);
     return (
         <section className="seed-treatment">
-            <div className="seed-container">
+            <div className="seed-container"  data-aos="fade-up">
                 <div className="seed-header">
                     <h2 className="seed-title">
                         Water Treatment Devices
