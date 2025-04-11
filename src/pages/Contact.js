@@ -153,15 +153,7 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className={styles.infoCard}>
-                <div className={styles.icon}>
-                  <i className="fas fa-envelope"></i>
-                </div>
-                <div className={styles.content}>
-                  <h3>Email</h3>
-                  <p>info@agrovision.com<br /></p>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
