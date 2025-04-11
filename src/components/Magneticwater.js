@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSeedling } from '@fortawesome/free-solid-svg-icons';
 import './Magneticwater.css';
-import seedImage from '../assets/product.jpg';
+import seedImage from '../assets/water.jpg';
 
 const Magneticwater = () => {
     return (

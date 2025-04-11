@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.slider-section {
+  background-color: #000; /* Solid black background for all devices */
+  color: #fff;
+  position: relative;
+  text-align: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.slider-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 30px 40px;
+  background: transparent;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+}
+
+.slider-heading {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.slider-text {
+  font-size: 16px;
+  color: #f0f0f0;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.slider-button {
+  background: linear-gradient(to right, #ffffff, #e5e5e5);
+  color: #000;
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.slider-button:hover {
+  transform: translateY(-2px);
+}
+
+.brain-image {
+  position: absolute;
+  left: 30px;
+  bottom: 20px;
+  width: 550px;
+  z-index: 1;
+}
+
+.logo-image {
+  position: absolute;
+  right: 40px;
+  bottom: 10px;
+  width: 600px;
+  z-index: 1;
+}
+
+/* Laptop/Desktop screen adjustments */
+@media (min-width: 1024px) {
+  .slider-content {
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .slider-heading {
+    color: #222;
+  }
+
+  .slider-text {
+    color: #444;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .brain-image {
+    width: 350px;
+    left: 20px;
+  }
+
+  .logo-image {
+    width: 280px;
+    right: 20px;
+  }
+
+  .slider-heading {
+    font-size: 30px;
+  }
+
+  .slider-text {
+    font-size: 15px;
+  }
+}
+
+/* Tablets - Smaller */
+@media (max-width: 768px) {
+  .brain-image {
+    width: 220px;
+    left: 10px;
+  }
+
+  .logo-image {
+    width: 200px;
+    right: 10px;
+  }
+
+  .slider-heading {
+    font-size: 26px;
+  }
+
+  .slider-text {
+    font-size: 14px;
+  }
+
+  .slider-button {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .slider-section {
+    padding: 20px 15px;
+    background-color: #000; /* Black background for mobile too */
+    min-height: 100vh;
+  }
+
+  .slider-content {
+    padding: 0;
+    max-width: 100%;
+    text-align: center;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .slider-heading {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #fff;
+  }
+
+  .slider-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    max-width: 90%;
+    margin-bottom: 22px;
+  }
+
+  .slider-button {
+    padding: 12px 24px;
+    font-size: 15px;
+    border-radius: 30px;
+    background: #f2f2f2;
+    color: #000;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .brain-image {
+    width: 200px;
+    left: 10px;
+    bottom: 60px;
+    position: absolute;
+  }
+
+  .logo-image {
+    width: 240px;
+    right: 10px;
+    bottom: 40px;
+    position: absolute;
+  }
+}

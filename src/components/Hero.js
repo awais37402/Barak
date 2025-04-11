@@ -1,173 +1,92 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Hero.css';
-import BarakAgriLogo from '../assets/logo-removebg-preview.png';
-import WaterImage from '../assets/water.jpg';
-import MagneticImage from '../assets/qwerty.png';
-import MobileBackground from '../assets/responsive.png'; // Add mobile background image for Slider 1
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import SliderOne from './SliderOne';
+import SliderTwo from './SliderTwo';
+import SliderThree from './SliderThree';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024); // Check for desktop screen size
-  const [touchStartX, setTouchStartX] = useState(0); // To track the start position of the touch
-  const [touchEndX, setTouchEndX] = useState(0); // To track the end position of the touch
-  const navigate = useNavigate();
+  const [startTouch, setStartTouch] = useState(0);
 
-  const slides = [
-    {
-      title: 'Magnetic Yield Alliance',
-      subtitle: '',
-      description:
-        'Harnessing the power of magnetic fields to boost crop yields and improve plant health through innovative scientific approaches.',
-      buttonText: 'Learn More',
-      logo: '',
-      link: '/about', // Navigate to About page on button click
-      background: MagneticImage,
-      mobileBackground: MobileBackground, // Add mobile background specifically for slider 1
-    },
-    {
-      title: 'Water Treatment Devices',
-      subtitle: '',
-      description:
-        'Revolutionary magnetic field technology for enhanced seed performance and optimized water treatment for sustainable agriculture.',
-      buttonText: 'Discover Technology',
-      logo: '',
-      link: '/watertreatment',
-      background: WaterImage,
-    },
-    {
-      title: 'Barak AgriTech',
-      subtitle: 'Magnate Innovation',
-      description:
-        'Transforming Industries with Technology. We provide cutting-edge solutions that drive the future of agriculture.',
-      buttonText: 'Explore Our Solutions',
-      logo: BarakAgriLogo,
-      link: '/casestudies',
-      background: '',
-      className: 'barak-slide'
-    },
+  const sliders = [
+    <SliderOne key="1" />,
+    <SliderTwo key="2" />,
+    <SliderThree key="3" />
   ];
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth > 1024); // Update the state based on screen size
-    };
+  // Move to next slide
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % sliders.length);
+  };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // Move to previous slide
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + sliders.length) % sliders.length);
+  };
 
+  // Auto slide after 5 seconds
   useEffect(() => {
-    const slideInterval = setInterval(() => {
-      goToNextSlide();
-    }, 5000);
-    return () => clearInterval(slideInterval);
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000); // 5000ms = 5 seconds
+
+    // Clear interval on component unmount
+    return () => clearInterval(interval);
   }, [currentSlide]);
 
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-
-  const goToNextSlide = () => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
-
-  const handleDotClick = (index) => {
-    setCurrentSlide(index);
-  };
-
+  // Handle touch start event
   const handleTouchStart = (e) => {
     const touchStart = e.touches[0].clientX;
-    setTouchStartX(touchStart);
+    setStartTouch(touchStart);
   };
 
-  const handleTouchMove = (e) => {
-    const touchMove = e.touches[0].clientX;
-    setTouchEndX(touchMove);
-  };
-
-  const handleTouchEnd = () => {
-    if (touchStartX - touchEndX > 50) {
-      goToNextSlide(); // Swipe left
-    } else if (touchEndX - touchStartX > 50) {
-      goToPrevSlide(); // Swipe right
+  // Handle touch end event for swipe detection
+  const handleTouchEnd = (e) => {
+    const touchEnd = e.changedTouches[0].clientX;
+    if (startTouch - touchEnd > 50) {
+      nextSlide(); // Swipe left -> next slide
+    } else if (touchEnd - startTouch > 50) {
+      prevSlide(); // Swipe right -> previous slide
     }
   };
 
-  const { title, subtitle, description, buttonText, logo, link, background, mobileBackground, className } = slides[currentSlide];
-
-  const handleButtonClick = () => {
-    // Ensure navigation occurs on both mobile and desktop
-    navigate(link); // Navigate to the respective page
-  };
-
   return (
-    <section
-      className={`hero-section ${className || ''}`}
-      data-slide={currentSlide}
-      onTouchStart={handleTouchStart} // Add touch events
-      onTouchMove={handleTouchMove}
+    <div
+      onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <div
-        className="hero-slider"
-        style={{
-          backgroundImage: currentSlide === 0 && !isDesktop
-            ? `url(${mobileBackground})` // For Slider 1 and mobile, use mobile background
-            : `url(${background})`, // For all other cases, use the original slide background
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {isDesktop && (
-          <>
-            <button className="slider-arrow left-arrow" onClick={goToPrevSlide}>
-              <FaChevronLeft />
-            </button>
-            <button className="slider-arrow right-arrow" onClick={goToNextSlide}>
-              <FaChevronRight />
-            </button>
-          </>
-        )}
-        <div className="slide">
-          <div className="slide-content">
-            {logo && (
-              <div className="slide-logo">
-                <img src={logo} alt="Slide Visual" className="hero-logo" />
-              </div>
-            )}
-            <div className="slide-text">
-              <h1 className="hero-title">{title}</h1>
-              {subtitle && <h2 className="hero-subtitle">{subtitle}</h2>}
-              <p className="hero-description">{description}</p>
-              {currentSlide === 0 ? (
-                <button
-                  className="explore-button"
-                  onClick={handleButtonClick}  // Use handleButtonClick for mobile and desktop routing
-                >
-                  {buttonText}
-                </button>
-              ) : (
-                <button className="explore-button" onClick={handleButtonClick}>
-                  {buttonText}
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
+      {sliders[currentSlide]}
+      <div style={navStyles.nav}>
+        <button style={navStyles.btn} onClick={prevSlide}>
+          <span style={navStyles.icon}>❮</span>
+        </button>
+        <button style={navStyles.btn} onClick={nextSlide}>
+          <span style={navStyles.icon}>❯</span>
+        </button>
       </div>
-      <div className="slider-dots">
-        {slides.map((_, index) => (
-          <div
-            key={index}
-            className={`dot ${currentSlide === index ? 'active' : ''}`}
-            onClick={() => handleDotClick(index)}
-          />
-        ))}
-      </div>
-    </section>
+    </div>
   );
+};
+
+const navStyles = {
+  nav: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '20px',
+    marginTop: '20px',
+  },
+  btn: {
+    background: 'transparent',
+    border: 'none',
+    borderRadius: '50%',
+    padding: '15px',
+    fontSize: '24px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s, transform 0.3s',
+  },
+  icon: {
+    fontSize: '30px',
+    color: '#333',
+  },
 };
 
 export default Hero;
