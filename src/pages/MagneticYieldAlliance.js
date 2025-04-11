@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './MagneticYieldAlliance.css';
 
 // Logo imports
@@ -21,10 +21,41 @@ import BeforeCrop from '../assets/before-crop.jpeg';
 import AfterCrop from '../assets/after-crop.jpg';
 
 const MagneticYieldAlliance = () => {
+  useEffect(() => {
+    const sections = document.querySelectorAll('.fade-in-up');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
   return (
     <div className="alliance-page">
       {/* Hero Banner with Partnership Highlight */}
-      <section className="hero-banner" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${HeroBackground})` }}>
+      <section
+        className="hero-banner fade-in-up"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${HeroBackground})`,
+        }}
+      >
         <div className="hero-content">
           <div className="partner-logos">
             <img src={BarakLogo} alt="Barak AgriTech" className="logo" />
@@ -38,18 +69,18 @@ const MagneticYieldAlliance = () => {
       </section>
 
       {/* Partnership Introduction */}
-      <section className="partnership-intro">
+      <section className="partnership-intro fade-in-up">
         <div className="container">
           <h2>Our Strategic Partnership</h2>
           <div className="intro-grid">
             <div className="intro-text">
               <p>
-                Barak AgriTech has partnered with <strong>Magnetic Technologies LLC</strong>, Dubai's leading 
-                agricultural technology innovator since 1995, to bring proven magnetic water treatment 
+                Barak AgriTech has partnered with <strong>Magnetic Technologies LLC</strong>, Dubai's leading
+                agricultural technology innovator since 1995, to bring proven magnetic water treatment
                 solutions to Pakistan.
               </p>
               <p>
-                Together, we form the <strong>Magnetic Yield Alliance</strong>, combining 30+ years of 
+                Together, we form the <strong>Magnetic Yield Alliance</strong>, combining 30+ years of
                 international success with deep local farming expertise.
               </p>
               <div className="achievement-stats">
@@ -75,7 +106,7 @@ const MagneticYieldAlliance = () => {
       </section>
 
       {/* Technology Showcase */}
-      <section className="technology-showcase">
+      <section className="technology-showcase fade-in-up">
         <div className="container">
           <h2>Powered by Magnetic Technologies LLC</h2>
           <div className="tech-grid">
@@ -114,15 +145,25 @@ const MagneticYieldAlliance = () => {
       </section>
 
       {/* Before/After Collage Section */}
-      <section className="results-collage">
+      <section className="results-collage fade-in-up">
         <h2>Transforming Agriculture Together</h2>
         <div className="collage-container">
-          <div className="before-section" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${BeforeCrop})` }}>
+          <div
+            className="before-section"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${BeforeCrop})`,
+            }}
+          >
             <h3>Before</h3>
             <p>Struggling with brackish water, low yields, and high input costs</p>
           </div>
           <div className="vs-circle">VS</div>
-          <div className="after-section" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${AfterCrop})` }}>
+          <div
+            className="after-section"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${AfterCrop})`,
+            }}
+          >
             <h3>After</h3>
             <p>Increased yields, reduced water usage, healthier crops</p>
           </div>
@@ -135,7 +176,7 @@ const MagneticYieldAlliance = () => {
       </section>
 
       {/* Testimonial Section */}
-      <section className="testimonial">
+      <section className="testimonial fade-in-up">
         <div className="container">
           <blockquote>
             "Our partnership with Barak AgriTech represents an exciting opportunity to bring our proven
@@ -149,7 +190,7 @@ const MagneticYieldAlliance = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
+      <section className="cta-section fade-in-up">
         <div className="container">
           <h2>Ready to Join the Magnetic Yield Revolution?</h2>
           <p>

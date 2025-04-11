@@ -461,3 +461,40 @@
       transform: translateX(-50%);
     }
   }
+
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s ease-out;
+  }
+  
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+
+  .cta-button, .primary-cta, .secondary-cta {
+    transition: all 0.3s ease-in-out;
+  }
+  .tech-card {
+    transition: all 0.4s ease;
+    transform: translateY(0);
+  }
+  
+  .tech-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  .intro-image img {
+    transition: transform 0.5s ease;
+  }
+  
+  .intro-image img:hover {
+    transform: scale(1.03);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+      
