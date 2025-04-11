@@ -5,6 +5,7 @@ import WaterBenefits from '../components/WaterBenefits';
 import StatsSection from '../components/StatsSection';
 import Testimonials from '../components/Testimonials';
 import SurveyDownload from '../components/SurveyDownload';
+import Gallery from '../components/Gallery';
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
       
       <SurveyDownload />
       <StatsSection />
+      <Gallery />
       
       <Testimonials />
     </>
