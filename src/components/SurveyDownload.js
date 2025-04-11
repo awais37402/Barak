@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './SurveyDownload.css';
-import surveyDoc from '../assets/Magnetic Yield Alliance - Survey Form.docx';
 
 const SurveyDownload = () => {
   return (
@@ -16,11 +15,12 @@ const SurveyDownload = () => {
       </h2>
 
       <a 
-        href={surveyDoc} 
-        download 
+        href="https://docs.google.com/forms/d/e/1FAIpQLSc7NOvWuB_NC3E9bYriVLQopmFNHJDAOI0vnqKIT5u9qvXwyg/viewform?pli=1" 
+        target="_blank" 
+        rel="noopener noreferrer"
         className="download-button"
       >
-        Download Survey Form
+        Fill Out Survey Form
       </a>
     </motion.div>
   );
