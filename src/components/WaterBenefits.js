@@ -90,25 +90,9 @@ const WaterBenefits = () => {
           <div className="text-content">
             <h3>The Science Behind Our Solution</h3>
             <p>
-              Our magnetic water treatment devices use precisely calibrated magnetic fields to alter water's molecular structure. 
-              This process breaks large water clusters into smaller, more bioavailable units that penetrate soil more effectively 
-              and enhance nutrient absorption. For seeds, the treatment activates enzymes and stimulates metabolic processes, 
-              resulting in faster germination and stronger initial growth - all without chemicals or electricity.
+            Magnetic devices use powerful magnets to improve water and seeds. They break water into smaller clusters for better soil absorption and activate seeds for faster growth—saving water, boosting yields, and enabling farming with saline water, all naturally.
             </p>
-            <div className="stats-grid">
-              <div className="stat-item">
-                <div className="stat-value">30-50%</div>
-                <div className="stat-label">Water Savings</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">90-100%</div>
-                <div className="stat-label">Germination Rate</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">8000ppm</div>
-                <div className="stat-label">Saltwater Tolerance</div>
-              </div>
-            </div>
+           
           </div>
         </div>
       </div>
