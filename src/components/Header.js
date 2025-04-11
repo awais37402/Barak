@@ -28,8 +28,8 @@ const Header = () => {
 
   const navLinks = [
     { to: '/', label: 'Home' },
-    { to: '/magneticyieldalliance', label: 'Magnetic Yield Alliance' },
     { to: '/about', label: 'About Us' },
+    { to: '/magneticyieldalliance', label: 'Magnetic Yield Alliance' },
     { to: 'https://www.magnetic.ae/', label: 'Magnetic.ae', external: true },
     { to: '/casestudies', label: 'Case Studies' },
   ];
@@ -39,12 +39,26 @@ const Header = () => {
       <div className="header-container">
         <div className="header-content">
           {/* Logo and Name */}
-          <div className="logo-container">
-            <Link to="/" className="logo-link" aria-label="Barak AgriTech Home">
-              <img src={logo} alt="Barak AgriTech Logo" className="logo-img" />
-              <span className="logo-text">Barak AgriTech</span>
-            </Link>
-          </div>
+          <div className="logo-container" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+  <img 
+    src={logo} 
+    alt="Barak AgriTech Logo" 
+    className="logo-img" 
+    style={{ height: '70px', width: '70px' }} 
+  />
+  <span 
+    className="logo-text" 
+    style={{
+      fontFamily: "'Poppins', sans-serif",
+      fontWeight: 600,
+      fontSize: '1.25rem',
+      color: '#1e3f20',
+      letterSpacing: '-0.5px'
+    }}
+  >
+    Barak AgriTech
+  </span>
+</div>
 
           {/* Navigation */}
           <nav className="desktop-nav">
@@ -81,44 +95,58 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Unique Hamburger for Mobile */}
+          {/* Hamburger Menu */}
           <button
             className={`hamburger ${isMenuOpen ? 'active' : ''}`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
-            <div className="hamburger-box">
-              <div className="hamburger-inner"></div>
-            </div>
+            <span className="hamburger-line hamburger-line-1"></span>
+            <span className="hamburger-line hamburger-line-2"></span>
+            <span className="hamburger-line hamburger-line-3"></span>
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
+      <div className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}></div>
       <nav className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
         <div className="mobile-nav-content">
           <ul className="mobile-nav-list">
-            {navLinks.map((link) => (
-              <li key={link.to} className="mobile-nav-item">
+            {navLinks.map((link, index) => (
+              <li 
+                key={link.to} 
+                className="mobile-nav-item"
+                style={{ transitionDelay: `${isMenuOpen ? index * 0.1 : 0}s` }}
+              >
                 {link.external ? (
                   <a
                     href={link.to}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mobile-nav-link"
+                    onClick={toggleMenu}
                   >
                     {link.label}
                   </a>
                 ) : (
-                  <Link to={link.to} className="mobile-nav-link">
+                  <Link 
+                    to={link.to} 
+                    className={`mobile-nav-link ${location.pathname === link.to ? 'active' : ''}`}
+                    onClick={toggleMenu}
+                  >
                     {link.label}
                   </Link>
                 )}
               </li>
             ))}
             <li className="mobile-nav-item">
-              <Link to="/contact" className="mobile-contact-button">
+              <Link 
+                to="/contact" 
+                className="mobile-contact-button"
+                onClick={toggleMenu}
+              >
                 Contact Us
               </Link>
             </li>
