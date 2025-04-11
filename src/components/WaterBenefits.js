@@ -38,10 +38,8 @@ const WaterBenefits = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Add class to the section itself
             entry.target.classList.add("in-view")
 
-            // Animate heading and description
             setTimeout(() => {
               const heading = entry.target.querySelector(".section-title")
               const description = entry.target.querySelector(".section-description")
@@ -50,18 +48,13 @@ const WaterBenefits = () => {
               if (description) description.classList.add("animate")
             }, 100)
 
-            // Add staggered animation to each card
             const cards = Array.from(entry.target.querySelectorAll(".card"))
             cards.forEach((card, index) => {
-              setTimeout(
-                () => {
-                  card.classList.add("animate")
-                },
-                400 + 150 * index,
-              ) // Delay cards until after heading/description
+              setTimeout(() => {
+                card.classList.add("animate")
+              }, 400 + 150 * index)
             })
 
-            // Unobserve after animation is triggered
             observer.unobserve(entry.target)
           }
         })
@@ -69,8 +62,8 @@ const WaterBenefits = () => {
       {
         root: null,
         rootMargin: "0px",
-        threshold: 0.1, // Trigger when 10% of the section is visible
-      },
+        threshold: 0.1,
+      }
     )
 
     if (sectionRef.current) {

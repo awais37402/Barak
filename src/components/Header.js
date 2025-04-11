@@ -29,7 +29,8 @@ const Header = () => {
   const navLinks = [
     { to: '/', label: 'Home' },
     { to: '/magneticyieldalliance', label: 'Magnetic Yield Alliance' },
-    { to: '/about', label: 'About' },
+    { to: '/about', label: 'About Us' },
+    { to: 'https://www.magnetic.ae/', label: 'Magnetic.ae', external: true },
     { to: '/casestudies', label: 'Case Studies' },
   ];
 
@@ -50,10 +51,22 @@ const Header = () => {
             <ul className="nav-list">
               {navLinks.map((link) => (
                 <li key={link.to} className={`nav-item ${location.pathname === link.to ? 'active' : ''}`}>
-                  <Link to={link.to} className="nav-link">
-                    <span className="link-text">{link.label}</span>
-                    <span className="link-underline"></span>
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.to}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="nav-link"
+                    >
+                      <span className="link-text">{link.label}</span>
+                      <span className="link-underline"></span>
+                    </a>
+                  ) : (
+                    <Link to={link.to} className="nav-link">
+                      <span className="link-text">{link.label}</span>
+                      <span className="link-underline"></span>
+                    </Link>
+                  )}
                 </li>
               ))}
               <li className="nav-item">
@@ -69,7 +82,7 @@ const Header = () => {
           </nav>
 
           {/* Unique Hamburger for Mobile */}
-          <button 
+          <button
             className={`hamburger ${isMenuOpen ? 'active' : ''}`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
@@ -88,9 +101,20 @@ const Header = () => {
           <ul className="mobile-nav-list">
             {navLinks.map((link) => (
               <li key={link.to} className="mobile-nav-item">
-                <Link to={link.to} className="mobile-nav-link">
-                  {link.label}
-                </Link>
+                {link.external ? (
+                  <a
+                    href={link.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mobile-nav-link"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link to={link.to} className="mobile-nav-link">
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
             <li className="mobile-nav-item">

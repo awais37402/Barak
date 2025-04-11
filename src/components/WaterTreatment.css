@@ -1,85 +1,84 @@
-/* SeedTreatment.css */
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Basic Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
 .seed-treatment {
-    width: 100%;
-    padding: 80px 0;
-    background-color: #f5f9f4;
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    animation: fadeIn 1.5s ease-out;
 }
 
 .seed-container {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
-    z-index: 2;
 }
 
 .seed-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .seed-title {
     font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    line-height: 1.2;
-    color: #1e3a1a;
-    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
 }
 
 .seed-subtitle {
-    font-size: 1.1rem;
-    color: #4a6655;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.6;
-    font-weight: 400;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 10px;
 }
 
 .seed-content {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 40px;
-    align-items: center;
+    flex-wrap: wrap;
 }
 
-.seed-image {
-    flex: 1;
-    min-width: 300px;
-    position: relative;
-}
-
-.seed-image-wrapper {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(30, 58, 26, 0.1);
-}
-
-.seed-image-wrapper img {
+/* Image Styling */
+.seed-image img {
     width: 100%;
     height: auto;
-    display: block;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Seed Details Styling */
 .seed-details {
+    max-width: 600px;
     flex: 1;
-    min-width: 300px;
 }
 
 .seed-description {
     font-size: 1rem;
-    line-height: 1.8;
-    color: #3a4a3e;
-    margin-bottom: 30px;
-    font-weight: 400;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
+.additional-benefits {
+    display: block;
+    font-weight: 600;
+    color: #3a3a3a;
+}
+
+/* Benefits List Styling */
 .seed-benefits {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 15px;
 }
 
@@ -87,37 +86,39 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 12px;
-    background-color: #ecf3e9;
-    border-radius: 8px;
-    border-left: 4px solid #3a7a2c;
+    font-size: 1rem;
+    color: #555;
 }
 
 .seed-benefit-icon {
-    color: #3a7a2c;
-    font-size: 1rem;
+    font-size: 1.4rem;
+    color: #6c9a8b;
 }
 
 .seed-benefit-text {
-    color: #1e3a1a;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    font-weight: 500;
+    font-weight: 400;
 }
 
-@media (max-width: 1024px) {
-    .seed-title {
-        font-size: 2.2rem;
+/* Smooth Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
     }
-
-    .seed-content {
-        gap: 30px;
+    100% {
+        opacity: 1;
     }
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
-    .seed-treatment {
-        padding: 60px 0;
+    .seed-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .seed-details {
+        max-width: 100%;
+        padding: 20px;
     }
 
     .seed-title {
@@ -125,16 +126,16 @@
     }
 
     .seed-subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .seed-benefits {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .seed-image,
-    .seed-details {
-        flex: 100%;
+    .seed-benefit-item {
+        font-size: 0.9rem;
     }
 }
 
@@ -143,7 +144,11 @@
         font-size: 1.8rem;
     }
 
-    .seed-benefit-item {
-        padding: 10px;
+    .seed-subtitle {
+        font-size: 1rem;
+    }
+
+    .seed-description {
+        font-size: 0.9rem;
     }
 }

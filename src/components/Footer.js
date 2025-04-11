@@ -36,10 +36,7 @@ const Footer = () => {
               <FaPhone className="footer-icon" />
               <span>+92 307 7950777</span>
             </li>
-            <li>
-              <FaEnvelope className="footer-icon" />
-              <span>info@agrovision.com</span>
-            </li>
+            
           </ul>
         </div>
       </div>

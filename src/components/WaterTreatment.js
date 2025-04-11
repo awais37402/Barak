@@ -1,17 +1,15 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSeedling } from '@fortawesome/free-solid-svg-icons';
-import './Magneticwater.css';
-import seedImage from '../assets/water.jpg';
+import './WaterTreatment.css';
+import seedImage from '../assets/product.jpg';
 
 const Magneticwater = () => {
     return (
         <section className="seed-treatment">
             <div className="seed-container">
                 <div className="seed-header">
-                    <h2 className="seed-title">
-                        Water Treatment Devices
-                    </h2>
+                    <h2 className="seed-title">Seed Treatment Devices</h2>
                     <p className="seed-subtitle">
                         Revolutionary magnetic field technology for enhanced seed performance
                     </p>
@@ -37,7 +35,7 @@ const Magneticwater = () => {
                                 Improved seed quality, faster development, enhanced vitality
                             </span>
                         </p>
-                        
+
                         <div className="seed-benefits">
                             {[ 
                                 "Seed germination rates achieve 80-100%",

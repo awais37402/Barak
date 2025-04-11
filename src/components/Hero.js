@@ -8,9 +8,10 @@ const Hero = () => {
   const [startTouch, setStartTouch] = useState(0);
 
   const sliders = [
+    <SliderThree key="3" />,
     <SliderOne key="1" />,
-    <SliderTwo key="2" />,
-    <SliderThree key="3" />
+    <SliderTwo key="2" />
+    
   ];
 
   // Move to next slide
