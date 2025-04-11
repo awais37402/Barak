@@ -5,7 +5,7 @@
   right: 30px;
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  background: linear-gradient(135deg, #7bb661, #a3d977); /* Leafy green to soft lime */
   color: white;
   border: none;
   border-radius: 50%;
@@ -24,11 +24,12 @@
 .scroll-to-top-button.visible {
   opacity: 1;
   transform: translateY(0);
+  animation: float 3s ease-in-out infinite;
 }
 
 /* Hover Effects */
 .scroll-to-top-button:hover {
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  background: linear-gradient(135deg, #c2b280, #e1c699); /* Soil/beige tone on hover */
   transform: scale(1.1) rotate(10deg);
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
 }
@@ -53,10 +54,6 @@
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
-}
-
-.scroll-to-top-button.visible {
-  animation: float 3s ease-in-out infinite;
 }
 
 /* Responsive Design */
