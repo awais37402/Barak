@@ -114,6 +114,23 @@ body, p, li, .partner-description,
   object-fit: contain;
 }
 
+.grow-more {
+  font-size: 1.5rem; /* Adjust size to stand out but not overpower the title */
+  font-weight: 600; /* Bold to emphasize the message */
+  color: #ffffff; /* White to contrast with the dark hero background */
+  text-align: center; /* Center-align to match the layout */
+  margin: 1rem 0; /* Space above and below to separate from tagline and button */
+  text-transform: uppercase; /* Uppercase for impact */
+  letter-spacing: 1px; /* Slight spacing for readability */
+  opacity: 0.9; /* Slightly less opaque for a subtle effect */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth hover animation */
+}
+
+.grow-more:hover {
+  opacity: 1; /* Full opacity on hover */
+  transform: scale(1.05); /* Slight scale-up for emphasis */
+}
+
 .partnership-symbol {
   font-size: 32px;
   font-weight: bold;

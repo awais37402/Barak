@@ -11,15 +11,17 @@ import logo from "../assets/logo-removebg-preview.png"
 
 import brain from "../assets/Magnetic_Yield_Alliance__4.png"
 import water from "../assets/two.jpg"
-import product from "../assets/seven.png"
+import product from "../assets/product.png"
 import one from "../assets/one.jpg"
 import two from "../assets/two.jpg"
 import three from "../assets/three.jpg"
+
 import four from "../assets/four.jpg"
 import five from "../assets/five.jpg"
-import six from "../assets/six.jpg"
-import seven from "../assets/seven.png"
-import eight from "../assets/eight.jpg"
+
+
+
+
 import nine from "../assets/nine.jpeg"
 import ten from "../assets/ten.jpeg"
 import eleven from "../assets/eleven.jpeg"
@@ -35,11 +37,13 @@ const images = {
   one,
   two,
   three,
+  
   four,
   five,
-  six,
-  seven,
-  eight,
+  
+ 
+ 
+ 
   nine,
   ten,
   eleven,
@@ -51,8 +55,9 @@ const Home = () => {
   return (
     <div className="home-container">
       <Hero />
-      <WaterTreatment />
       <WaterBenefits />
+      <WaterTreatment />
+      
       <StatsSection />
       <SurveyDownload />
       <Gallery />
@@ -157,7 +162,7 @@ const SliderThree = () => {
           <h1>Barak AgriTech</h1>
           <p>
             Barak AgriTech (Pvt.) Ltd is revolutionizing Pakistani agriculture by partnering with Magnetic Technologies
-            LLC to boost crop yields by 15–30%, cut input costs, and enable farming with brackish water—offering a
+            LLC to boost crop yields by 15–30%, cut input costs, and enable farming with brackish water up to 7000ppm—offering a
             zero-investment, high-return solution for sustainable farming.
           </p>
           <button className="explore-btn" onClick={handleExploreClick}>
@@ -169,6 +174,104 @@ const SliderThree = () => {
   );
 };
 
+
+// Water Benefits Component
+const WaterBenefits = () => {
+  const sectionRef = useRef(null)
+  const [inView, setInView] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.1 })
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  const benefits = [
+    {
+      icon: "🌱",
+      title: "Planting Stage",
+      description:
+        "Our seed treatment technology ensures optimal germination rates (90–100%) and stronger initial growth, reducing seed costs by 30–50%.",
+    },
+    {
+      icon: "💧",
+      title: "Irrigation",
+      description:
+        "Water treatment enables use of brackish water (up to 7000ppm) while preventing salt buildup in irrigation systems.",
+    },
+    {
+      icon: "📈",
+      title: "Growth Period",
+      description:
+        "Enhances nutrient uptake (P, K, N, Fe) leading to 15–30% increased yields and stronger disease resistance.",
+    },
+    {
+      icon: "🌿",
+      title: "Soil Health",
+      description:
+        "Improves soil aeration and structure over time, reducing fertilizer requirements by up to 50% while maintaining productivity.",
+    },
+  ]
+
+  return (
+    <section className="water-benefits" ref={sectionRef}>
+      <div className={`how-it-works ${inView ? "animate" : ""}`}>
+        <div className="water-drop-animation">
+          <div className="drop"></div>
+          <div className="ripple"></div>
+          <div className="ripple delay-1"></div>
+          <div className="ripple delay-2"></div>
+        </div>
+        <div className="text-content">
+          <h3>The Science Behind Our Solution</h3>
+          <p>
+            Magnetic devices use powerful magnets to improve water and seeds. They break water into smaller clusters for
+            better soil absorption and activate seeds for faster growth—saving water, boosting yields, and enabling
+            farming with saline water up to 7000ppm, all naturally.
+          </p>
+        </div>
+      </div>
+
+      <div className="water-background"></div>
+
+      <div className="section-header">
+        <header className={inView ? "animate" : ""}>
+          <h3>
+            How our <mark>Water Treatment</mark> Transforms Agriculture
+          </h3>
+        </header>
+
+        <article className={`section-description ${inView ? "animate" : ""}`}>
+          <p>Revolutionary technology that supports every stage of modern agriculture – from planting to harvest.</p>
+        </article>
+      </div>
+
+      <div className="benefit-cards-container">
+        <div className="benefit-cards">
+          {benefits.map((item, index) => (
+            <div
+              key={index}
+              className={`card ${inView ? "animate" : ""}`}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
+              <div className="card-inner">
+                <div className="card-front">
+                  <div className="icon-circle">
+                    <span className="icon">{item.icon}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                </div>
+                <div className="card-back">
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
 // Water Treatment Component
 const WaterTreatment = () => {
   const [expanded, setExpanded] = useState(false)
@@ -242,103 +345,7 @@ const WaterTreatment = () => {
   )
 }
 
-// Water Benefits Component
-const WaterBenefits = () => {
-  const sectionRef = useRef(null)
-  const [inView, setInView] = useState(false)
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.1 })
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
-
-  const benefits = [
-    {
-      icon: "🌱",
-      title: "Planting Stage",
-      description:
-        "Our seed treatment technology ensures optimal germination rates (90–100%) and stronger initial growth, reducing seed costs by 30–50%.",
-    },
-    {
-      icon: "💧",
-      title: "Irrigation",
-      description:
-        "Water treatment enables use of brackish water (up to 8000ppm) while preventing salt buildup in irrigation systems.",
-    },
-    {
-      icon: "📈",
-      title: "Growth Period",
-      description:
-        "Enhances nutrient uptake (P, K, N, Fe) leading to 15–50% increased yields and stronger disease resistance.",
-    },
-    {
-      icon: "🌿",
-      title: "Soil Health",
-      description:
-        "Improves soil aeration and structure over time, reducing fertilizer requirements by up to 50% while maintaining productivity.",
-    },
-  ]
-
-  return (
-    <section className="water-benefits" ref={sectionRef}>
-      <div className={`how-it-works ${inView ? "animate" : ""}`}>
-        <div className="water-drop-animation">
-          <div className="drop"></div>
-          <div className="ripple"></div>
-          <div className="ripple delay-1"></div>
-          <div className="ripple delay-2"></div>
-        </div>
-        <div className="text-content">
-          <h3>The Science Behind Our Solution</h3>
-          <p>
-            Magnetic devices use powerful magnets to improve water and seeds. They break water into smaller clusters for
-            better soil absorption and activate seeds for faster growth—saving water, boosting yields, and enabling
-            farming with saline water, all naturally.
-          </p>
-        </div>
-      </div>
-
-      <div className="water-background"></div>
-
-      <div className="section-header">
-        <header className={inView ? "animate" : ""}>
-          <h3>
-            How our <mark>Water Treatment</mark> Transforms Agriculture
-          </h3>
-        </header>
-
-        <article className={`section-description ${inView ? "animate" : ""}`}>
-          <p>Revolutionary technology that supports every stage of modern agriculture – from planting to harvest.</p>
-        </article>
-      </div>
-
-      <div className="benefit-cards-container">
-        <div className="benefit-cards">
-          {benefits.map((item, index) => (
-            <div
-              key={index}
-              className={`card ${inView ? "animate" : ""}`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              <div className="card-inner">
-                <div className="card-front">
-                  <div className="icon-circle">
-                    <span className="icon">{item.icon}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                </div>
-                <div className="card-back">
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
 
 // Stats Section Component
 const StatsSection = () => {

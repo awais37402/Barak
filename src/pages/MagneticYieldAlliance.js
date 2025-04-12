@@ -56,25 +56,26 @@ const MagneticYieldAlliance = () => {
     <div className="magnetic-yield-alliance">
       {/* Hero Section */}
       <section 
-        className="hero-banner animate-on-scroll" 
-        style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${HeroBackground})` }}
-      >
-        <div className="hero-content">
-          <div className="partner-logos">
-            <img src={BarakLogo} alt="Barak AgriTech (Pvt) Ltd." className="logo pulse" />
-            <span className="partnership-symbol glow">✧</span>
-            <img src={MagneticLogo} alt="Magnetic Technologies LLC" className="logo pulse" />
-          </div>
-          <h1 className="hero-title">Magnetic Yield Alliance</h1>
-          <p className="tagline shimmer">Global Magnetic Technology Expertise Meets Local Agricultural Innovation</p>
-          <button
-            className="cta-button sparkle"
-            onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSc7NOvWuB_NC3E9bYriVLQopmFNHJDAOI0vnqKIT5u9qvXwyg/viewform', '_blank')}
-          >
-            Fill Out the Survey Form
-          </button>
-        </div>
-      </section>
+  className="hero-banner animate-on-scroll" 
+  style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${HeroBackground})` }}
+>
+  <div className="hero-content">
+    <div className="partner-logos">
+      <img src={BarakLogo} alt="Barak AgriTech (Pvt) Ltd." className="logo pulse" />
+      <span className="partnership-symbol glow">✧</span>
+      <img src={MagneticLogo} alt="Magnetic Technologies LLC" className="logo pulse" />
+    </div>
+    <h1 className="hero-title">Magnetic Yield Alliance</h1>
+    <p className="tagline shimmer">Global Magnetic Technology Expertise Meets Local Agricultural Innovation</p>
+    <p className="grow-more">Grow More with Zero Cost</p>
+    <button
+      className="cta-button sparkle"
+      onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSc7NOvWuB_NC3E9bYriVLQopmFNHJDAOI0vnqKIT5u9qvXwyg/viewform', '_blank')}
+    >
+      Fill Out the Survey Form
+    </button>
+  </div>
+</section>
 
       {/* Alliance Overview */}
       <section className="alliance-overview">
@@ -165,8 +166,7 @@ const MagneticYieldAlliance = () => {
               </div>
               <h3>Cutting-Edge Technology</h3>
               <p>
-                Harnessing the power of 12,000+ gauss magnetic fields to optimize water structure 
-                and enhance nutrient absorption for healthier, more productive crops.
+              Harnessing the power magnetic fields to optimize water structure and enhance nutrient absorption for healthier, more productive crops even in saline conditions up to 7000ppm
               </p>
             </div>
             
@@ -250,8 +250,9 @@ const MagneticYieldAlliance = () => {
               <div className="offer-icon">💰</div>
               <h3>Zero Upfront Costs</h3>
               <p>
-                Through our partnership with Magnetic Technologies LLC, Dubai—a global leader with 30+ years of success—we provide the water treatment and seed treatment devices completely free. These magnetic devices enhance water absorption and energize seeds, increasing your yields by 15–30% with no upfront cost.
-              </p>
+  Through our partnership with Magnetic Technologies LLC, Dubai—a global leader with 30+ years of success—we provide the water treatment and seed treatment devices <strong>completely free</strong>. These magnetic devices enhance water absorption and energize seeds, increasing your yields by <strong>15–30%</strong> with <strong>no upfront cost</strong>.
+</p>
+
             </article>
 
             <article className="offer-card animate-on-scroll">
@@ -259,7 +260,7 @@ const MagneticYieldAlliance = () => {
               <h3>Profit Sharing</h3>
               <section>
                 <h4>Brackish Water Farms</h4>
-                <p>For crops grown on saline land up to 7000 ppm.</p>
+                <p>For crops grown on saline land, we split the net profit 50/50.</p>
               </section>
               <section>
                 <h4>Freshwater Farms</h4>
@@ -289,6 +290,12 @@ const MagneticYieldAlliance = () => {
 
           <div className="impact-tabs">
             <div className="tab-header">
+            <button 
+                className={`tab-button ${activeTab === 'Economics' ? 'active' : ''}`}
+                onClick={() => setActiveTab('Economics')}
+              >
+                Economics
+              </button>
               <button 
                 className={`tab-button ${activeTab === 'Productivity' ? 'active' : ''}`}
                 onClick={() => setActiveTab('Productivity')}
@@ -301,12 +308,7 @@ const MagneticYieldAlliance = () => {
               >
                 Sustainability
               </button>
-              <button 
-                className={`tab-button ${activeTab === 'Economics' ? 'active' : ''}`}
-                onClick={() => setActiveTab('Economics')}
-              >
-                Economics
-              </button>
+             
             </div>
             
             <div className={`tab-content ${activeTab === 'Productivity' ? 'active' : ''}`}>
@@ -317,8 +319,8 @@ const MagneticYieldAlliance = () => {
                   <div className="stat-desc">Of activated fields show measurable improvement</div>
                 </div>
                 <div className="stat-item animate-on-scroll">
-                  <div className="stat-value">20-30%</div>
-                  <div className="stat-label">Water Savings</div>
+                  <div className="stat-value">Up to 7000 ppm</div>
+                  <div className="stat-label">Enable brackish water up to 7000 ppm for irrigation</div>
                   <div className="stat-desc">Reduction in irrigation needs</div>
                 </div>
                 <div className="stat-item animate-on-scroll">
@@ -372,15 +374,11 @@ const MagneticYieldAlliance = () => {
                   <div className="stat-desc">Higher returns on existing crops</div>
                 </div>
                 <div className="stat-item animate-on-scroll">
-                  <div className="stat-value">2X</div>
-                  <div className="stat-label">Payback Period</div>
-                  <div className="stat-desc">Faster than conventional methods</div>
+                  <div className="stat-value">Free yield</div>
+                  <div className="stat-label">at 0 cost</div>
+                  <div className="stat-desc">On 100 acres of cotton, gain 262 extra maunds with our technology</div>
                 </div>
-                <div className="stat-item animate-on-scroll">
-                  <div className="stat-value">1:5</div>
-                  <div className="stat-label">Cost Ratio</div>
-                  <div className="stat-desc">$1 investment returns $5 in value</div>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -433,6 +431,7 @@ const MagneticYieldAlliance = () => {
                   <li>Higher yields with same inputs</li>
                   <li>Faster growth cycles</li>
                   <li>Enhanced stress resistance</li>
+                  <li>Grows in Brackish Conditions</li>
                 </ul>
               </div>
             </div>
