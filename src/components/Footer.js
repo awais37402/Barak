@@ -19,9 +19,10 @@ const Footer = () => {
           <ul className="footer-links">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About Us</a></li>
+            <li><a href="/magneticyieldalliance">Magnetic Yield Alliance</a></li>
+
             <li><a href="/case-studies">Case Studies</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/magneticyieldalliance">Magnetic Yield Alliance</a></li>
           </ul>
         </div>
 
