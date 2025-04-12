@@ -40,36 +40,35 @@ const Header = () => {
         <div className="header-content">
           {/* Logo and Name */}
           <Link
-  to="/"
-  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-  style={{ textDecoration: 'none' }} // 👈 remove underline
->
-  <div
-    className="logo-container"
-    style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
-  >
-    <img
-      src={logo}
-      alt="Barak AgriTech Logo"
-      className="logo-img"
-      style={{ height: '70px', width: '70px' }}
-    />
-    <span
-      className="logo-text"
-      style={{
-        fontFamily: "'Poppins', sans-serif",
-        fontWeight: 600,
-        fontSize: '1.25rem',
-        color: '#1e3f20',
-        letterSpacing: '-0.5px',
-        textDecoration: 'none' // 👈 also make sure the span has no underline
-      }}
-    >
-      Barak AgriTech
-    </span>
-  </div>
-</Link>
-
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            style={{ textDecoration: 'none' }}
+          >
+            <div
+              className="logo-container"
+              style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
+            >
+              <img
+                src={logo}
+                alt="Barak AgriTech Logo"
+                className="logo-img"
+                style={{ height: '70px', width: '70px' }}
+              />
+              <span
+                className="logo-text"
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontWeight: 600,
+                  fontSize: '1.25rem',
+                  color: '#1e3f20',
+                  letterSpacing: '-0.5px',
+                  textDecoration: 'none'
+                }}
+              >
+                Barak AgriTech
+              </span>
+            </div>
+          </Link>
 
           {/* Navigation */}
           <nav className="desktop-nav">
@@ -145,7 +144,10 @@ const Header = () => {
                   <Link 
                     to={link.to} 
                     className={`mobile-nav-link ${location.pathname === link.to ? 'active' : ''}`}
-                    onClick={toggleMenu}
+                    onClick={() => {
+                      toggleMenu();
+                      window.scrollTo(0, 0); // Scroll to top on mobile link click
+                    }}
                   >
                     {link.label}
                   </Link>
@@ -156,7 +158,10 @@ const Header = () => {
               <Link 
                 to="/contact" 
                 className="mobile-contact-button"
-                onClick={toggleMenu}
+                onClick={() => {
+                  toggleMenu();
+                  window.scrollTo(0, 0); // Scroll to top on mobile contact link click
+                }}
               >
                 Contact Us
               </Link>
