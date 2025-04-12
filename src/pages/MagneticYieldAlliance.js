@@ -118,15 +118,16 @@ const MagneticYieldAlliance = () => {
                 <p className="partner-subtitle">Since 1993 | Dubai, UAE</p>
               </div>
               <p className="partner-description">
-                Global leader in magnetic water, air, and oil treatment solutions with over 30 years of R&D in 
-                magnetic applications.
+              A global leader in magnetic water treatment solutions, helping boost sustainable yields across agriculture and industry in 50+ countries.
               </p>
               <ul className="partner-features">
-                <li>Pioneers in water treatment technologies</li>
-                <li>Sustainable yield enhancement solutions</li>
-                <li>12,000+ gauss magnetic field technology</li>
-                <li>Proven across diverse climates worldwide</li>
-              </ul>
+  <li>30+ years of R&D in magnetic applications</li>
+  <li>500,000+ hectares irrigated globally</li>
+  <li>Proven water treatment technology</li>
+  <li>Supports agriculture, poultry, fish farming, and manufacturing</li>
+  <li>Deployed in 50+ countries worldwide</li>
+</ul>
+
             </div>
             
             <div className="partner-card animate-on-scroll">
