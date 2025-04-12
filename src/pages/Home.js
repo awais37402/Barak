@@ -1,28 +1,29 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useNavigate } from 'react-router-dom';
-import { faSeedling, faChevronRight, faChevronLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
+"use client"
+
+import { useState, useEffect, useRef, useCallback } from "react"
+import { motion } from "framer-motion"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useNavigate } from "react-router-dom"
+import { faSeedling, faChevronRight, faChevronLeft, faTimes } from "@fortawesome/free-solid-svg-icons"
 
 // Import actual image files (adjust paths to match your project structure)
-import logo from '../assets/logo-removebg-preview.png';
-
-import brain from '../assets/Magnetic_Yield_Alliance__4.png';
-import water from '../assets/two.jpg';
-import product from '../assets/seven.png';
-import one from '../assets/one.jpg';
-import two from '../assets/two.jpg';
-import three from '../assets/three.jpg';
-import four from '../assets/four.jpg';
-import five from '../assets/five.jpg';
-import six from '../assets/six.jpg';
-import seven from '../assets/seven.png';
-import eight from '../assets/eight.jpg';
-import nine from '../assets/nine.jpeg';
-import ten from '../assets/ten.jpeg';
-import eleven from '../assets/eleven.jpeg';
-import twelve from '../assets/twelve.jpeg';
-import thirteen from '../assets/thirteen.jpeg';
+import logo from "../assets/logo-removebg-preview.png"
+import brain from "../assets/Magnetic_Yield_Alliance__4.png"
+import water from "../assets/two.jpg"
+import product from "../assets/seven.png"
+import one from "../assets/one.jpg"
+import two from "../assets/two.jpg"
+import three from "../assets/three.jpg"
+import four from "../assets/four.jpg"
+import five from "../assets/five.jpg"
+import six from "../assets/six.jpg"
+import seven from "../assets/seven.png"
+import eight from "../assets/eight.jpg"
+import nine from "../assets/nine.jpeg"
+import ten from "../assets/ten.jpeg"
+import eleven from "../assets/eleven.jpeg"
+import twelve from "../assets/twelve.jpeg"
+import thirteen from "../assets/thirteen.jpeg"
 
 // Create an images object with the imported files
 const images = {
@@ -42,8 +43,8 @@ const images = {
   ten,
   eleven,
   twelve,
-  thirteen
-};
+  thirteen,
+}
 
 const Home = () => {
   return (
@@ -55,49 +56,40 @@ const Home = () => {
       <SurveyDownload />
       <Gallery />
     </div>
-  );
-};
+  )
+}
 
 // Hero Component with Sliders
 const Hero = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [startTouch, setStartTouch] = useState(0);
-  const sliderRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [startTouch, setStartTouch] = useState(0)
+  const sliderRef = useRef(null)
 
-  const sliders = [
-    <SliderThree key="3" />,
-   
-    <SliderOne key="1" />
-  ];
+  const sliders = [<SliderThree key="3" />, <SliderOne key="1" />]
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % sliders.length);
-  }, [sliders.length]);
+    setCurrentSlide((prev) => (prev + 1) % sliders.length)
+  }, [sliders.length])
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + sliders.length) % sliders.length);
-  }, [sliders.length]);
+    setCurrentSlide((prev) => (prev - 1 + sliders.length) % sliders.length)
+  }, [sliders.length])
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, [nextSlide]);
+    const interval = setInterval(nextSlide, 5000)
+    return () => clearInterval(interval)
+  }, [nextSlide])
 
-  const handleTouchStart = (e) => setStartTouch(e.touches[0].clientX);
-  
+  const handleTouchStart = (e) => setStartTouch(e.touches[0].clientX)
+
   const handleTouchEnd = (e) => {
-    const touchEnd = e.changedTouches[0].clientX;
-    if (startTouch - touchEnd > 50) nextSlide();
-    else if (touchEnd - startTouch > 50) prevSlide();
-  };
+    const touchEnd = e.changedTouches[0].clientX
+    if (startTouch - touchEnd > 50) nextSlide()
+    else if (touchEnd - startTouch > 50) prevSlide()
+  }
 
   return (
-    <div 
-      className="hero-container" 
-      onTouchStart={handleTouchStart} 
-      onTouchEnd={handleTouchEnd}
-      ref={sliderRef}
-    >
+    <div className="hero-container" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} ref={sliderRef}>
       {sliders[currentSlide]}
       <div className="hero-nav">
         <button onClick={prevSlide} aria-label="Previous slide">
@@ -105,9 +97,9 @@ const Hero = () => {
         </button>
         <div className="slide-indicators">
           {sliders.map((_, index) => (
-            <div 
+            <div
               key={index}
-              className={`indicator ${index === currentSlide ? 'active' : ''}`}
+              className={`indicator ${index === currentSlide ? "active" : ""}`}
               onClick={() => setCurrentSlide(index)}
             />
           ))}
@@ -117,79 +109,51 @@ const Hero = () => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const SliderOne = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleLearnMore = () => {
-    navigate('/magneticyieldalliance'); // Make sure route exists
-  };
+    navigate("/magneticyieldalliance")
+  }
 
   return (
-    <>
-      {/* Left logo */}
-      <img src={images.logo} alt="Barak AgriTech Logo" className="logo-image left-logo" />
-
-      {/* Slider content */}
-      <div className="slider-one">
-        <div className="slider-content">
-          <h1>Magnetic Yield Alliance</h1>
-          <p>
-            Harnessing the power of magnetic fields to boost crop yields
-            and improve plant health through innovative scientific approaches.
-          </p>
-          <button className="slider-button" onClick={handleLearnMore}>
-            Learn More
-          </button>
-        </div>
-
-        {/* Right side brain image */}
-        <img src={images.brain} alt="brain tech" className="brain-image" />
+    <div className="slider-one">
+      <img src={images.logo || "/placeholder.svg"} alt="Barak AgriTech" className="logo-image-left" />
+      <div className="slider-content">
+        <h1>Magnetic Yield Alliance</h1>
+        <p>
+          Harnessing the power of magnetic fields to boost crop yields and improve plant health through innovative
+          scientific approaches.
+        </p>
+        <button className="slider-button" onClick={handleLearnMore}>
+          Learn More
+        </button>
       </div>
-    </>
-  );
-};
-
-
-const SliderTwo = () => {
-  return (
-    <div className="slider-two">
-      <div className="slider-container">
-        <div className="image-container">
-          <img src={images.water} alt="Water Treatment Devices" />
-        </div>
-        <div className="text-content">
-          <h1>Water Treatment Devices</h1>
-          <p>
-            Revolutionary magnetic field technology for enhanced seed performance 
-            and optimized water treatment for sustainable agriculture.
-          </p>
-          <button className="discover-button">Discover Technology</button>
-        </div>
-      </div>
+      <img src={images.brain || "/placeholder.svg"} alt="brain tech" className="brain-image" />
     </div>
-  );
-};
+  )
+}
 
 const SliderThree = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleExploreClick = () => {
-    navigate('/magneticyieldalliance');
-  };
+    navigate("/magneticyieldalliance")
+  }
 
   return (
     <div className="slider-three">
+      <img src={images.logo || "/placeholder.svg"} alt="Barak AgriTech Logo" className="logo-image" />
       <div className="slider-container">
-        <div className="slider-logo">
-          <img src={images.logo} alt="Barak AgriTech Logo" />
-        </div>
         <div className="slider-content">
           <h1>Barak AgriTech</h1>
           <p>
-            Barak AgriTech (Pvt.) Ltd is revolutionizing Pakistani agriculture by partnering with Magnetic Technologies LLC to boost crop yields by 15–30%, cut input costs, and enable farming with brackish water—offering a zero-investment, high-return solution for sustainable farming.
+            Barak AgriTech (Pvt.) Ltd is revolutionizing Pakistani agriculture by partnering with Magnetic Technologies
+            LLC to boost crop yields by 15–30%, cut input costs, and enable farming with brackish water—offering a
+            zero-investment, high-return solution for sustainable farming.
           </p>
           <button className="explore-btn" onClick={handleExploreClick}>
             Explore Our Solutions
@@ -197,14 +161,14 @@ const SliderThree = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 // Water Treatment Component
 const WaterTreatment = () => {
-  const [expanded, setExpanded] = useState(false);
-  const benefitsRef = useRef(null);
-  
+  const [expanded, setExpanded] = useState(false)
+  const benefitsRef = useRef(null)
+
   const benefits = [
     "Seed germination rates achieve 80-100%",
     "Accelerates fertility",
@@ -216,15 +180,15 @@ const WaterTreatment = () => {
     "Accelerates the protein formation process in plants",
     "Reduces seed sowing costs by 30-50%",
     "Facilitates earlier crop ripening",
-    "Increases yield per acre"
-  ];
+    "Increases yield per acre",
+  ]
 
   const toggleExpand = () => {
-    setExpanded(!expanded);
+    setExpanded(!expanded)
     if (!expanded && benefitsRef.current) {
-      benefitsRef.current.scrollIntoView({ behavior: 'smooth' });
+      benefitsRef.current.scrollIntoView({ behavior: "smooth" })
     }
-  };
+  }
 
   return (
     <section className="water-treatment">
@@ -236,21 +200,20 @@ const WaterTreatment = () => {
 
         <div className="treatment-content">
           <div className="treatment-image">
-            <img src={images.product} alt="Seed Treatment Technology" />
+            <img src={images.product || "/placeholder.svg"} alt="Seed Treatment Technology" />
           </div>
 
           <div className="treatment-details">
             <p className="treatment-description">
-              Our cutting-edge seed treatment technology not only reduces the expenditure 
-              on sowing materials by 30-50%, but it also facilitates earlier harvests. 
-              Extensive research across various regions has yielded consistently 
-              promising results.
+              Our cutting-edge seed treatment technology not only reduces the expenditure on sowing materials by 30-50%,
+              but it also facilitates earlier harvests. Extensive research across various regions has yielded
+              consistently promising results.
               <span className="highlighted-benefits">
                 Improved seed quality • Faster development • Enhanced vitality
               </span>
             </p>
 
-            <div className={`treatment-benefits ${expanded ? 'expanded' : ''}`} ref={benefitsRef}>
+            <div className={`treatment-benefits ${expanded ? "expanded" : ""}`} ref={benefitsRef}>
               <h3>Key Benefits:</h3>
               <div className="benefits-grid">
                 {benefits.map((benefit, index) => (
@@ -265,55 +228,56 @@ const WaterTreatment = () => {
             </div>
 
             <button className="toggle-benefits" onClick={toggleExpand}>
-              {expanded ? 'Show Less' : 'Show All Benefits'}
+              {expanded ? "Show Less" : "Show All Benefits"}
             </button>
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
 // Water Benefits Component
 const WaterBenefits = () => {
-  const sectionRef = useRef(null);
-  const [inView, setInView] = useState(false);
+  const sectionRef = useRef(null)
+  const [inView, setInView] = useState(false)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.1 })
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
 
   const benefits = [
     {
       icon: "🌱",
       title: "Planting Stage",
-      description: "Our seed treatment technology ensures optimal germination rates (90–100%) and stronger initial growth, reducing seed costs by 30–50%.",
+      description:
+        "Our seed treatment technology ensures optimal germination rates (90–100%) and stronger initial growth, reducing seed costs by 30–50%.",
     },
     {
       icon: "💧",
       title: "Irrigation",
-      description: "Water treatment enables use of brackish water (up to 8000ppm) while preventing salt buildup in irrigation systems.",
+      description:
+        "Water treatment enables use of brackish water (up to 8000ppm) while preventing salt buildup in irrigation systems.",
     },
     {
       icon: "📈",
       title: "Growth Period",
-      description: "Enhances nutrient uptake (P, K, N, Fe) leading to 15–50% increased yields and stronger disease resistance.",
+      description:
+        "Enhances nutrient uptake (P, K, N, Fe) leading to 15–50% increased yields and stronger disease resistance.",
     },
     {
       icon: "🌿",
       title: "Soil Health",
-      description: "Improves soil aeration and structure over time, reducing fertilizer requirements by up to 50% while maintaining productivity.",
+      description:
+        "Improves soil aeration and structure over time, reducing fertilizer requirements by up to 50% while maintaining productivity.",
     },
-  ];
+  ]
 
   return (
     <section className="water-benefits" ref={sectionRef}>
-      <div className={`how-it-works ${inView ? 'animate' : ''}`}>
+      <div className={`how-it-works ${inView ? "animate" : ""}`}>
         <div className="water-drop-animation">
           <div className="drop"></div>
           <div className="ripple"></div>
@@ -323,10 +287,9 @@ const WaterBenefits = () => {
         <div className="text-content">
           <h3>The Science Behind Our Solution</h3>
           <p>
-            Magnetic devices use powerful magnets to improve water and seeds. They break water 
-            into smaller clusters for better soil absorption and activate seeds for faster 
-            growth—saving water, boosting yields, and enabling farming with saline water, 
-            all naturally.
+            Magnetic devices use powerful magnets to improve water and seeds. They break water into smaller clusters for
+            better soil absorption and activate seeds for faster growth—saving water, boosting yields, and enabling
+            farming with saline water, all naturally.
           </p>
         </div>
       </div>
@@ -334,22 +297,25 @@ const WaterBenefits = () => {
       <div className="water-background"></div>
 
       <div className="section-header">
-        <header className={inView ? 'animate' : ''}>
-          <h3>How our <mark>Water Treatment</mark> Transforms Agriculture</h3>
+        <header className={inView ? "animate" : ""}>
+          <h3>
+            How our <mark>Water Treatment</mark> Transforms Agriculture
+          </h3>
         </header>
 
-        <article className={`section-description ${inView ? 'animate' : ''}`}>
-          <p>
-            Revolutionary technology that supports every stage of modern agriculture – from planting to harvest.
-          </p>
+        <article className={`section-description ${inView ? "animate" : ""}`}>
+          <p>Revolutionary technology that supports every stage of modern agriculture – from planting to harvest.</p>
         </article>
       </div>
 
       <div className="benefit-cards-container">
         <div className="benefit-cards">
           {benefits.map((item, index) => (
-            <div key={index} className={`card ${inView ? 'animate' : ''}`} 
-                 style={{ transitionDelay: `${index * 150}ms` }}>
+            <div
+              key={index}
+              className={`card ${inView ? "animate" : ""}`}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
               <div className="card-inner">
                 <div className="card-front">
                   <div className="icon-circle">
@@ -366,58 +332,55 @@ const WaterBenefits = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
 // Stats Section Component
 const StatsSection = () => {
-  const sectionRef = useRef(null);
-  const [inView, setInView] = useState(false);
-  const [counts, setCounts] = useState([0, 0, 0, 0]);
+  const sectionRef = useRef(null)
+  const [inView, setInView] = useState(false)
+  const [counts, setCounts] = useState([0, 0, 0, 0])
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.3 })
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView) return
 
     const statsData = [
       { number: 12500, isPercentage: false },
       { number: 35, isPercentage: true },
       { number: 200, isPercentage: false },
-      { number: 24, isPercentage: false, suffix: '/7' }
-    ];
+      { number: 24, isPercentage: false, suffix: "/7" },
+    ]
 
     statsData.forEach((stat, idx) => {
-      let start = 0;
-      const end = stat.number;
-      const duration = 1000;
-      const increment = Math.ceil(end / 100);
-      const stepTime = Math.floor(duration / (end / increment));
+      let start = 0
+      const end = stat.number
+      const duration = 1000
+      const increment = Math.ceil(end / 100)
+      const stepTime = Math.floor(duration / (end / increment))
 
       const counter = setInterval(() => {
-        start += increment;
+        start += increment
         if (start >= end) {
-          start = end;
-          clearInterval(counter);
+          start = end
+          clearInterval(counter)
         }
 
-        setCounts(prev => {
-          const newCounts = [...prev];
-          newCounts[idx] = start;
-          return newCounts;
-        });
-      }, stepTime);
-    });
-  }, [inView]);
+        setCounts((prev) => {
+          const newCounts = [...prev]
+          newCounts[idx] = start
+          return newCounts
+        })
+      }, stepTime)
+    })
+  }, [inView])
 
-  const statsLabels = ['Acres Managed', 'Average Yield Increase', 'Happy Farmers', 'Support Available'];
+  const statsLabels = ["Acres Managed", "Average Yield Increase", "Happy Farmers", "Support Available"]
 
   return (
     <section className="stats-section" ref={sectionRef}>
@@ -425,20 +388,20 @@ const StatsSection = () => {
         {counts.map((count, idx) => (
           <div className="stat-card" key={idx}>
             <div className="stat-number">
-              {idx === 1 ? `${count}%` : `${count.toLocaleString()}${idx === 3 ? '/7' : ''}`}
+              {idx === 1 ? `${count}%` : `${count.toLocaleString()}${idx === 3 ? "/7" : ""}`}
             </div>
             <div className="stat-label">{statsLabels[idx]}</div>
           </div>
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
 // Survey Download Component
 const SurveyDownload = () => {
   return (
-    <motion.div 
+    <motion.div
       className="survey-download-container"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -447,109 +410,104 @@ const SurveyDownload = () => {
       <h2 className="survey-download-title">
         Magnetic Yield Alliance <br /> Survey Form
       </h2>
-      <a 
-        href="https://docs.google.com/forms/d/e/1FAIpQLSc7NOvWuB_NC3E9bYriVLQopmFNHJDAOI0vnqKIT5u9qvXwyg/viewform" 
-        target="_blank" 
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSc7NOvWuB_NC3E9bYriVLQopmFNHJDAOI0vnqKIT5u9qvXwyg/viewform"
+        target="_blank"
         rel="noopener noreferrer"
         className="download-button"
       >
         Fill Out Survey Form
       </a>
     </motion.div>
-  );
-};
+  )
+}
 
 // Gallery Component
 const Gallery = () => {
-  const [startIndex, setStartIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalImageIndex, setModalImageIndex] = useState(null);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const galleryRef = useRef(null);
+  const [startIndex, setStartIndex] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalImageIndex, setModalImageIndex] = useState(null)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const galleryRef = useRef(null)
 
   const getImagesPerSlide = useCallback(() => {
-    if (windowWidth < 600) return 1;
-    if (windowWidth < 992) return 2;
-    return 3;
-  }, [windowWidth]);
+    if (windowWidth < 600) return 1
+    if (windowWidth < 992) return 2
+    return 3
+  }, [windowWidth])
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      setStartIndex(0);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+      setWindowWidth(window.innerWidth)
+      setStartIndex(0)
+    }
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   const nextSlide = useCallback(() => {
-    setStartIndex(prev => {
-      const nextIndex = prev + getImagesPerSlide();
-      return nextIndex < Object.values(images).length ? nextIndex : prev;
-    });
-  }, [getImagesPerSlide]);
+    setStartIndex((prev) => {
+      const nextIndex = prev + getImagesPerSlide()
+      return nextIndex < Object.values(images).length ? nextIndex : prev
+    })
+  }, [getImagesPerSlide])
 
   const prevSlide = useCallback(() => {
-    setStartIndex(prev => {
-      const prevIndex = prev - getImagesPerSlide();
-      return prevIndex >= 0 ? prevIndex : prev;
-    });
-  }, [getImagesPerSlide]);
+    setStartIndex((prev) => {
+      const prevIndex = prev - getImagesPerSlide()
+      return prevIndex >= 0 ? prevIndex : prev
+    })
+  }, [getImagesPerSlide])
 
   const openModal = useCallback((index) => {
-    setModalImageIndex(index);
-    setIsModalOpen(true);
-    document.body.style.overflow = 'hidden';
-  }, []);
+    setModalImageIndex(index)
+    setIsModalOpen(true)
+    document.body.style.overflow = "hidden"
+  }, [])
 
   const closeModal = useCallback(() => {
-    setIsModalOpen(false);
-    setModalImageIndex(null);
-    document.body.style.overflow = 'visible';
-  }, []);
+    setIsModalOpen(false)
+    setModalImageIndex(null)
+    document.body.style.overflow = "visible"
+  }, [])
 
   const nextModal = useCallback(() => {
-    setModalImageIndex(prev => (prev + 1) % Object.values(images).length);
-  }, []);
+    setModalImageIndex((prev) => (prev + 1) % Object.values(images).length)
+  }, [])
 
   const prevModal = useCallback(() => {
-    setModalImageIndex(prev => (prev - 1 + Object.values(images).length) % Object.values(images).length);
-  }, []);
+    setModalImageIndex((prev) => (prev - 1 + Object.values(images).length) % Object.values(images).length)
+  }, [])
 
   useEffect(() => {
-    if (!isModalOpen) return;
+    if (!isModalOpen) return
 
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') closeModal();
-      if (e.key === 'ArrowRight') nextModal();
-      if (e.key === 'ArrowLeft') prevModal();
-    };
+      if (e.key === "Escape") closeModal()
+      if (e.key === "ArrowRight") nextModal()
+      if (e.key === "ArrowLeft") prevModal()
+    }
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isModalOpen, closeModal, nextModal, prevModal]);
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [isModalOpen, closeModal, nextModal, prevModal])
 
-  const currentImagesPerSlide = getImagesPerSlide();
-  const galleryImages = Object.values(images).slice(5); // Skip the first few images used elsewhere
-  const visibleImages = galleryImages.slice(startIndex, startIndex + currentImagesPerSlide);
+  const currentImagesPerSlide = getImagesPerSlide()
+  const galleryImages = Object.values(images).slice(5) // Skip the first few images used elsewhere
+  const visibleImages = galleryImages.slice(startIndex, startIndex + currentImagesPerSlide)
 
   return (
     <div className="gallery-container" ref={galleryRef}>
       <h1 className="gallery-title">Our Work Gallery</h1>
       <div className="gallery">
-        <button
-          className="nav-btn prev"
-          onClick={prevSlide}
-          disabled={startIndex === 0}
-          aria-label="Previous slide"
-        >
+        <button className="nav-btn prev" onClick={prevSlide} disabled={startIndex === 0} aria-label="Previous slide">
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <div className="gallery-grid">
           {visibleImages.map((img, idx) => (
             <div key={startIndex + idx} className="gallery-item">
               <img
-                src={img}
+                src={img || "/placeholder.svg"}
                 alt={`Gallery item ${startIndex + idx + 1}`}
                 className="gallery-grid-image"
                 onClick={() => openModal(startIndex + idx)}
@@ -576,7 +534,7 @@ const Gallery = () => {
             </button>
             <div className="modal-content">
               <img
-                src={galleryImages[modalImageIndex]}
+                src={galleryImages[modalImageIndex] || "/placeholder.svg"}
                 alt={`Modal item ${modalImageIndex + 1}`}
                 className="modal-image"
               />
@@ -596,8 +554,8 @@ const Gallery = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 // CSS Styles
 const styles = `
@@ -682,7 +640,7 @@ body {
   transform: scale(1.2);
 }
 
-/* Slider One Styles */
+/* Slider One Styles - Updated to match the image */
 .slider-one {
   position: relative;
   width: 100%;
@@ -694,25 +652,25 @@ body {
   color: white;
   padding: 80px 5% 100px;
   box-sizing: border-box;
-  text-align: center;
 }
 
 .slider-one .slider-content {
   max-width: 600px;
   z-index: 2;
   position: relative;
+  text-align: center;
 }
 
 .slider-one h1 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   margin-bottom: 1.5rem;
-  line-height: 1.3;
+  line-height: 1.2;
   color: white;
   font-weight: 600;
 }
 
 .slider-one p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
   line-height: 1.6;
   font-weight: 300;
@@ -737,13 +695,40 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.logo-image.left-logo {
+.logo-image-left {
   position: absolute;
-  top: 30px;
-  left: 30px;
-  height: 50px;
+  left: 1%;
+  top: 10%;
+  height: 500px;
   object-fit: contain;
   z-index: 3;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Make sure we have responsive adjustments for the larger logo */
+@media (max-width: 1200px) {
+  .logo-image-left {
+    height: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  .logo-image-left {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-image-left {
+    height: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-image-left {
+    height: 150px;
+    opacity: 0.8;
+  }
 }
 
 .slider-one .brain-image {
@@ -754,113 +739,66 @@ body {
   object-fit: contain;
   z-index: 1;
   animation: float 6s ease-in-out infinite;
-  display: block;
+}
+
+@media (max-width: 992px) {
+  .slider-one h1 {
+    font-size: 2.8rem;
+  }
+  
+  .slider-one .brain-image {
+    height: 60%;
+    max-width: 35%;
+  }
+  
 }
 
 @media (max-width: 768px) {
-  .logo-image.left-logo {
-    height: 40px;
+  .slider-one h1 {
+    font-size: 2.2rem;
+  }
+  
+  .slider-one p {
+    font-size: 1rem;
+  }
+  
+  .slider-one .brain-image {
+    height: 50%;
+    max-width: 30%;
+  }
+  
+}
+
+@media (max-width: 576px) {
+  .slider-one .brain-image {
+    opacity: 0.4;
+  }
+  
+  .slider-one .slider-content {
+    z-index: 3;
   }
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-}
-
-
-
-
-/* Slider Two Styles */
-.slider-two {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(120deg, #00416A, #E4E5E6);
-  padding: 80px 20px 100px;
-  box-sizing: border-box;
-}
-
-.slider-two .slider-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1200px;
-  width: 100%;
-  gap: 40px;
-}
-
-.slider-two .image-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.slider-two .image-container img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 15px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.slider-two .image-container img:hover {
-  transform: scale(1.03);
-}
-
-.slider-two .text-content {
-  width: 100%;
-  text-align: center;
-  color: #333;
-}
-
-.slider-two h1 {
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
-  font-weight: 600;
-}
-
-.slider-two p {
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-  font-weight: 300;
-}
-
-.slider-two .discover-button {
-  background: #00416A;
-  color: white;
-  border: none;
-  padding: 12px 28px;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-}
-
-.slider-two .discover-button:hover {
-  background: #E4E5E6;
-  color: #00416A;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Slider Three Styles */
+/* Slider Three Styles - Enhanced for mobile responsiveness */
 .slider-three {
   width: 100%;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #00416A, #00923d);
-  padding: 80px 20px 100px;
+  padding: 60px 20px;
   box-sizing: border-box;
+  position: relative;
+}
+
+.slider-three .logo-image {
+  width: 200px;
+  height: auto;
+  margin-bottom: 30px;
+  filter: brightness(0) invert(1);
+  animation: float 6s ease-in-out infinite;
 }
 
 .slider-three .slider-container {
@@ -869,44 +807,30 @@ body {
   align-items: center;
   max-width: 1200px;
   width: 100%;
-  gap: 40px;
-}
-
-.slider-three .slider-logo {
-  width: 100%;
-  max-width: 300px;
-  display: flex;
-  justify-content: center;
-}
-
-.slider-three .slider-logo img {
-  width: 100%;
-  height: auto;
-  filter: brightness(0) invert(1);
+  gap: 30px;
 }
 
 .slider-three .slider-content {
   width: 100%;
   background: rgba(255, 255, 255, 0.95);
-  padding: 30px;
+  padding: 25px;
   border-radius: 20px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .slider-three h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #2c3e50;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-weight: 600;
 }
 
 .slider-three p {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #555;
-  line-height: 1.7;
-  margin-bottom: 25px;
+  line-height: 1.6;
+  margin-bottom: 20px;
   font-weight: 300;
 }
 
@@ -914,13 +838,15 @@ body {
   background: #2c3e50;
   color: white;
   border: none;
-  padding: 12px 28px;
-  font-size: 1rem;
+  padding: 10px 24px;
+  font-size: 0.95rem;
   font-weight: 500;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Poppins', sans-serif;
+  width: 100%;
+  max-width: 250px;
 }
 
 .slider-three .explore-btn:hover {
@@ -929,41 +855,56 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Tablet and Desktop Styles */
+/* Tablet Styles for Slider Three */
+@media (min-width: 576px) {
+  .slider-three {
+    padding: 70px 30px;
+  }
+  
+  .slider-three .logo-image {
+    width: 250px;
+    margin-bottom: 40px;
+  }
+  
+  .slider-three .slider-content {
+    padding: 30px;
+  }
+  
+  .slider-three h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .slider-three p {
+    font-size: 1rem;
+  }
+  
+  .slider-three .explore-btn {
+    padding: 12px 28px;
+    font-size: 1rem;
+    width: auto;
+  }
+}
+
+/* Desktop Styles for Slider Three */
 @media (min-width: 768px) {
-  .slider-one {
-    text-align: left;
-    padding-left: 10%;
+  .slider-three {
+    padding: 80px 40px;
   }
   
-  .slider-one .brain-image {
-    display: block;
-  }
-  
-  .slider-two .slider-container {
-    flex-direction: row;
-    gap: 60px;
-  }
-  
-  .slider-two .text-content {
-    text-align: left;
-  }
-  
-  .slider-two h1 {
-    font-size: 2.5rem;
-  }
-  
-  .slider-two p {
-    font-size: 1.1rem;
+  .slider-three .logo-image {
+    width: 300px;
+    margin-bottom: 0;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
   }
   
   .slider-three .slider-container {
     flex-direction: row;
-    gap: 60px;
-  }
-  
-  .slider-three .slider-logo {
-    max-width: 450px;
+    justify-content: flex-end;
+    padding-left: 30%;
   }
   
   .slider-three .slider-content {
@@ -977,7 +918,30 @@ body {
   
   .slider-three p {
     font-size: 1.1rem;
+    margin-bottom: 25px;
   }
+}
+
+@media (min-width: 992px) {
+  .slider-three .logo-image {
+    width: 350px;
+  }
+  
+  .slider-three .slider-container {
+    padding-left: 35%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .slider-three .logo-image {
+    width: 400px;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
 }
 
 /* Water Treatment Styles */
@@ -1210,8 +1174,6 @@ body {
   border-radius: 50%;
   animation: drop 3s infinite;
 }
-
-
 
 .water-benefits .ripple {
   position: absolute;
@@ -1734,11 +1696,11 @@ body {
     max-width: 70%;
   }
 }
-`;
+`
 
 // Inject styles
-const styleElement = document.createElement('style');
-styleElement.innerHTML = styles;
-document.head.appendChild(styleElement);
+const styleElement = document.createElement("style")
+styleElement.innerHTML = styles
+document.head.appendChild(styleElement)
 
-export default Home;
+export default Home
