@@ -505,11 +505,11 @@ const Gallery = () => {
   }, [isModalOpen, closeModal, nextModal, prevModal])
 
   const currentImagesPerSlide = getImagesPerSlide()
-  const galleryImages = Object.values(images).slice(5) // Skip the first few images used elsewhere
+  const galleryImages = Object.values(images).slice(5)
   const visibleImages = galleryImages.slice(startIndex, startIndex + currentImagesPerSlide)
 
   return (
-    <div className="gallery-container" ref={galleryRef}>
+    <div className="gallery-container" id="gallery" ref={galleryRef}>
       <h1 className="gallery-title">Our Work Gallery</h1>
       <div className="gallery">
         <button className="nav-btn prev" onClick={prevSlide} disabled={startIndex === 0} aria-label="Previous slide">
