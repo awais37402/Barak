@@ -21,6 +21,7 @@ const Footer = () => {
             <li><a href="/about">About Us</a></li>
             <li><a href="/case-studies">Case Studies</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/magneticyieldalliance">Magnetic Yield Alliance</a></li>
           </ul>
         </div>
 
@@ -36,14 +37,13 @@ const Footer = () => {
               <FaPhone className="footer-icon" />
               <span>+92 307 7950777</span>
             </li>
-            
           </ul>
         </div>
       </div>
 
       {/* Bottom Footer */}
       <div className="footer-bottom">
-        <p>&copy; {currentYear} Barak AgriTech (Pvt) Ltd..  All rights reserved.</p>
+        <p>© {currentYear} Barak AgriTech (Pvt) Ltd.. All rights reserved.</p>
         <div className="legal-links">
           <a href="/privacy">Privacy Policy</a>
           <a href="/terms">Terms of Service</a>
