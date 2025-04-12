@@ -45,11 +45,7 @@ const Footer = () => {
       {/* Bottom Footer */}
       <div className="footer-bottom">
         <p>© {currentYear} Barak AgriTech (Pvt) Ltd.. All rights reserved.</p>
-        <div className="legal-links">
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/terms">Terms of Service</a>
-          <a href="/cookies">Cookie Policy</a>
-        </div>
+        
       </div>
     </footer>
   );
