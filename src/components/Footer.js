@@ -43,7 +43,7 @@ const Footer = () => {
 
       {/* Bottom Footer */}
       <div className="footer-bottom">
-        <p>&copy; {currentYear} AgroVision. All rights reserved.</p>
+        <p>&copy; {currentYear} Barak AgriTech (Pvt) Ltd..  All rights reserved.</p>
         <div className="legal-links">
           <a href="/privacy">Privacy Policy</a>
           <a href="/terms">Terms of Service</a>

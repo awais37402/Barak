@@ -39,26 +39,37 @@ const Header = () => {
       <div className="header-container">
         <div className="header-content">
           {/* Logo and Name */}
-          <div className="logo-container" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-  <img 
-    src={logo} 
-    alt="Barak AgriTech Logo" 
-    className="logo-img" 
-    style={{ height: '70px', width: '70px' }} 
-  />
-  <span 
-    className="logo-text" 
-    style={{
-      fontFamily: "'Poppins', sans-serif",
-      fontWeight: 600,
-      fontSize: '1.25rem',
-      color: '#1e3f20',
-      letterSpacing: '-0.5px'
-    }}
+          <Link
+  to="/"
+  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+  style={{ textDecoration: 'none' }} // 👈 remove underline
+>
+  <div
+    className="logo-container"
+    style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
   >
-    Barak AgriTech
-  </span>
-</div>
+    <img
+      src={logo}
+      alt="Barak AgriTech Logo"
+      className="logo-img"
+      style={{ height: '70px', width: '70px' }}
+    />
+    <span
+      className="logo-text"
+      style={{
+        fontFamily: "'Poppins', sans-serif",
+        fontWeight: 600,
+        fontSize: '1.25rem',
+        color: '#1e3f20',
+        letterSpacing: '-0.5px',
+        textDecoration: 'none' // 👈 also make sure the span has no underline
+      }}
+    >
+      Barak AgriTech
+    </span>
+  </div>
+</Link>
+
 
           {/* Navigation */}
           <nav className="desktop-nav">
