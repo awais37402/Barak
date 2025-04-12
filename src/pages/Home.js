@@ -8,6 +8,7 @@ import { faSeedling, faChevronRight, faChevronLeft, faTimes } from "@fortawesome
 
 // Import actual image files (adjust paths to match your project structure)
 import logo from "../assets/logo-removebg-preview.png"
+
 import brain from "../assets/Magnetic_Yield_Alliance__4.png"
 import water from "../assets/two.jpg"
 import product from "../assets/seven.png"
@@ -138,16 +139,20 @@ const SliderOne = () => {
 }
 
 const SliderThree = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleExploreClick = () => {
-    navigate("/magneticyieldalliance")
-  }
+    navigate("/magneticyieldalliance");
+  };
 
   return (
     <div className="slider-three">
-      <img src={images.logo || "/placeholder.svg"} alt="Barak AgriTech Logo" className="logo-image" />
       <div className="slider-container">
+        <img
+          src={logo}
+          alt="Barak AgriTech Logo"
+          className="logo-image"
+        />
         <div className="slider-content">
           <h1>Barak AgriTech</h1>
           <p>
@@ -161,8 +166,8 @@ const SliderThree = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 // Water Treatment Component
 const WaterTreatment = () => {
@@ -779,171 +784,191 @@ body {
   }
 }
 
-/* Slider Three Styles - Enhanced for mobile responsiveness */
+/* Slider Three Styles */
+/* Slider Three Styles */
 .slider-three {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100vh; /* Ensure full viewport height */
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #00416A, #00923d);
-  padding: 60px 20px;
+  background: linear-gradient(135deg, #00416a, #00923d); /* Matches the gradient in the screenshot */
+  padding: 20px 10px; /* Reduced padding for mobile */
   box-sizing: border-box;
-  position: relative;
-}
-
-.slider-three .logo-image {
-  width: 200px;
-  height: auto;
-  margin-bottom: 30px;
-  filter: brightness(0) invert(1);
-  animation: float 6s ease-in-out infinite;
+  overflow-x: hidden;
 }
 
 .slider-three .slider-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* Center content vertically */
   max-width: 1200px;
   width: 100%;
-  gap: 30px;
+  gap: 15px; /* Reduced gap for mobile */
+  min-height: 100vh; /* Ensure container takes full height */
+  padding: 20px 0; /* Add padding to avoid content touching edges */
+}
+
+.slider-three .logo-image {
+  width: 100%;
+  max-width: 300px; /* Smaller logo for mobile */
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* White logo to match screenshot */
+  margin-bottom: 15px;
 }
 
 .slider-three .slider-content {
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  max-width: 90%; /* Ensure content doesn't touch screen edges */
+  background: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .slider-three h1 {
-  font-size: 1.8rem;
+  font-size: 1.5rem; /* Adjusted for mobile */
   color: #2c3e50;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-weight: 600;
+  line-height: 1.2;
 }
 
 .slider-three p {
-  font-size: 0.95rem;
+  font-size: 0.85rem; /* Adjusted for mobile */
   color: #555;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-bottom: 15px;
   font-weight: 300;
 }
 
 .slider-three .explore-btn {
-  background: #2c3e50;
+  background: #2c3e50; /* Matches the dark button in the screenshot */
   color: white;
   border: none;
-  padding: 10px 24px;
-  font-size: 0.95rem;
+  padding: 8px 20px;
+  font-size: 0.9rem;
   font-weight: 500;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-  width: 100%;
-  max-width: 250px;
+  font-family: "Poppins", sans-serif;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .slider-three .explore-btn:hover {
-  background: #f39c12;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background: #f39c12; /* Orange hover effect */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Tablet Styles for Slider Three */
-@media (min-width: 576px) {
+.slider-three .explore-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Styles (up to 767px) */
+@media (max-width: 767px) {
   .slider-three {
-    padding: 70px 30px;
+    padding: 20px 10px;
+    min-height: 100vh; /* Ensure full height on mobile */
   }
-  
+
+  .slider-three .slider-container {
+    gap: 10px;
+    justify-content: center; /* Center content vertically */
+    padding: 15px 0;
+  }
+
   .slider-three .logo-image {
-    width: 250px;
-    margin-bottom: 40px;
+    max-width: 200px; /* Even smaller logo for smaller screens */
+    margin-bottom: 10px;
   }
-  
+
   .slider-three .slider-content {
-    padding: 30px;
+    padding: 15px;
+    border-radius: 8px;
   }
-  
+
+  .slider-three h1 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  .slider-three p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .slider-three .explore-btn {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet Styles (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .slider-three {
+    padding: 40px 20px;
+  }
+
+  .slider-three .slider-container {
+    gap: 20px;
+  }
+
+  .slider-three .logo-image {
+    max-width: 200px;
+  }
+
+  .slider-three .slider-content {
+    padding: 25px;
+  }
+
   .slider-three h1 {
     font-size: 2rem;
-    margin-bottom: 20px;
   }
-  
+
   .slider-three p {
     font-size: 1rem;
   }
-  
-  .slider-three .explore-btn {
-    padding: 12px 28px;
-    font-size: 1rem;
-    width: auto;
-  }
 }
 
-/* Desktop Styles for Slider Three */
-@media (min-width: 768px) {
-  .slider-three {
-    padding: 80px 40px;
-  }
-  
-  .slider-three .logo-image {
-    width: 300px;
-    margin-bottom: 0;
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-  }
-  
+/* Desktop Styles (992px and above) */
+@media (min-width: 992px) {
   .slider-three .slider-container {
     flex-direction: row;
-    justify-content: flex-end;
-    padding-left: 30%;
+    gap: 40px;
   }
-  
+
+  .slider-three .logo-image {
+    max-width: 450px;
+    margin-bottom: 0;
+  }
+
   .slider-three .slider-content {
     text-align: left;
-    padding: 40px;
+    padding: 30px;
+    max-width: 550px;
   }
-  
+
   .slider-three h1 {
     font-size: 2.5rem;
   }
-  
+
   .slider-three p {
     font-size: 1.1rem;
-    margin-bottom: 25px;
+  }
+
+  .slider-three .explore-btn {
+    margin: 0;
   }
 }
-
-@media (min-width: 992px) {
-  .slider-three .logo-image {
-    width: 350px;
-  }
-  
-  .slider-three .slider-container {
-    padding-left: 35%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .slider-three .logo-image {
-    width: 400px;
-  }
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-}
-
 /* Water Treatment Styles */
 .water-treatment {
   padding: 80px 20px;
@@ -1059,20 +1084,6 @@ body {
 .water-treatment .treatment-benefit-item:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.water-treatment .treatment-benefit-icon {
-  color: #00923d;
-  font-size: 1rem;
-  margin-top: 3px;
-  flex-shrink: 0;
-}
-
-.water-treatment .treatment-benefit-text {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #555;
-  font-weight: 300;
 }
 
 .water-treatment .toggle-benefits {
