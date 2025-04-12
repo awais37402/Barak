@@ -714,7 +714,7 @@ body {
   height: 500px;
   object-fit: contain;
   z-index: 3;
-  animation: float 6s ease-in-out infinite;
+  animation: float 2s ease-in-out infinite; /* Changed from 6s to 3s */
 }
 
 /* Make sure we have responsive adjustments for the larger logo */
@@ -750,9 +750,8 @@ body {
   max-width: 40%;
   object-fit: contain;
   z-index: 1;
-  animation: float 6s ease-in-out infinite;
+  animation: float 2s ease-in-out infinite; /* Changed from 6s to 3s */
 }
-
 @media (max-width: 992px) {
   .slider-one h1 {
     font-size: 2.8rem;
