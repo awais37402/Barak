@@ -321,7 +321,7 @@ const MagneticYieldAlliance = () => {
                 <div className="stat-item animate-on-scroll">
                   <div className="stat-value">Up to 7000 ppm</div>
                   <div className="stat-label">Enable brackish water up to 7000 ppm for irrigation</div>
-                  <div className="stat-desc">Reduction in irrigation needs</div>
+                  <div className="stat-desc"></div>
                 </div>
                 <div className="stat-item animate-on-scroll">
                   <div className="stat-value">10-15</div>
