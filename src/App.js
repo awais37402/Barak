@@ -4,23 +4,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import MagneticYieldAlliance from './pages/MagneticYieldAlliance'; // Ensure the path is correct
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
 import Home from './pages/Home';
 import About from './pages/About';
 import CaseStudies from './pages/CaseStudies';
 import Contact from './pages/Contact';
 import MagneticWater from './components/Magneticwater'; // ✅ New import for MagneticWater
-import React, { useEffect } from 'react';
 
 import ScrollToTopButton from './components/ScrollToTopButton'; // ✅ This shows floating scroll-to-top button
 
 function App() {
-
-  useEffect(() => {
-    AOS.init({ duration: 3000 });
-  }, []);
-
   return (
     <Router>
       <div className="App">
@@ -39,11 +32,8 @@ function App() {
 
         <Footer />
       </div>
-      
     </Router>
-    );
+  );
 }
-
-
 
 export default App;
