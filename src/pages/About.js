@@ -8,17 +8,14 @@ const About = () => {
         <h2 className="about-title">Barak AgriTech</h2>
         <div className="about-content">
           <p>
-            <strong>Barak AgriTech (Private) Limited</strong> is an agricultural technology company dedicated to transforming farming in Pakistan. Based in Islamabad, we offer innovative solutions that empower farmers to grow more with less. With a strong presence across <strong>50,000+ acres</strong> and support to <strong>hundreds of farmers</strong>, we’re committed to sustainable, profitable, and resilient agriculture.
-          </p>
+          Pioneering a New Era in Pakistani Agriculture
+          Barak AgriTech (Private) Limited is an agricultural technology company dedicated to transforming farming in Pakistan. From our headquarters in Islamabad, we bring innovative solutions to farmers, empowering them to grow more with less. With a proven track record of supporting over 100s farmers and enhancing productivity across 50,00+ acres, we’re committed to making agriculture sustainable, profitable, and resilient.          </p>
           <p>
-            Led by seasoned industry experts, Barak AgriTech combines deep agricultural insight with cutting-edge technologies. Our team is passionate about innovation and focused on delivering solutions that increase yields, reduce resource usage, and shape the future of farming in Pakistan.
-          </p>
+          Founded and led by industry experts, Barak AgriTech is driven by a vision to modernize farming through cutting-edge technology. With a passion for innovation and a deep understanding of Pakistan’s agricultural challenges, our experts are steering the company to deliver solutions that boost yields, save resources, and secure the future of farming.           </p>
           <p>
-            We proudly collaborate with <strong>Magnetic Technologies LLC</strong>—a Dubai-based global leader in magnetic energy solutions since 1995. With over <strong>500,000 hectares</strong> impacted in <strong>50+ countries</strong>, their expertise fuels our mission. Together, we’ve introduced the <strong>Magnetic Yield Alliance</strong>, offering zero-cost, high-return farming solutions.
-          </p>
+          We’ve partnered with Magnetic Technologies LLC, a Dubai-based global leader in magnetic energy applications since 1995. With over 30 years of expertise across 50+ countries and 500,000+ hectares of farmland, they bring proven technology to our mission. Together, we’ve launched the Magnetic Yield Alliance—our latest initiative to revolutionize farming with zero-cost, high-return solutions.          </p>
           <p>
-            Our mission is to equip farmers with advanced tools and knowledge. We're targeting a <strong>15–30% increase</strong> in crop yields, up to <strong>50% reduction</strong> in water and input costs, and the revival of saline lands—all while promoting a greener, more prosperous Pakistan. From magnetic tech to future-ready tools like drones and AI—we're here to lead the agricultural revolution.
-          </p>
+At Barak AgriTech, our mission is to empower farmers with advanced tools and knowledge. We aim to increase crop yields by 15–30%, reduce water and input costs by up to 50%, and unlock farming potential in saline lands—all while promoting a greener Pakistan. From magnetic technologies to future innovations like drones and AI, we’re here to lead the way.          </p>
         </div>
       </div>
     </section>

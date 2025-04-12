@@ -165,8 +165,8 @@ const Contact = () => {
           <h2 className={styles.sectionTitle}>Find Us on the <span>Map</span></h2>
           <div className={styles.mapContainer}>
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209179535!2d-73.98784492416407!3d40.74844097138968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1629997977658!5m2!1sen!2sus" 
-              width="100%" 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209179535!2d73.0801643!3d33.7747234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df91729c537d85%3A0x81b02eec0e7ac9f8!2sPlot%20A-105%2C%20Minar%20Road%2C%20Basti%20Lala%20Rukh%2C%20POF%2C%20Wah%20Cantt!5e0!3m2!1sen!2sus!4v1629997977658!5m2!1sen!2sus" 
+  width="100%" 
               height="450" 
               style={{ border: 0 }} 
               allowFullScreen="" 
@@ -184,33 +184,8 @@ const Contact = () => {
           
           <div className={styles.faqContainer}>
             {/* AgroVision Service FAQs */}
-            <h3 className={styles.faqCategory}>AgroVision Service FAQs</h3>
             
-            <div className={styles.faqItem}>
-              <button 
-                className={`${styles.faqQuestion} ${activeFaq === 0 ? styles.active : ''}`}
-                onClick={() => toggleFaq(0)}
-              >
-                What types of farms does AgroVision work with?
-                <i className={`fas fa-chevron-down ${activeFaq === 0 ? styles.rotate : ''}`}></i>
-              </button>
-              <div className={`${styles.faqAnswer} ${activeFaq === 0 ? styles.active : ''}`}>
-                <p>We work with farms of all sizes and types, from small organic operations to large commercial farms. Our solutions are customizable to meet the specific needs of different crops, climates, and farming methods including conventional, organic, hydroponic, and greenhouse operations.</p>
-              </div>
-            </div>
             
-            <div className={styles.faqItem}>
-              <button 
-                className={`${styles.faqQuestion} ${activeFaq === 1 ? styles.active : ''}`}
-                onClick={() => toggleFaq(1)}
-              >
-                How quickly can I expect to see results?
-                <i className={`fas fa-chevron-down ${activeFaq === 1 ? styles.rotate : ''}`}></i>
-              </button>
-              <div className={`${styles.faqAnswer} ${activeFaq === 1 ? styles.active : ''}`}>
-                <p>Most farmers see noticeable improvements within the first growing season, with optimal results typically appearing in the second season as soil health improves. Some crops show immediate benefits in germination rates and early growth.</p>
-              </div>
-            </div>
             
             {/* General Agriculture FAQs */}
             <h3 className={styles.faqCategory}>General Agriculture FAQs</h3>
@@ -271,15 +246,7 @@ const Contact = () => {
       </section>
 
       {/* CTA Section */}
-      <section className={styles.cta}>
-        <div className={styles.container}>
-          <div className={styles.ctaContent}>
-            <h2>Still Have Questions?</h2>
-            <p>Our agricultural experts are ready to help you find the right solutions.</p>
-          </div>
-          <button className={`${styles.btn} ${styles.primaryBtn}`}>Chat With an Expert</button>
-        </div>
-      </section>
+     
     </div>
   );
 };

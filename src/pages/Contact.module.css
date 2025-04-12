@@ -1,4 +1,5 @@
 /* Contact.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
 :root {
@@ -24,7 +25,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
   color: var(--black);
 }
@@ -50,6 +51,7 @@ body {
 .contactHero h1 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
+  margin-top: 2rem;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -62,6 +64,7 @@ body {
   font-size: 1.1rem;
   max-width: 100%;
   margin: 0 auto;
+  font-weight: 300;
 }
 
 /* Contact Grid */
@@ -86,6 +89,7 @@ body {
   font-size: 1.5rem;
   position: relative;
   padding-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .contactForm h2::after {
@@ -119,6 +123,7 @@ body {
   border-radius: 0.3rem;
   font-size: 1rem;
   background-color: var(--white);
+  font-family: 'Poppins', sans-serif;
 }
 
 .formGroup input:focus,
@@ -143,6 +148,7 @@ body {
   text-align: center;
   cursor: pointer;
   border: none;
+  font-family: 'Poppins', sans-serif;
 }
 
 .primaryBtn {
@@ -161,6 +167,7 @@ body {
   font-size: 1.5rem;
   position: relative;
   padding-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .contactInfo h2::after {
@@ -201,6 +208,7 @@ body {
   color: var(--primary-green);
   margin-bottom: 0.3rem;
   font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .infoCard .content p {
@@ -208,6 +216,7 @@ body {
   color: var(--black);
   font-size: 0.95rem;
   line-height: 1.5;
+  font-weight: 400;
 }
 
 /* Map Section */
@@ -220,6 +229,7 @@ body {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .sectionTitle span {
@@ -256,6 +266,7 @@ body {
   font-size: 1.3rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--light-green);
+  font-weight: 600;
 }
 
 .faqItem {
@@ -278,6 +289,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faqQuestion i {
@@ -304,6 +316,7 @@ body {
   margin: 0;
   color: var(--black);
   line-height: 1.6;
+  font-weight: 400;
 }
 
 /* CTA Section */
@@ -327,6 +340,7 @@ body {
   max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
+  font-weight: 300;
 }
 
 /* Responsive Adjustments */

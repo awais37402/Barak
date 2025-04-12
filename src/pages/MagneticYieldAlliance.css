@@ -1,5 +1,5 @@
 /* MagneticYieldAlliance.css */
-/* Base Styles */
+/* Base Styles with Poppins Font */
 .magnetic-yield-alliance {
   font-family: 'Poppins', sans-serif;
   color: #333;
@@ -8,6 +8,57 @@
   scroll-behavior: smooth;
 }
 
+/* Add Poppins font weights */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Apply Poppins to specific elements */
+h1, h2, h3, h4, h5, h6,
+.hero-title, .tagline, .section-header h2, 
+.agri-title, .agri-card-title, .offer-card h3,
+.stat-value, .stat-label, .comparison-content h3,
+.partner-card h3, .value-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* Semi-bold by default */
+}
+
+/* Hero Title - Extra Bold */
+.hero-title {
+  font-weight: 800;
+}
+
+/* Section Headings - Bold */
+.section-header h2, 
+.agri-title, 
+.offer-header h2 {
+  font-weight: 700;
+}
+
+/* Card Titles - Semi-bold */
+.agri-card-title, 
+.offer-card h3, 
+.value-card h3,
+.partner-card h3 {
+  font-weight: 600;
+}
+
+/* Body Text - Regular */
+body, p, li, .partner-description, 
+.value-card p, .offer-card p, 
+.comparison-content li, .agri-list li {
+  font-weight: 400;
+}
+
+/* Light Weight Text */
+.tagline, .partner-subtitle, .stat-desc {
+  font-weight: 300;
+}
+
+/* Buttons - Medium */
+.cta-button, .tab-button {
+  font-weight: 500;
+}
+
+/* Rest of your existing CSS remains unchanged */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -346,7 +397,7 @@
 
 /* Transformation Showcase */
 .transformation-showcase {
-  padding: 100px 0;
+  padding: 80px 0; /* reduced padding */
   background-color: #f5f7fa;
 }
 
@@ -355,6 +406,7 @@
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .comparison-item {
@@ -363,34 +415,36 @@
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
+  background-color: white;
+  margin-bottom: 0; /* remove extra bottom space */
 }
 
 .comparison-image {
-  height: 300px;
+  height: 280px; /* slightly reduced */
   background-size: cover;
   background-position: center;
 }
 
 .comparison-content {
-  padding: 30px;
-  background: white;
+  padding: 20px 25px; /* reduced vertical padding */
 }
 
 .comparison-content h3 {
   font-size: 1.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: #2E7D32;
 }
 
 .comparison-content ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .comparison-content li {
   position: relative;
   padding-left: 25px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: #555;
 }
 
@@ -412,11 +466,17 @@
   background-color: #4CAF50;
 }
 
-.vs-badge {
+/* Desktop VS Badge */
+.vs-wrapper {
   position: absolute;
-  top: 50%;
+  top: 47%; /* slightly moved up */
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
+  margin: 0;
+}
+
+.vs-badge {
   background: white;
   width: 60px;
   height: 60px;
@@ -427,7 +487,47 @@
   font-weight: 700;
   color: #333;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  z-index: 2;
+}
+
+/* Mobile badge hidden by default */
+.vs-badge.mobile-only {
+  display: none;
+  margin: 15px auto 0 auto; /* less margin above */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .transformation-showcase {
+    padding: 60px 0;
+  }
+
+  .comparison-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .comparison-item {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .vs-wrapper {
+    display: none; /* hide desktop badge */
+  }
+
+  .vs-badge.mobile-only {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    color: #333;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin: 10px auto;
+  }
 }
 
 /* Technology Deep Dive */
@@ -688,11 +788,6 @@ html {
   animation: float 6s ease-in-out infinite;
 }
 
-
-
-/* MagneticYieldAlliance.css */
-/* Existing styles... (keep all your current CSS) */
-
 /* Alliance Overview */
 .alliance-overview {
   padding: 100px 0;
@@ -710,7 +805,20 @@ html {
   color: #2E7D32;
   margin-bottom: 30px;
   line-height: 1.8;
+  text-align: center;
+  display: block;  /* Ensures the element behaves like a block element */
+  margin-left: auto;  /* Centers the element horizontally */
+  margin-right: auto; /* Centers the element horizontally */
 }
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+  .highlight {
+    font-size: 1.1rem;  /* Adjust font size for smaller screens */
+    width: 90%;         /* Limit the width for better appearance */
+  }
+}
+
 
 .milestones-grid {
   display: grid;
@@ -823,63 +931,153 @@ html {
   font-weight: bold;
 }
 
-/* Enhanced Technology Section */
-.tech-feature {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+/* Agriculture Tech Section Styling */
+.agri-tech-section {
+  padding: 80px 20px;
+  background-color: #f5f5f5;
 }
 
-.feature-image {
-  height: 200px;
-  margin-bottom: 25px;
-  border-radius: 10px;
+.agri-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Header Area */
+.agri-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.agri-label {
+  display: inline-block;
+  background-color: #4CAF50; /* Green background */
+  color: #fff;               /* White text */
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 30px;       /* Fully rounded pill */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.agri-title {
+  font-size: 2.2rem;
+  color: #222;
+  margin-top: 10px;
+}
+
+.agri-divider {
+  width: 60px;
+  height: 4px;
+  background-color: #4CAF50;
+  margin: 20px auto 0;
+  border-radius: 2px;
+}
+
+/* Features Section */
+.agri-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* Card Styles */
+.agri-card {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+}
+
+.agri-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Wrapper */
+.agri-image-wrapper {
+  height: 220px;
   overflow: hidden;
-}
-
-.feature-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.tech-feature:hover .feature-image img {
-  transform: scale(1.05);
-}
-
-.tech-feature h3 {
-  font-size: 1.4rem;
-  color: #2E7D32;
+  border-radius: 12px;
   margin-bottom: 20px;
 }
 
-.tech-feature ul {
+.agri-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.agri-card:hover .agri-image-wrapper img {
+  transform: scale(1.07);
+}
+
+/* Card Content */
+.agri-card-title {
+  font-size: 1.5rem;
+  color: #2E7D32;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.agri-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.tech-feature li {
+.agri-list li {
   position: relative;
   padding-left: 25px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   color: #555;
+  font-size: 1rem;
 }
 
-.tech-feature li:before {
-  content: '•';
+.agri-list li::before {
+  content: "✓";
   position: absolute;
   left: 0;
   color: #4CAF50;
   font-weight: bold;
-  font-size: 1.2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .agri-title {
+    font-size: 1.7rem;
+  }
+
+  .agri-card-title {
+    font-size: 1.3rem;
+  }
+
+  .agri-image-wrapper {
+    height: 180px;
+  }
 }
 
 /* Offer Section */
 .offer-section {
   padding: 100px 0;
   background-color: #f5f7fa;
+}
+
+.offer-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.offer-heading {
+  font-size: 0.9rem; /* Adjust font size */
+  color: white;
+  background-color: #4CAF50; /* Green background */
+  padding: 5px 10px; /* Reduced padding */
+  border-radius: 15px; /* Smaller border-radius */
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
 .offer-cards {
@@ -918,6 +1116,26 @@ html {
 .offer-card p {
   color: #666;
   line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .offer-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .offer-heading {
+    font-size: 1.4rem; /* Smaller font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .offer-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-heading {
+    font-size: 1.3rem; /* Further reduced font size for very small screens */
+  }
 }
 
 /* Impact Section */

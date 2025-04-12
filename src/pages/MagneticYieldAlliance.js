@@ -8,14 +8,14 @@ import MagneticLogo from '../assets/Magnetic_Yield_Alliance__4.png';
 // Image imports
 import HeroBackground from '../assets/farm-field-banner.jpg';
 import GlobalLocalCollage from '../assets/global-local-collage.jpg';
-import BeforeCrop from '../assets/before-crop.jpeg';
-import AfterCrop from '../assets/after-crop.jpg';
+import BeforeCrop from '../assets/before-crop.png';
+import AfterCrop from '../assets/after-crop.png';
 import TechnologyIcon from '../assets/tech-icon.png';
 import ResultsIcon from '../assets/results-icon.png';
 import PartnershipIcon from '../assets/partnership-icon.png';
-import MagneticDevice from '../assets/product.jpg';
-import SeedTreatment from '../assets/seven.jpg';
-import FarmResults from '../assets/after-crop.jpg';
+import MagneticDevice from '../assets/green1.png';
+import SeedTreatment from '../assets/green2.png';
+import FarmResults from '../assets/before-crop.png';
 
 const MagneticYieldAlliance = () => {
   const [activeTab, setActiveTab] = useState('Productivity');
@@ -61,13 +61,18 @@ const MagneticYieldAlliance = () => {
       >
         <div className="hero-content">
           <div className="partner-logos">
-            <img src={BarakLogo} alt="Barak AgriTech" className="logo pulse" />
+            <img src={BarakLogo} alt="Barak AgriTech (Pvt) Ltd." className="logo pulse" />
             <span className="partnership-symbol glow">✧</span>
             <img src={MagneticLogo} alt="Magnetic Technologies LLC" className="logo pulse" />
           </div>
           <h1 className="hero-title">Magnetic Yield Alliance</h1>
           <p className="tagline shimmer">Global Magnetic Technology Expertise Meets Local Agricultural Innovation</p>
-          <button className="cta-button sparkle">Contact Us for a Demo</button>
+          <button
+            className="cta-button sparkle"
+            onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSc7NOvWuB_NC3E9bYriVLQopmFNHJDAOI0vnqKIT5u9qvXwyg/viewform', '_blank')}
+          >
+            Fill Out the Survey Form
+          </button>
         </div>
       </section>
 
@@ -87,27 +92,9 @@ const MagneticYieldAlliance = () => {
                 knowledge to transform Pakistan's farming landscape.
               </p>
               <p>
-                This nationwide agri-ecosystem between Magnetic Technologies LLC (UAE) and Barak AgriTech (Pakistan) 
+                This nationwide agri-ecosystem between Magnetic Technologies LLC (UAE) and Barak AgriTech (Pvt) Ltd. (Pakistan) 
                 delivers an unprecedented opportunity to enhance and scale large-scale farms.
               </p>
-              
-              <div className="milestones-grid">
-                <div className="milestone-item animate-on-scroll">
-                  <div className="milestone-icon">🌱</div>
-                  <h3>30+ Years</h3>
-                  <p>Of magnetic research and development</p>
-                </div>
-                <div className="milestone-item animate-on-scroll">
-                  <div className="milestone-icon">🌍</div>
-                  <h3>50+ Countries</h3>
-                  <p>Where our technology has been implemented</p>
-                </div>
-                <div className="milestone-item animate-on-scroll">
-                  <div className="milestone-icon">🔄</div>
-                  <h3>500K+ Hectares</h3>
-                  <p>Of farmland treated with our solutions</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -143,8 +130,8 @@ const MagneticYieldAlliance = () => {
             
             <div className="partner-card animate-on-scroll">
               <div className="partner-header">
-                <img src={BarakLogo} alt="Barak AgriTech" className="partner-logo" />
-                <h3>Barak AgriTech</h3>
+                <img src={BarakLogo} alt="Barak AgriTech (Pvt) Ltd." className="partner-logo" />
+                <h3>Barak AgriTech (Pvt) Ltd.</h3>
                 <p className="partner-subtitle">Pakistan's Agricultural Specialists</p>
               </div>
               <p className="partner-description">
@@ -162,55 +149,87 @@ const MagneticYieldAlliance = () => {
         </div>
       </section>
 
-      {/* Technology Deep Dive */}
-      <section className="technology-deepdive">
+      {/* Value Proposition */}
+      <section className="value-proposition">
         <div className="container">
           <div className="section-header animate-on-scroll">
-            <span className="section-tag">Our Technology</span>
-            <h2>How Magnetic Treatment Transforms Agriculture</h2>
+            <span className="section-tag">Why Choose Us</span>
+            <h2>The Magnetic Advantage</h2>
             <div className="divider"></div>
           </div>
 
-          <div className="tech-features">
-            <div className="tech-feature animate-on-scroll">
-              <div className="feature-image">
-                <img src={MagneticDevice} alt="Magnetic Water Treatment" />
+          <div className="value-cards">
+            <div className="value-card animate-on-scroll">
+              <div className="card-icon">
+                <img src={TechnologyIcon} alt="Technology" />
               </div>
-              <h3>Magnetic Water Treatment</h3>
-              <ul>
-                <li>Uses 12,000+ gauss magnetic field</li>
-                <li>Reduces irrigation water by 30%</li>
-                <li>Enables absorption of nutrients by 40%</li>
-                <li>Increases crop quality</li>
-                <li>Boosts yields by 10–30%</li>
-              </ul>
+              <h3>Cutting-Edge Technology</h3>
+              <p>
+                Harnessing the power of 12,000+ gauss magnetic fields to optimize water structure 
+                and enhance nutrient absorption for healthier, more productive crops.
+              </p>
             </div>
             
-            <div className="tech-feature animate-on-scroll">
-              <div className="feature-image">
-                <img src={SeedTreatment} alt="Seed Treatment" />
-              </div>
-              <h3>Seed Treatment</h3>
-              <ul>
-                <li>Magnetic exposure enhances seed germination by 15–40%</li>
-                <li>Strengthens early root development</li>
-                <li>Reduces crop loss by 20%</li>
-                <li>Improves stress resistance</li>
-                <li>Accelerates growth cycles</li>
-              </ul>
-            </div>
-            
-            <div className="tech-feature animate-on-scroll">
-              <div className="feature-image">
-                <img src={FarmResults} alt="Proven Results" />
+            <div className="value-card animate-on-scroll">
+              <div className="card-icon">
+                <img src={ResultsIcon} alt="Results" />
               </div>
               <h3>Proven Results</h3>
-              <ul>
-                <li>15–30% yield increase per crop</li>
-                <li>30–50% water usage reduction</li>
-                <li>10–15 day shorter growth cycles</li>
-                <li>Improved crop quality metrics</li>
-                <li>Reduced fertilizer requirements</li>
+              <p>
+                Demonstrated success across 50+ countries with consistent yield increases of 15-30%, 
+                water savings of 20-30%, and faster crop cycles.
+              </p>
+            </div>
+            
+            <div className="value-card animate-on-scroll">
+              <div className="card-icon">
+                <img src={PartnershipIcon} alt="Partnership" />
+              </div>
+              <h3>Unmatched Partnership</h3>
+              <p>
+                Global expertise meets local knowledge - our alliance combines international R&D with 
+                on-the-ground agricultural understanding through Barak AgriTech (Pvt) Ltd.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Deep Dive */}
+      <section className="agri-tech-section">
+        <div className="agri-container">
+          <div className="agri-header animate-on-scroll">
+            <span className="agri-label">Our Technology</span>
+            <h2 className="agri-title">How Magnetic Treatment Transforms Agriculture</h2>
+            <div className="agri-divider"></div>
+          </div>
+
+          <div className="agri-features">
+            <div className="agri-card animate-on-scroll">
+              <div className="agri-image-wrapper">
+                <img src={MagneticDevice} alt="Magnetic Water Treatment" />
+              </div>
+              <h3 className="agri-card-title">Magnetic Water Treatment</h3>
+              <ul className="agri-list">
+                <li>Boosts crop yields by <strong>15–30%</strong> with magnetized water.</li>
+                <li>Enhances nutrient absorption in plant roots.</li>
+                <li>Increases vegetable output by <strong>20–50%</strong> through better photosynthesis.</li>
+                <li>Cuts water usage by <strong>30–50%</strong> with improved water delivery.</li>
+                <li>Improves yields by <strong>15–25%</strong> in saline soil by reducing salt effects.</li>
+              </ul>
+            </div>
+
+            <div className="agri-card animate-on-scroll">
+              <div className="agri-image-wrapper">
+                <img src={SeedTreatment} alt="Seed Treatment" />
+              </div>
+              <h3 className="agri-card-title">Seed Treatment</h3>
+              <ul className="agri-list">
+                <li><strong>Magnetic exposure</strong> enhances seed germination by <strong>15–40%</strong></li>
+                <li><strong>Strengthens</strong> early root development</li>
+                <li><strong>Reduces</strong> crop loss by <strong>20%</strong></li>
+                <li><strong>Improves</strong> stress resistance</li>
+                <li><strong>Accelerates</strong> growth cycles</li>
               </ul>
             </div>
           </div>
@@ -220,39 +239,41 @@ const MagneticYieldAlliance = () => {
       {/* Offer Section */}
       <section className="offer-section">
         <div className="container">
-          <div className="section-header animate-on-scroll">
-            <span className="section-tag">Our Offer</span>
+          <div className="offer-header animate-on-scroll">
+            <span className="section-label offer-heading">Our Offer</span>
             <h2>You Invest Nothing. We Deliver Everything!</h2>
             <div className="divider"></div>
           </div>
 
           <div className="offer-cards">
-            <div className="offer-card animate-on-scroll">
+            <article className="offer-card animate-on-scroll">
               <div className="offer-icon">💰</div>
               <h3>Zero Upfront Costs</h3>
               <p>
-                We provide devices and services without any upfront charges. You only pay on performance basis 
-                from the additional income generated.
+                Through our partnership with Magnetic Technologies LLC, Dubai—a global leader with 30+ years of success—we provide the water treatment and seed treatment devices completely free. These magnetic devices enhance water absorption and energize seeds, increasing your yields by 15–30% with no upfront cost.
               </p>
-            </div>
-            
-            <div className="offer-card animate-on-scroll">
+            </article>
+
+            <article className="offer-card animate-on-scroll">
               <div className="offer-icon">🤝</div>
               <h3>Profit Sharing</h3>
-              <p>
-                We take a share from additional farm income - typically 50% of net profits post-yield. 
-                No results = No payment.
-              </p>
-            </div>
-            
-            <div className="offer-card animate-on-scroll">
+              <section>
+                <h4>Brackish Water Farms</h4>
+                <p>For crops grown on saline land up to 7000 ppm.</p>
+              </section>
+              <section>
+                <h4>Freshwater Farms</h4>
+                <p>We take 60% of the extra yield our tech helps you grow; you keep 40%—plus all your usual harvest.</p>
+              </section>
+            </article>
+
+            <article className="offer-card animate-on-scroll">
               <div className="offer-icon">🛠️</div>
               <h3>Comprehensive Support</h3>
               <p>
-                Includes installation, maintenance, and professional consultancy. Our team handles everything 
-                from setup to optimization.
+                Includes installation, maintenance, and professional consultancy from Barak AgriTech (Pvt) Ltd. Our team handles everything from setup to optimization.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -366,52 +387,6 @@ const MagneticYieldAlliance = () => {
         </div>
       </section>
 
-      {/* Value Proposition */}
-      <section className="value-proposition">
-        <div className="container">
-          <div className="section-header animate-on-scroll">
-            <span className="section-tag">Why Choose Us</span>
-            <h2>The Magnetic Advantage</h2>
-            <div className="divider"></div>
-          </div>
-
-          <div className="value-cards">
-            <div className="value-card animate-on-scroll">
-              <div className="card-icon">
-                <img src={TechnologyIcon} alt="Technology" />
-              </div>
-              <h3>Cutting-Edge Technology</h3>
-              <p>
-                Harnessing the power of 12,000+ gauss magnetic fields to optimize water structure 
-                and enhance nutrient absorption for healthier, more productive crops.
-              </p>
-            </div>
-            
-            <div className="value-card animate-on-scroll">
-              <div className="card-icon">
-                <img src={ResultsIcon} alt="Results" />
-              </div>
-              <h3>Proven Results</h3>
-              <p>
-                Demonstrated success across 50+ countries with consistent yield increases of 15-30%, 
-                water savings of 20-30%, and faster crop cycles.
-              </p>
-            </div>
-            
-            <div className="value-card animate-on-scroll">
-              <div className="card-icon">
-                <img src={PartnershipIcon} alt="Partnership" />
-              </div>
-              <h3>Unmatched Partnership</h3>
-              <p>
-                Global expertise meets local knowledge - our alliance combines international R&D with 
-                on-the-ground agricultural understanding.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Before/After Showcase */}
       <section className="transformation-showcase">
         <div className="container">
@@ -423,7 +398,10 @@ const MagneticYieldAlliance = () => {
 
           <div className="comparison-container">
             <div className="comparison-item before animate-on-scroll">
-              <div className="comparison-image" style={{ backgroundImage: `url(${BeforeCrop})` }}></div>
+              <div
+                className="comparison-image"
+                style={{ backgroundImage: `url(${BeforeCrop})` }}
+              ></div>
               <div className="comparison-content">
                 <h3>Conventional Farming</h3>
                 <ul>
@@ -434,13 +412,20 @@ const MagneticYieldAlliance = () => {
                 </ul>
               </div>
             </div>
-            
-            <div className="vs-badge animate-on-scroll">
-              <span>VS</span>
+
+            {/* Mobile VS badge */}
+            <div className="vs-badge mobile-only">VS</div>
+
+            {/* Desktop VS badge */}
+            <div className="vs-wrapper">
+              <div className="vs-badge animate-on-scroll">VS</div>
             </div>
-            
+
             <div className="comparison-item after animate-on-scroll">
-              <div className="comparison-image" style={{ backgroundImage: `url(${AfterCrop})` }}></div>
+              <div
+                className="comparison-image"
+                style={{ backgroundImage: `url(${AfterCrop})` }}
+              ></div>
               <div className="comparison-content">
                 <h3>Magnetic-Treated Farming</h3>
                 <ul>
@@ -455,40 +440,24 @@ const MagneticYieldAlliance = () => {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="testimonial-section">
-        <div className="container">
-          <div className="testimonial-card animate-on-scroll">
-            <div className="quote-mark">"</div>
-            <blockquote>
-              Our alliance with Barak AgriTech represents a quantum leap in agricultural technology 
-              deployment. Their local expertise perfectly complements our global research, creating 
-              solutions that are both scientifically advanced and practically effective for Pakistani 
-              farmers.
-            </blockquote>
-            <div className="testimonial-author">
-              <div className="author-info">
-                <strong>Dr. Ahmed Khalifa</strong>
-                <span>Chief Scientist, Magnetic Technologies LLC</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="cta-section">
         <div className="container">
           <div className="cta-content animate-on-scroll">
             <h2>Ready to Transform Your Farm's Potential?</h2>
             <p>
-              Join hundreds of farmers who are already experiencing the Magnetic Yield difference. 
+              Join hundreds of farmers who are already experiencing the Magnetic Yield difference through Barak AgriTech (Pvt) Ltd. 
               Zero upfront costs - we succeed when you succeed.
             </p>
-            <button className="cta-button sparkle">Schedule Your Free Consultation</button>
+            <button
+              className="cta-button sparkle"
+              onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSc7NOvWuB_NC3E9bYriVLQopmFNHJDAOI0vnqKIT5u9qvXwyg/viewform', '_blank')}
+            >
+              Fill Out the Survey Form
+            </button>
             
             <div className="partner-badges">
-              <img src={BarakLogo} alt="Barak AgriTech" className="badge-logo" />
+              <img src={BarakLogo} alt="Barak AgriTech (Pvt) Ltd." className="badge-logo" />
               <img src={MagneticLogo} alt="Magnetic Technologies LLC" className="badge-logo" />
             </div>
           </div>

@@ -36,7 +36,7 @@
   font-size: 3rem;
   font-weight: 700;
   color: var(--agri-green);
-  text-align: center;
+  text-align: center;  /* Title aligned to center */
   margin-bottom: 40px;
   position: relative;
 }
@@ -47,7 +47,7 @@
   height: 4px;
   background-color: var(--accent);
   display: block;
-  margin: 10px auto 0;
+  margin: 10px auto 0;  /* Centers the underline */
   border-radius: 2px;
 }
 
@@ -58,6 +58,12 @@
   animation: slideUp 0.8s ease forwards;
   opacity: 0;
   animation-delay: 0.3s;
+  text-align: left;  /* Align paragraphs to the left */
+}
+
+/* Paragraphs with margin for empty line space */
+.about-content p {
+  margin-bottom: 20px;  /* Adds space between paragraphs */
 }
 
 .about-content strong {

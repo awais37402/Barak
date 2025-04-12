@@ -1,21 +1,28 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 import { faSeedling, faChevronRight, faChevronLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 // Import actual image files (adjust paths to match your project structure)
 import logo from '../assets/logo-removebg-preview.png';
+
 import brain from '../assets/Magnetic_Yield_Alliance__4.png';
-import water from '../assets/water.jpg';
-import product from '../assets/seven.jpg';
+import water from '../assets/two.jpg';
+import product from '../assets/seven.png';
 import one from '../assets/one.jpg';
 import two from '../assets/two.jpg';
 import three from '../assets/three.jpg';
 import four from '../assets/four.jpg';
 import five from '../assets/five.jpg';
 import six from '../assets/six.jpg';
-import seven from '../assets/seven.jpg';
+import seven from '../assets/seven.png';
 import eight from '../assets/eight.jpg';
+import nine from '../assets/nine.jpeg';
+import ten from '../assets/ten.jpeg';
+import eleven from '../assets/eleven.jpeg';
+import twelve from '../assets/twelve.jpeg';
+import thirteen from '../assets/thirteen.jpeg';
 
 // Create an images object with the imported files
 const images = {
@@ -30,17 +37,22 @@ const images = {
   five,
   six,
   seven,
-  eight
+  eight,
+  nine,
+  ten,
+  eleven,
+  twelve,
+  thirteen
 };
 
 const Home = () => {
   return (
     <div className="home-container">
       <Hero />
-      <WaterBenefits />
       <WaterTreatment />
-      <SurveyDownload />
+      <WaterBenefits />
       <StatsSection />
+      <SurveyDownload />
       <Gallery />
     </div>
   );
@@ -54,8 +66,8 @@ const Hero = () => {
 
   const sliders = [
     <SliderThree key="3" />,
-    <SliderOne key="1" />,
-    <SliderTwo key="2" />
+   
+    <SliderOne key="1" />
   ];
 
   const nextSlide = useCallback(() => {
@@ -91,39 +103,55 @@ const Hero = () => {
         <button onClick={prevSlide} aria-label="Previous slide">
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
+        <div className="slide-indicators">
+          {sliders.map((_, index) => (
+            <div 
+              key={index}
+              className={`indicator ${index === currentSlide ? 'active' : ''}`}
+              onClick={() => setCurrentSlide(index)}
+            />
+          ))}
+        </div>
         <button onClick={nextSlide} aria-label="Next slide">
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
-      </div>
-      <div className="slide-indicators">
-        {sliders.map((_, index) => (
-          <div 
-            key={index}
-            className={`indicator ${index === currentSlide ? 'active' : ''}`}
-            onClick={() => setCurrentSlide(index)}
-          />
-        ))}
       </div>
     </div>
   );
 };
 
 const SliderOne = () => {
+  const navigate = useNavigate();
+
+  const handleLearnMore = () => {
+    navigate('/magneticyieldalliance'); // Make sure route exists
+  };
+
   return (
-    <div className="slider-one">
-      <div className="slider-content">
-        <h1>Magnetic Yield Alliance</h1>
-        <p>
-          Harnessing the power of magnetic fields to boost crop yields
-          and improve plant health through innovative scientific approaches.
-        </p>
-        <button className="slider-button">Learn More</button>
+    <>
+      {/* Left logo */}
+      <img src={images.logo} alt="Barak AgriTech Logo" className="logo-image left-logo" />
+
+      {/* Slider content */}
+      <div className="slider-one">
+        <div className="slider-content">
+          <h1>Magnetic Yield Alliance</h1>
+          <p>
+            Harnessing the power of magnetic fields to boost crop yields
+            and improve plant health through innovative scientific approaches.
+          </p>
+          <button className="slider-button" onClick={handleLearnMore}>
+            Learn More
+          </button>
+        </div>
+
+        {/* Right side brain image */}
+        <img src={images.brain} alt="brain tech" className="brain-image" />
       </div>
-      <img src={images.brain} alt="brain tech" className="brain-image" />
-      <img src={images.logo} alt="Barak AgriTech" className="logo-image" />
-    </div>
+    </>
   );
 };
+
 
 const SliderTwo = () => {
   return (
@@ -146,6 +174,12 @@ const SliderTwo = () => {
 };
 
 const SliderThree = () => {
+  const navigate = useNavigate();
+
+  const handleExploreClick = () => {
+    navigate('/magneticyieldalliance');
+  };
+
   return (
     <div className="slider-three">
       <div className="slider-container">
@@ -155,9 +189,11 @@ const SliderThree = () => {
         <div className="slider-content">
           <h1>Barak AgriTech</h1>
           <p>
-          Barak AgriTech (Pvt).Ltd is a key player in Pakistan’s agricultural innovation landscape, bridging global technology from Magnetic Technologies LLC with local farming needs. Through the Magnetic Yield Alliance, it offers a zero-investment, high-return solution that boosts cotton, wheat, and other crop yields by 15-30%, reduces input costs, and enables farming with brackish water—delivering both economic and environmental benefits to farmers and the nation.
+            Barak AgriTech (Pvt.) Ltd is revolutionizing Pakistani agriculture by partnering with Magnetic Technologies LLC to boost crop yields by 15–30%, cut input costs, and enable farming with brackish water—offering a zero-investment, high-return solution for sustainable farming.
           </p>
-          <button className="explore-btn">Explore Our Solutions</button>
+          <button className="explore-btn" onClick={handleExploreClick}>
+            Explore Our Solutions
+          </button>
         </div>
       </div>
     </div>
@@ -297,48 +333,17 @@ const WaterBenefits = () => {
 
       <div className="water-background"></div>
 
-      <div
-  className="section-header"
-  style={{
-    textAlign: 'center',
-    marginBottom: '40px',
-    padding: '20px',
-    color: 'white',
-  }}
->
-  <header
-    className={inView ? 'animate' : ''}
-    style={{
-      opacity: inView ? 1 : 0,
-      transform: inView ? 'translateY(0)' : 'translateY(20px)',
-      transition: 'all 0.6s ease-in-out',
-    }}
-  >
-    <h3 style={{ fontSize: '2.2rem', fontWeight: '700', lineHeight: '1.4', color: 'white' }}>
-      How our <mark style={{ background: 'none', color: '#00ffd5', fontWeight: 'bold' }}>Water Treatment</mark>{' '}
-      Transforms Agriculture
-    </h3>
-  </header>
+      <div className="section-header">
+        <header className={inView ? 'animate' : ''}>
+          <h3>How our <mark>Water Treatment</mark> Transforms Agriculture</h3>
+        </header>
 
-  <article
-    className={`section-description ${inView ? 'animate' : ''}`}
-    style={{
-      maxWidth: '800px',
-      margin: '0 auto',
-      color: 'white',
-      fontSize: '1.1rem',
-      lineHeight: '1.7',
-      opacity: inView ? 1 : 0,
-      transform: inView ? 'translateY(0)' : 'translateY(20px)',
-      transition: 'all 0.6s ease-in-out',
-    }}
-  >
-    <p>
-      Revolutionary technology that supports every stage of modern agriculture – from planting to harvest.
-    </p>
-  </article>
-</div>
-
+        <article className={`section-description ${inView ? 'animate' : ''}`}>
+          <p>
+            Revolutionary technology that supports every stage of modern agriculture – from planting to harvest.
+          </p>
+        </article>
+      </div>
 
       <div className="benefit-cards-container">
         <div className="benefit-cards">
@@ -596,8 +601,23 @@ const Gallery = () => {
 
 // CSS Styles
 const styles = `
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+}
+
 .home-container {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
 
@@ -615,43 +635,42 @@ const styles = `
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 30px;
   z-index: 10;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 50px;
 }
 
 .hero-nav button {
-  background: rgba(255, 255, 255, 0.3);
+  background: transparent;
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .hero-nav button:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .slide-indicators {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  z-index: 10;
 }
 
 .indicator {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
   cursor: pointer;
@@ -671,9 +690,9 @@ const styles = `
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #006341, #003d27);
+  background: linear-gradient(135deg, #00416A, #00923d);
   color: white;
-  padding: 80px 5% 60px;
+  padding: 80px 5% 100px;
   box-sizing: border-box;
   text-align: center;
 }
@@ -687,32 +706,44 @@ const styles = `
 .slider-one h1 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  line-height: 1.2;
+  line-height: 1.3;
   color: white;
+  font-weight: 600;
 }
 
 .slider-one p {
   font-size: 1.1rem;
   margin-bottom: 2rem;
   line-height: 1.6;
+  font-weight: 300;
 }
 
 .slider-one .slider-button {
   background: white;
   color: #006341;
   border: none;
-  padding: 15px 30px;
+  padding: 12px 28px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .slider-one .slider-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.logo-image.left-logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  height: 50px;
+  object-fit: contain;
+  z-index: 3;
 }
 
 .slider-one .brain-image {
@@ -723,15 +754,13 @@ const styles = `
   object-fit: contain;
   z-index: 1;
   animation: float 6s ease-in-out infinite;
-  display: none; /* Hide on mobile */
+  display: block;
 }
 
-.slider-one .logo-image {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  height: 50px;
-  object-fit: contain;
+@media (max-width: 768px) {
+  .logo-image.left-logo {
+    height: 40px;
+  }
 }
 
 @keyframes float {
@@ -739,6 +768,9 @@ const styles = `
   50% { transform: translateY(-20px); }
   100% { transform: translateY(0px); }
 }
+
+
+
 
 /* Slider Two Styles */
 .slider-two {
@@ -748,7 +780,7 @@ const styles = `
   align-items: center;
   justify-content: center;
   background: linear-gradient(120deg, #00416A, #E4E5E6);
-  padding: 80px 20px;
+  padding: 80px 20px 100px;
   box-sizing: border-box;
 }
 
@@ -789,25 +821,27 @@ const styles = `
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
   line-height: 1.3;
+  font-weight: 600;
 }
 
 .slider-two p {
   font-size: 1rem;
   margin-bottom: 2rem;
   line-height: 1.6;
+  font-weight: 300;
 }
 
 .slider-two .discover-button {
   background: #00416A;
   color: white;
   border: none;
-  padding: 15px 30px;
+  padding: 12px 28px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
 }
 
 .slider-two .discover-button:hover {
@@ -824,8 +858,8 @@ const styles = `
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #00923d, #006341);
-  padding: 80px 20px;
+  background: linear-gradient(135deg, #00416A, #00923d);
+  padding: 80px 20px 100px;
   box-sizing: border-box;
 }
 
@@ -858,13 +892,14 @@ const styles = `
   border-radius: 20px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .slider-three h1 {
   font-size: 2rem;
   color: #2c3e50;
   margin-bottom: 20px;
-  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .slider-three p {
@@ -872,19 +907,20 @@ const styles = `
   color: #555;
   line-height: 1.7;
   margin-bottom: 25px;
+  font-weight: 300;
 }
 
 .slider-three .explore-btn {
   background: #2c3e50;
   color: white;
   border: none;
-  padding: 12px 30px;
+  padding: 12px 28px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
 }
 
 .slider-three .explore-btn:hover {
@@ -964,6 +1000,7 @@ const styles = `
   font-size: 2.2rem;
   color: #2c3e50;
   margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .water-treatment .treatment-header p {
@@ -971,6 +1008,7 @@ const styles = `
   color: #666;
   max-width: 700px;
   margin: 0 auto;
+  font-weight: 300;
 }
 
 .water-treatment .treatment-content {
@@ -1006,11 +1044,12 @@ const styles = `
   color: #444;
   margin-bottom: 30px;
   text-align: center;
+  font-weight: 300;
 }
 
 .water-treatment .highlighted-benefits {
   display: block;
-  font-weight: 600;
+  font-weight: 500;
   color: #2c3e50;
   margin: 20px 0;
   text-align: center;
@@ -1033,6 +1072,7 @@ const styles = `
   color: #2c3e50;
   margin-bottom: 20px;
   text-align: center;
+  font-weight: 600;
 }
 
 .water-treatment .benefits-grid {
@@ -1068,19 +1108,21 @@ const styles = `
   font-size: 0.95rem;
   line-height: 1.5;
   color: #555;
+  font-weight: 300;
 }
 
 .water-treatment .toggle-benefits {
   background: transparent;
   border: none;
   color: #00416A;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
   display: block;
   margin: 20px auto 0;
   text-decoration: underline;
   transition: color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
 .water-treatment .toggle-benefits:hover {
@@ -1169,6 +1211,8 @@ const styles = `
   animation: drop 3s infinite;
 }
 
+
+
 .water-benefits .ripple {
   position: absolute;
   top: 50%;
@@ -1200,12 +1244,14 @@ const styles = `
   font-size: 1.8rem;
   margin-bottom: 20px;
   color: white;
+  font-weight: 600;
 }
 
 .water-benefits .text-content p {
   font-size: 1rem;
   line-height: 1.7;
   max-width: 700px;
+  font-weight: 300;
 }
 
 @keyframes drop {
@@ -1225,7 +1271,7 @@ const styles = `
   margin-bottom: 60px;
 }
 
-.water-benefits .section-title {
+.water-benefits header {
   font-size: 2rem;
   color: white;
   margin-bottom: 20px;
@@ -1234,13 +1280,19 @@ const styles = `
   transition: all 0.8s ease;
 }
 
-.water-benefits .section-title.animate {
+.water-benefits header.animate {
   opacity: 1;
   transform: translateY(0);
 }
 
-.water-benefits .section-title span {
+.water-benefits header h3 {
+  font-weight: 600;
+}
+
+.water-benefits header mark {
+  background: transparent;
   color: #f39c12;
+  font-weight: 600;
 }
 
 .water-benefits .section-description {
@@ -1251,6 +1303,7 @@ const styles = `
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease 0.2s;
+  font-weight: 300;
 }
 
 .water-benefits .section-description.animate {
@@ -1338,12 +1391,14 @@ const styles = `
   font-size: 1.2rem;
   margin-bottom: 10px;
   text-align: center;
+  font-weight: 500;
 }
 
 .water-benefits .card p {
   text-align: center;
   font-size: 0.9rem;
   line-height: 1.5;
+  font-weight: 300;
 }
 
 @media (min-width: 768px) {
@@ -1397,7 +1452,7 @@ const styles = `
 
 .stat-number {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #00416A;
   margin-bottom: 10px;
 }
@@ -1405,6 +1460,7 @@ const styles = `
 .stat-label {
   font-size: 1rem;
   color: #666;
+  font-weight: 300;
 }
 
 @media (min-width: 600px) {
@@ -1435,6 +1491,7 @@ const styles = `
   font-size: 2rem;
   margin-bottom: 30px;
   line-height: 1.3;
+  font-weight: 600;
 }
 
 .download-button {
@@ -1443,11 +1500,12 @@ const styles = `
   color: #00416A;
   padding: 15px 35px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
 }
 
 .download-button:hover {
@@ -1477,6 +1535,7 @@ const styles = `
   font-size: 2rem;
   color: #2c3e50;
   margin-bottom: 40px;
+  font-weight: 600;
 }
 
 .gallery {
@@ -1638,6 +1697,7 @@ const styles = `
   font-size: 1rem;
   min-width: 80px;
   text-align: center;
+  font-weight: 300;
 }
 
 @media (min-width: 600px) {
