@@ -1,4 +1,3 @@
-/* Footer.css */
 .footer {
   background-color: #000;
   color: #fff;
@@ -73,5 +72,16 @@
 }
 
 .legal-links a:hover {
+  color: #fff;
+}
+
+
+.footer-link {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
   color: #fff;
 }

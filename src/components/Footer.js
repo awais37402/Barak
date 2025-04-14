@@ -20,7 +20,6 @@ const Footer = () => {
             <li><a href="/">Home</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/magneticyieldalliance">Magnetic Yield Alliance</a></li>
-
             <li><a href="/case-studies">Case Studies</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
@@ -36,7 +35,11 @@ const Footer = () => {
             </li>
             <li>
               <FaPhone className="footer-icon" />
-              <span>+92 307 7950777</span>
+              <a href="tel:+923077950777" className="footer-link">+92 307 7950777</a>
+            </li>
+            <li>
+              <FaEnvelope className="footer-icon" />
+              <a href="mailto:info@barakagritech.com" className="footer-link">info@barakagritech.com</a>
             </li>
           </ul>
         </div>
@@ -45,7 +48,6 @@ const Footer = () => {
       {/* Bottom Footer */}
       <div className="footer-bottom">
         <p>© {currentYear} Barak AgriTech (Pvt) Ltd.. All rights reserved.</p>
-        
       </div>
     </footer>
   );
