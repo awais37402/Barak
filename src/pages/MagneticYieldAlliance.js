@@ -55,28 +55,26 @@ const MagneticYieldAlliance = () => {
   return (
     <div className="magnetic-yield-alliance">
       {/* Hero Section */}
-      <section 
-  className="hero-banner animate-on-scroll" 
-  style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${HeroBackground})` }}
->
-  <div className="hero-content">
-    <div className="partner-logos">
-      <img src={BarakLogo} alt="Barak AgriTech (Pvt) Ltd." className="logo pulse" />
-      <span className="partnership-symbol glow">✧</span>
-      <img src={MagneticLogo} alt="Magnetic Technologies LLC" className="logo pulse" />
-    </div>
-    <h1 className="hero-title">Magnetic Yield Alliance</h1>
-    <p className="tagline shimmer">Global Magnetic Technology Expertise Meets Local Agricultural Innovation</p>
-    <p className="grow-more">Grow More with Zero Cost</p>
-    <button
-      className="cta-button sparkle"
-      onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSc7NOvWuB_NC3E9bYriVLQopmFNHJDAOI0vnqKIT5u9qvXwyg/viewform', '_blank')}
-    >
-      Fill Out the Survey Form
-    </button>
-  </div>
-</section>
-
+       <section className="hero-section">
+        <div className="hero-background" style={{ backgroundImage: `url(${HeroBackground})` }}></div>
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
+          <div className="partner-logos">
+            <img src={BarakLogo} alt="Barak AgriTech (Pvt) Ltd." className="logo pulse" />
+            <span className="partnership-symbol glow">✧</span>
+            <img src={MagneticLogo} alt="Magnetic Technologies LLC" className="logo pulse" />
+          </div>
+          <h1 className="hero-title">Magnetic Yield Alliance</h1>
+          <p className="tagline shimmer">Global Magnetic Technology Expertise Meets Local Agricultural Innovation</p>
+          <p className="grow-more">Grow More with Zero Cost</p>
+          <button
+            className="cta-button sparkle"
+            onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSc7NOvWuB_NC3E9bYriVLQopmFNHJDAOI0vnqKIT5u9qvXwyg/viewform', '_blank')}
+          >
+            Fill Out the Survey Form
+          </button>
+        </div>
+      </section>
       {/* Alliance Overview */}
       <section className="alliance-overview">
         <div className="container">
